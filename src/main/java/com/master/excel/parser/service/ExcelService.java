@@ -218,7 +218,7 @@ public class ExcelService {
                     case "DIESEL", "DIESEL T", "DIESEL C" -> "Diesel";
                     case "CNG" -> "CNG";
                     case "LPG" -> "LPG";
-                    case "ELECTRIC", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C" -> "Electric";
+                    case "ELECTRIC", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C", "ELECTRIC HYBRID"  -> "Electric";
                     case "HYBRID" -> "Hybrid";
                     default -> "";
                 };
@@ -235,53 +235,55 @@ public class ExcelService {
 
                 Map<String, String> currentMapping = vlookupMappingArr.get(vlookupMappingArridx++);
 
-                //System.out.println(currentMapping);
-
                 if (resultIndexes.containsKey(e.getValue()) && resultIndexes.containsKey(e.getKey())) {
-                    // System.out.println(e.getKey() + " : " + e.getValue());
                     Cell modelCodeCell = resultRow.getCell(resultIndexes.get(e.getValue()));
                     String modelCode = getCellValueAsString(modelCodeCell).trim();
-                    // System.out.println("Key : "+modelCode);
-                    String rewardType = currentMapping.getOrDefault(modelCode, "#N/A");
-                    // System.out.println("Fetched Value : "+ rewardType);
 
-                    // Database code
-//                    StringBuilder sb = new StringBuilder();
-//                    for (String key : dbParam) {
-//                        int colIndex = resultIndexes.getOrDefault(key.toLowerCase(), -1);
-//                        if (colIndex != -1) {
-//                            Cell cell = resultRow.getCell(colIndex);
-//                            String value = getCellValueAsString(cell).replaceAll("\\s+", ""); // removes all spaces
-//                            sb.append(value);
-//                        }
-//                    }
+                    String valueFromMap = currentMapping.getOrDefault(modelCode, "#N/A");
 
-//                    String concatenatedString = sb.toString();
+                    // Custom logic ONLY for reward vehicle type
+                    String resultColumn = e.getKey();
+                    String safeValue;
 
-//                    System.out.println("Concatenated string: " + concatenatedString);
-//
-//                    if(!validRewardVehicleType.contains(rewardType)) {
-//                        if(vehicleMappingDao.containsVehicleModelString(concatenatedString)){
-//                            rewardType = vehicleMappingDao.getRewardVehicleType(concatenatedString);
-//                        }
-//                    } else {
-//
-//                        Mapping newMapedValue = new Mapping(concatenatedString, rewardType);
-//
-//                        if(validRewardVehicleType.contains(rewardType)) {
-//                            String mappingResponse = vehicleMappingDao.saveRewardVehicleType(newMapedValue);
-//                            System.out.println(mappingResponse);
-//                        }
-//
-//                    }
+                    if ("reward_vehicle_type".equalsIgnoreCase(resultColumn)) {
+                        // DB Logic only for reward vehicle type
+                        StringBuilder sb = new StringBuilder();
+                        for (String key : dbParam) {
+                            int colIndex = resultIndexes.getOrDefault(key.toLowerCase(), -1);
+                            if (colIndex != -1) {
+                                Cell cell = resultRow.getCell(colIndex);
+                                String value = getCellValueAsString(cell).replaceAll("\\s+", ""); // removes all spaces
+                                sb.append(value);
+                            }
+                        }
 
-//                    String safeRewardType = validRewardVehicleType.contains(rewardType) ? rewardType : "#N/A";
+                        String concatenatedString = sb.toString();
 
-                    resultRow.createCell(resultIndexes.get(e.getKey())).setCellValue(rewardType);
+                        System.out.println("Concatenated string: " + concatenatedString);
 
+                        if(!validRewardVehicleType.contains(valueFromMap)) {
+                            if(vehicleMappingDao.containsVehicleModelString(concatenatedString)){
+                                valueFromMap = vehicleMappingDao.getRewardVehicleType(concatenatedString);
+                            }
+                        } else {
+                            Mapping newMappedValue = new Mapping(concatenatedString, valueFromMap);
+                            if(validRewardVehicleType.contains(valueFromMap)) {
+                                String mappingResponse = vehicleMappingDao.saveRewardVehicleType(newMappedValue);
+                                System.out.println(mappingResponse);
+                            }
+                        }
+
+                        safeValue = validRewardVehicleType.contains(valueFromMap) ? valueFromMap : "#N/A";
+
+                    } else {
+                        // For all other vlookup columns, just write the mapped value
+                        safeValue = valueFromMap;
+                    }
+
+                    resultRow.createCell(resultIndexes.get(resultColumn)).setCellValue(safeValue);
                 }
-
             }
+
 
             /* For reward vehicle power column (CC calculation - only for Electric vehicles)
                 If CC > 1000
