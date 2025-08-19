@@ -40,7 +40,22 @@ public class ExcelService {
             String[] dbParam) throws Exception {
 
         HashSet<String> validRewardVehicleType = new HashSet<>(
-                Arrays.asList("NONHEV", "HEV", "Bike", "Scooter")
+                Arrays.asList(
+                        "NONHEV", "HEV", "Bike", "Scooter", "AGRICULTURE EQUIPMENT", "AMBULANCE", "BACKHOE LOADER", "BOOM LIFT",
+                        "Box Body", "BULKER", "BULLDOZER", "Bus", "Cash Van", "Cabin", "CATTLE CARRIER", "Chemical Tanker",
+                        "Closed Body (Full Body)", "Closed body", "COMPRESSORS", "CONSTRUCTION EQUIPMENT", "CRANE", "Customizable",
+                        "Cusomised", "Deck Body", "Delivery Van", "DOG VAN", "DRILLING RIGS", "Dumper/Tipper", "EARTH MOVING MACHINE",
+                        "E-Loaders", "EXCAVATOR", "E-Rickshaw", "FIRE FIGHTER", "FORKLIFT","Full Body", "Fully Built", "FORKLIFT",
+                        "GARBAGE VAN", "GCW - 3W", "GENERATOR VAN", "Generator Van", "GOLF CART", "Half Body", "Hard Top", "GOLF CART",
+                        "HARVESTER", "Hatch", "HEARSE VAN", "Heavy Truck / Semi Trailer", "LIBRARY VAN", "Light Goods Vehicle",
+                        "Loader", "Milk Tanker", "Mixer", "Mobile Canteen", "MOBILE PLANT", "MONOCOQUE", "Motor Cycle", "MOTOR GRADER",
+                        "MUV", "MOTOR GRADER", "Omni Bus", "Open Body", "Open Body (Half Body)", "PAVER FINISHER", "PCV -3W", "Pick Up",
+                        "Pick Up Van", "Plat Form", "PUBLICITY VAN", "QUADRICYCLE", "RECOVERY VEHICLE", "Refrigerated Van", "ROAD ROLLER",
+                        "ROAD SURFACER", "ROAD SWEEPER", "Rock / Scoop Body", "Rock Body", "Saloon", "School Bus", "Soil Compactor",
+                        "SUCTION CUM JETTING MACHINE", "SURGERIES/DISPENSARIES", "SUV", "Tanker", "TAR SPRAYER", "Taxi", "Tipper",
+                        "Tower Wagons", "Tipper / Dumper", "Tractor", "Trailer", "TRACTOR / TRAILER", "Tractors", "Trailer Body",
+                        "Transit Mixer", "Truck", "Truck / Tanker", "Truck Open Body", "Van", "VANITY VAN", "Vibratory Compactor"
+                )
         );
 
         Workbook liveWb = new XSSFWorkbook(liveFile.getInputStream());
@@ -170,7 +185,7 @@ public class ExcelService {
                 }
             }
 
-            // System.out.println("Column Mapping : "+ columnMapping);
+            System.out.println("Column Mapping Banate time : "+ columnMapping);
 
             vlookupMappingArr.add(columnMapping);
         }
@@ -214,12 +229,12 @@ public class ExcelService {
             if (resultIndexes.containsKey(details[0])) {
                 String fuelType = masterRow.getOrDefault(details[1].toLowerCase(), "").trim();
                 String fuelMapped = switch (fuelType.toUpperCase()) {
-                    case "PETROL", "PETROL+CNG", "PETROL T", "PETROL C" -> "Petrol";
-                    case "DIESEL", "DIESEL T", "DIESEL C" -> "Diesel";
-                    case "CNG" -> "CNG";
+                    case "PETROL", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)" -> "Petrol";
+                    case "DIESEL", "DIESEL T", "DIESEL C", "DH", "DIESEL HYBRID(DH)", "DIESEL(D)" -> "Diesel";
+                    case "CNG", "CH", "CNG(C)" -> "CNG";
                     case "LPG" -> "LPG";
-                    case "ELECTRIC", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C", "ELECTRIC HYBRID"  -> "Electric";
-                    case "HYBRID" -> "Hybrid";
+                    case "ELECTRIC", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C", "ELECTRIC HYBRID", "BATTERY(B)", "BATTERY OPERATED"  -> "Electric";
+                    case "HYBRID", "HYBRID(H)" -> "Hybrid";
                     default -> "";
                 };
                 resultRow.createCell(resultIndexes.get(details[0])).setCellValue(fuelMapped);
@@ -234,6 +249,8 @@ public class ExcelService {
             for(Map.Entry<String, String> e : normalizedVlookupMap.entrySet()) {
 
                 Map<String, String> currentMapping = vlookupMappingArr.get(vlookupMappingArridx++);
+
+                System.out.println(currentMapping);
 
                 if (resultIndexes.containsKey(e.getValue()) && resultIndexes.containsKey(e.getKey())) {
                     Cell modelCodeCell = resultRow.getCell(resultIndexes.get(e.getValue()));
@@ -259,21 +276,24 @@ public class ExcelService {
 
                         String concatenatedString = sb.toString();
 
-                        System.out.println("Concatenated string: " + concatenatedString);
+                        // System.out.println("Concatenated string: " + concatenatedString);
 
                         if(!validRewardVehicleType.contains(valueFromMap)) {
+
+                            // System.out.println("DB Contains : " + vehicleMappingDao.containsVehicleModelString(concatenatedString));
+
                             if(vehicleMappingDao.containsVehicleModelString(concatenatedString)){
                                 valueFromMap = vehicleMappingDao.getRewardVehicleType(concatenatedString);
                             }
                         } else {
                             Mapping newMappedValue = new Mapping(concatenatedString, valueFromMap);
-                            if(validRewardVehicleType.contains(valueFromMap)) {
-                                String mappingResponse = vehicleMappingDao.saveRewardVehicleType(newMappedValue);
-                                System.out.println(mappingResponse);
-                            }
+                            String mappingResponse = vehicleMappingDao.saveRewardVehicleType(newMappedValue);
+                            // System.out.println(mappingResponse);
                         }
 
                         safeValue = validRewardVehicleType.contains(valueFromMap) ? valueFromMap : "#N/A";
+
+                        // System.out.println("Value from Map "+ valueFromMap +", Safe Value: "+safeValue);
 
                     } else {
                         // For all other vlookup columns, just write the mapped value
@@ -281,6 +301,7 @@ public class ExcelService {
                     }
 
                     resultRow.createCell(resultIndexes.get(resultColumn)).setCellValue(safeValue);
+
                 }
             }
 
@@ -358,3 +379,6 @@ public class ExcelService {
         return col - 1;
     }
 }
+
+
+
