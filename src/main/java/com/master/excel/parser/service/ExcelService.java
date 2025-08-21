@@ -39,6 +39,7 @@ public class ExcelService {
             String[] vehicleType,
             String[] dbParam) throws Exception {
 
+        /*
         HashSet<String> validRewardVehicleType = new HashSet<>(
                 Arrays.asList(
                         "NONHEV", "HEV", "Bike", "Scooter", "AGRICULTURE EQUIPMENT", "AMBULANCE", "BACKHOE LOADER", "BOOM LIFT",
@@ -57,6 +58,7 @@ public class ExcelService {
                         "Transit Mixer", "Truck", "Truck / Tanker", "Truck Open Body", "Van", "VANITY VAN", "Vibratory Compactor"
                 )
         );
+        */
 
         Workbook liveWb = new XSSFWorkbook(liveFile.getInputStream());
         liveWb.setSheetName(0, "Live");
@@ -156,7 +158,7 @@ public class ExcelService {
 
         // Ye loop change hua hai
         // Building lookup maps from live file
-        ArrayList<Map<String, String>> vlookupMappingArr = new ArrayList<>();
+        Map<String, Map<String, String>> vlookupMappingArrMap = new HashMap<>();
         for(Map.Entry<String, String> e : vlookupMap.entrySet()) {
 
             Map<String, String> columnMapping = new HashMap<>();
@@ -185,9 +187,9 @@ public class ExcelService {
                 }
             }
 
-            System.out.println("Column Mapping Banate time : "+ columnMapping);
+            // System.out.println("Column Mapping Banate time : "+ columnMapping);
 
-            vlookupMappingArr.add(columnMapping);
+            vlookupMappingArrMap.put(e.getKey().trim().toLowerCase(), columnMapping);
         }
 
         // Processing and writing result rows
@@ -218,6 +220,7 @@ public class ExcelService {
                 String resultCol = mapping.getKey();
                 String masterCol = mapping.getValue();
                 int resultColIndex = resultIndexes.getOrDefault(resultCol, -1);
+
                 if (resultColIndex != -1) {
                     String value = masterRow.getOrDefault(masterCol, "");
                     resultRow.createCell(resultColIndex).setCellValue(value);
@@ -229,11 +232,12 @@ public class ExcelService {
             if (resultIndexes.containsKey(details[0])) {
                 String fuelType = masterRow.getOrDefault(details[1].toLowerCase(), "").trim();
                 String fuelMapped = switch (fuelType.toUpperCase()) {
-                    case "PETROL", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)" -> "Petrol";
-                    case "DIESEL", "DIESEL T", "DIESEL C", "DH", "DIESEL HYBRID(DH)", "DIESEL(D)" -> "Diesel";
+                    case "PETROL", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)", "PETROL P", "PETROL G" -> "Petrol";
+                    case "DIESEL", "DIESEL T", "DIESEL C", "DH", "DIESEL HYBRID(DH)", "DIESEL(D)", "DIESEL P", "DIESEL G" -> "Diesel";
                     case "CNG", "CH", "CNG(C)" -> "CNG";
                     case "LPG" -> "LPG";
-                    case "ELECTRIC", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C", "ELECTRIC HYBRID", "BATTERY(B)", "BATTERY OPERATED"  -> "Electric";
+                    case "LNG" -> "LNG";
+                    case "ELECTRIC", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C", "ELECTRIC HYBRID", "BATTERY(B)", "BATTERY OPERATED", "ELECTRIC P"  -> "Electric";
                     case "HYBRID", "HYBRID(H)" -> "Hybrid";
                     default -> "";
                 };
@@ -241,16 +245,12 @@ public class ExcelService {
             }
 
             // For reward vehicle type column from live file to result file
-
-            int vlookupMappingArridx = 0;
-
             // System.out.println("Ye hai service wala: "+normalizedVlookupMap);
-
             for(Map.Entry<String, String> e : normalizedVlookupMap.entrySet()) {
 
-                Map<String, String> currentMapping = vlookupMappingArr.get(vlookupMappingArridx++);
+                Map<String, String> currentMapping = vlookupMappingArrMap.get(e.getKey().trim().toLowerCase());
 
-                System.out.println(currentMapping);
+                // System.out.println(currentMapping);
 
                 if (resultIndexes.containsKey(e.getValue()) && resultIndexes.containsKey(e.getKey())) {
                     Cell modelCodeCell = resultRow.getCell(resultIndexes.get(e.getValue()));
@@ -262,9 +262,12 @@ public class ExcelService {
                     String resultColumn = e.getKey();
                     String safeValue;
 
+                    // DB logic only for reward vehicle type
                     if ("reward_vehicle_type".equalsIgnoreCase(resultColumn)) {
-                        // DB Logic only for reward vehicle type
+
                         StringBuilder sb = new StringBuilder();
+
+                        // String formation from specific column for db
                         for (String key : dbParam) {
                             int colIndex = resultIndexes.getOrDefault(key.toLowerCase(), -1);
                             if (colIndex != -1) {
@@ -274,24 +277,31 @@ public class ExcelService {
                             }
                         }
 
-                        String concatenatedString = sb.toString();
+                        // Normalizing string
+                        String concatenatedString = sb.toString().toLowerCase();
 
                         // System.out.println("Concatenated string: " + concatenatedString);
+                        Boolean containsConcatenatedString = vehicleMappingDao.containsVehicleModelString(concatenatedString);
+                        if("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) {
 
-                        if(!validRewardVehicleType.contains(valueFromMap)) {
+                            // System.out.println("DB contains value for " + concatenatedString + " : " + containsConcatenatedString);
 
-                            // System.out.println("DB Contains : " + vehicleMappingDao.containsVehicleModelString(concatenatedString));
+                            if(containsConcatenatedString){
 
-                            if(vehicleMappingDao.containsVehicleModelString(concatenatedString)){
                                 valueFromMap = vehicleMappingDao.getRewardVehicleType(concatenatedString);
+
                             }
+
                         } else {
-                            Mapping newMappedValue = new Mapping(concatenatedString, valueFromMap);
-                            String mappingResponse = vehicleMappingDao.saveRewardVehicleType(newMappedValue);
-                            // System.out.println(mappingResponse);
+
+                            if(!containsConcatenatedString) {
+                                Mapping newMappedValue = new Mapping(concatenatedString, valueFromMap);
+                                String mappingResponse = vehicleMappingDao.saveRewardVehicleType(newMappedValue);
+                                // System.out.println(mappingResponse);
+                            }
                         }
 
-                        safeValue = validRewardVehicleType.contains(valueFromMap) ? valueFromMap : "#N/A";
+                        safeValue = ("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) ? "#N/A" : valueFromMap;
 
                         // System.out.println("Value from Map "+ valueFromMap +", Safe Value: "+safeValue);
 
@@ -313,12 +323,12 @@ public class ExcelService {
                  reward vehicle power column = CC
             */
             if (resultIndexes.containsKey(details[2])) {
-                Cell ccCell = resultRow.getCell(resultIndexes.getOrDefault(details[3], 0));
+                Cell ccCell = resultRow.getCell(resultIndexes.getOrDefault(details[3].toLowerCase(), 0));
                 Cell fuelTypeCell = resultRow.getCell(resultIndexes.getOrDefault(details[0], 0));
                 String ccStr = getCellValueAsString(ccCell).trim();
                 String fuelType = getCellValueAsString(fuelTypeCell).trim();
 
-                // System.out.println("Fuel type cell: "+ fuelTypeCell+ "Fuel type: "+ fuelType+ ", CC Value: "+ ccStr);
+                // System.out.println("Fuel type cell: "+ fuelTypeCell+ "Fuel type: "+ fuelType+ ", CC Cell: " + ccCell + ", CC Value: "+ ccStr + ", Detail[3]: " + details[3]);
                 // System.out.println("Electric".equalsIgnoreCase(fuelType) && !ccStr.isEmpty());
 
                 if ("Electric".equalsIgnoreCase(fuelType) && !ccStr.isEmpty()) {
@@ -328,10 +338,12 @@ public class ExcelService {
                         float rawCC = ccValue < 1000 ? ccValue : ccValue / 1000f;
                         BigDecimal bd = new BigDecimal(rawCC).setScale(1, RoundingMode.HALF_UP);
                         String finalCC = bd.toPlainString();
-
                         resultRow.createCell(resultIndexes.get(details[2])).setCellValue(finalCC);
+
                     } catch (NumberFormatException e) {
-                        throw new CubicCapacityException("Cubic capacity must be a Number.");
+                        resultRow.createCell(resultIndexes.get(details[2])).setCellValue(ccStr);
+                        System.out.println("Cubic capacity must be a Number, but it is : "+ ccStr);
+                        // throw new CubicCapacityException("Cubic capacity must be a Number but it is : "+ ccStr);
                     }
                 }
             }

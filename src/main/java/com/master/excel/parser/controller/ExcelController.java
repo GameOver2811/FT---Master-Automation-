@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -77,7 +78,7 @@ public class ExcelController {
             // Parsing mapping JSON string into a Map<String, String>
             ObjectMapper mapper = new ObjectMapper();
             Map<String, String> directMap = mapper.readValue(mappingJson, new TypeReference<Map<String, String>>() {});
-            Map<String, String> vlookupMap = mapper.readValue(vlookupMapping, new TypeReference<Map<String, String>>() {});
+            Map<String, String> vlookupMap = mapper.readValue(vlookupMapping, new TypeReference<LinkedHashMap<String, String>>() {});
 
             // Logging request info
             System.out.print("Details : ");
