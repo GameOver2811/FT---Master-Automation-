@@ -23,7 +23,7 @@ public class ExcelConverter {
                 ByteArrayOutputStream csvOut = new ByteArrayOutputStream();
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(csvOut))
         ) {
-            XSSFSheet sheet = workbook.getSheetAt(0); // Or loop all sheets
+            XSSFSheet sheet = workbook.getSheetAt(0);
 
             for (Row row : sheet) {
                 List<String> cells = new ArrayList<>();

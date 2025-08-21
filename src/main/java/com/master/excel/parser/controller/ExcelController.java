@@ -6,7 +6,7 @@ import com.master.excel.parser.exception.FileConversionException;
 import com.master.excel.parser.exception.InvalidExtension;
 import com.master.excel.parser.service.ExcelService;
 import com.master.excel.parser.utility.ExcelConverter;
-import org.apache.tomcat.util.http.fileupload.ByteArrayOutputStream;
+import java.io.ByteArrayOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -106,7 +106,7 @@ public class ExcelController {
             String todayDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
 
             // Cleaning filename
-            String safeFileName = originalFileName.replaceAll("[^a-zA-Z0-9._-]", "_");
+            String safeFileName = "auto_generated_"+originalFileName.replaceAll("[^a-zA-Z0-9._-]", "_"+todayDate);
 
             // Preparing download response
             MultipartFile xlsxOutputFile = new MockMultipartFile(
@@ -120,8 +120,9 @@ public class ExcelController {
             MultipartFile csvOutputFile = excelConverter.xlsxToCsv(xlsxOutputFile);
 
             return ResponseEntity.ok()
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + safeFileName.replace(".xlsx", "_" + todayDate + ".csv"))
-                    .contentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"))
+                    .header(HttpHeaders.CONTENT_DISPOSITION,
+                            "attachment; filename=" + safeFileName.replace(".xlsx", "_" + ".csv"))
+                    .contentType(MediaType.parseMediaType("text/csv"))
                     .body(csvOutputFile.getBytes());
 
         } catch (Exception e) {
