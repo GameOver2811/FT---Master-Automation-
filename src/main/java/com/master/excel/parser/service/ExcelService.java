@@ -2,22 +2,21 @@ package com.master.excel.parser.service;
 
 import com.master.excel.parser.dao.VehicleMappingDao;
 import com.master.excel.parser.dto.Mapping;
-import com.master.excel.parser.exception.CubicCapacityException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.openxml4j.opc.PackageAccess;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.eventusermodel.ReadOnlySharedStringsTable;
-import org.apache.poi.xssf.eventusermodel.XSSFReader;
-import org.apache.poi.xssf.model.StylesTable;
 import org.apache.poi.util.XMLHelper;
-import org.apache.poi.xssf.eventusermodel.XSSFSheetXMLHandler;
-import org.apache.poi.xssf.eventusermodel.XSSFSheetXMLHandler.SheetContentsHandler;
+import org.apache.poi.xssf.eventusermodel.*;
+import org.apache.poi.xssf.model.StylesTable;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import java.io.ByteArrayOutputStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -39,46 +38,29 @@ public class ExcelService {
             String[] vehicleType,
             String[] dbParam) throws Exception {
 
-        /*
-        HashSet<String> validRewardVehicleType = new HashSet<>(
-                Arrays.asList(
-                        "NONHEV", "HEV", "Bike", "Scooter", "AGRICULTURE EQUIPMENT", "AMBULANCE", "BACKHOE LOADER", "BOOM LIFT",
-                        "Box Body", "BULKER", "BULLDOZER", "Bus", "Cash Van", "Cabin", "CATTLE CARRIER", "Chemical Tanker",
-                        "Closed Body (Full Body)", "Closed body", "COMPRESSORS", "CONSTRUCTION EQUIPMENT", "CRANE", "Customizable",
-                        "Cusomised", "Deck Body", "Delivery Van", "DOG VAN", "DRILLING RIGS", "Dumper/Tipper", "EARTH MOVING MACHINE",
-                        "E-Loaders", "EXCAVATOR", "E-Rickshaw", "FIRE FIGHTER", "FORKLIFT","Full Body", "Fully Built", "FORKLIFT",
-                        "GARBAGE VAN", "GCW - 3W", "GENERATOR VAN", "Generator Van", "GOLF CART", "Half Body", "Hard Top", "GOLF CART",
-                        "HARVESTER", "Hatch", "HEARSE VAN", "Heavy Truck / Semi Trailer", "LIBRARY VAN", "Light Goods Vehicle",
-                        "Loader", "Milk Tanker", "Mixer", "Mobile Canteen", "MOBILE PLANT", "MONOCOQUE", "Motor Cycle", "MOTOR GRADER",
-                        "MUV", "MOTOR GRADER", "Omni Bus", "Open Body", "Open Body (Half Body)", "PAVER FINISHER", "PCV -3W", "Pick Up",
-                        "Pick Up Van", "Plat Form", "PUBLICITY VAN", "QUADRICYCLE", "RECOVERY VEHICLE", "Refrigerated Van", "ROAD ROLLER",
-                        "ROAD SURFACER", "ROAD SWEEPER", "Rock / Scoop Body", "Rock Body", "Saloon", "School Bus", "Soil Compactor",
-                        "SUCTION CUM JETTING MACHINE", "SURGERIES/DISPENSARIES", "SUV", "Tanker", "TAR SPRAYER", "Taxi", "Tipper",
-                        "Tower Wagons", "Tipper / Dumper", "Tractor", "Trailer", "TRACTOR / TRAILER", "Tractors", "Trailer Body",
-                        "Transit Mixer", "Truck", "Truck / Tanker", "Truck Open Body", "Van", "VANITY VAN", "Vibratory Compactor"
-                )
-        );
-        */
-
-        Workbook liveWb = new XSSFWorkbook(liveFile.getInputStream());
-        liveWb.setSheetName(0, "Live");
-
+        // ----------------------------
+        // Step 1: Load result template (small file)
+        // ----------------------------
         Workbook resultWb = new XSSFWorkbook(resultTemplateFile.getInputStream());
-        Sheet liveSheet = liveWb.getSheetAt(0);
         Sheet resultSheet = resultWb.getSheetAt(0);
 
         Map<String, Integer> resultIndexes = getColumnIndexes(resultSheet.getRow(0));
-        Map<String, Integer> liveIndexes = getColumnIndexes(liveSheet.getRow(0));
 
+        // ----------------------------
+        // Step 2: Parse masterFile with SAX
+        // ----------------------------
         List<Map<String, String>> masterRows = new ArrayList<>();
 
-        try (OPCPackage pkg = OPCPackage.open(masterFile.getInputStream())) {
+        File tempMaster = File.createTempFile("master-", ".xlsx");
+        masterFile.transferTo(tempMaster);
+
+        try (OPCPackage pkg = OPCPackage.open(tempMaster, PackageAccess.READ)) {
             XSSFReader reader = new XSSFReader(pkg);
             StylesTable styles = reader.getStylesTable();
             ReadOnlySharedStringsTable strings = new ReadOnlySharedStringsTable(pkg);
 
             XMLReader parser = XMLHelper.newXMLReader();
-            parser.setContentHandler(new XSSFSheetXMLHandler(styles, strings, new SheetContentsHandler() {
+            parser.setContentHandler(new XSSFSheetXMLHandler(styles, strings, new XSSFSheetXMLHandler.SheetContentsHandler() {
                 private Map<Integer, String> currentRow = new HashMap<>();
                 private List<String> headers = new ArrayList<>();
                 private int currentCol = -1;
@@ -94,7 +76,7 @@ public class ExcelService {
                     if (rowNum == 0) {
                         TreeMap<Integer, String> sorted = new TreeMap<>(currentRow);
                         headers.clear();
-                        sorted.values().forEach(h -> headers.add(h.trim().toLowerCase())); // Normalizing master header
+                        sorted.values().forEach(h -> headers.add(h.trim().toLowerCase()));
                     } else {
                         TreeMap<Integer, String> sorted = new TreeMap<>(currentRow);
                         Map<String, String> row = new LinkedHashMap<>();
@@ -104,246 +86,186 @@ public class ExcelService {
                                 row.put(headers.get(colIndex), entry.getValue());
                             }
                         }
-
                         boolean hasData = row.values().stream().anyMatch(v -> v != null && !v.trim().isEmpty());
-                        if (hasData) {
-                            masterRows.add(row);
-                            // System.out.println(row);
+                        if (hasData) masterRows.add(row);
+                    }
+                }
+
+                @Override
+                public void cell(String cellReference, String formattedValue, org.apache.poi.xssf.usermodel.XSSFComment comment) {
+                    int colIndex;
+                    if (cellReference != null) {
+                        colIndex = getColumnIndex(cellReference);
+                        currentCol = colIndex;
+                    } else {
+                        colIndex = ++currentCol;
+                    }
+                    currentRow.put(colIndex, formattedValue);
+                }
+
+                @Override
+                public void headerFooter(String text, boolean isHeader, String tagName) {}
+            }, false));
+
+            try (InputStream sheet = reader.getSheetsData().next()) {
+                parser.parse(new InputSource(sheet));
+            }
+        } finally {
+            tempMaster.delete();
+        }
+
+        // ----------------------------
+        // Step 3: Parse liveFile with SAX (build vlookup maps)
+        // ----------------------------
+        Map<String, Map<String, String>> vlookupMappingArrMap = new HashMap<>();
+
+        File tempLive = File.createTempFile("live-", ".xlsx");
+        liveFile.transferTo(tempLive);
+
+        try (OPCPackage pkg = OPCPackage.open(tempLive, PackageAccess.READ)) {
+            XSSFReader reader = new XSSFReader(pkg);
+            StylesTable styles = reader.getStylesTable();
+            ReadOnlySharedStringsTable strings = new ReadOnlySharedStringsTable(pkg);
+
+            // Build header + lookup maps
+            Map<Integer, String> headerMap = new HashMap<>();
+
+            XMLReader parser = XMLHelper.newXMLReader();
+            parser.setContentHandler(new XSSFSheetXMLHandler(styles, strings, new XSSFSheetXMLHandler.SheetContentsHandler() {
+                private Map<Integer, String> currentRow = new HashMap<>();
+                private int currentCol = -1;
+
+                @Override
+                public void startRow(int rowNum) {
+                    currentRow.clear();
+                    currentCol = -1;
+                }
+
+                @Override
+                public void endRow(int rowNum) {
+                    if (rowNum == 0) {
+                        for (Map.Entry<Integer, String> e : currentRow.entrySet()) {
+                            headerMap.put(e.getKey(), e.getValue().trim().toLowerCase());
+                        }
+                    } else {
+                        for (Map.Entry<String, String> entry : vlookupMap.entrySet()) {
+                            String rewardHeader = entry.getKey().trim().toLowerCase();
+                            String modelHeader = entry.getValue().trim().toLowerCase();
+
+                            Integer rewardIdx = findHeaderIndex(headerMap, rewardHeader);
+                            Integer modelIdx = findHeaderIndex(headerMap, modelHeader);
+
+                            if (rewardIdx == null || modelIdx == null) continue;
+
+                            String rewardType = currentRow.getOrDefault(rewardIdx, "").trim();
+                            String modelCode = currentRow.getOrDefault(modelIdx, "").trim();
+
+                            if (!rewardType.isEmpty() && !modelCode.isEmpty()) {
+                                vlookupMappingArrMap
+                                        .computeIfAbsent(rewardHeader, k -> new HashMap<>())
+                                        .put(modelCode, rewardType);
+                            }
                         }
                     }
                 }
 
                 @Override
                 public void cell(String cellReference, String formattedValue, org.apache.poi.xssf.usermodel.XSSFComment comment) {
-//                    int colIndex = getColumnIndex(cellReference);
-//                    currentRow.put(colIndex, formattedValue);
                     int colIndex;
                     if (cellReference != null) {
                         colIndex = getColumnIndex(cellReference);
                         currentCol = colIndex;
                     } else {
-                        colIndex = ++currentCol; // guess next column index
+                        colIndex = ++currentCol;
                     }
-
-                    if (cellReference == null) {
-                        System.out.println("Warning: cellReference is null, guessing column index as " + currentCol);
-                    }
-
                     currentRow.put(colIndex, formattedValue);
                 }
 
                 @Override
-                public void headerFooter(String text, boolean isHeader, String tagName) {
-                }
+                public void headerFooter(String text, boolean isHeader, String tagName) {}
             }, false));
 
-            InputStream sheet = reader.getSheetsData().next();
-            parser.parse(new InputSource(sheet));
-        }
-
-        // Normalizing directMap
-        Map<String, String> normalizedDirectMap = new HashMap<>();
-        for (Map.Entry<String, String> e : directMap.entrySet()) {
-            normalizedDirectMap.put(e.getKey().toLowerCase(), e.getValue().toLowerCase());
-        }
-
-        // Normalizing vlookupMap
-        Map<String, String> normalizedVlookupMap = new LinkedHashMap<>();
-        for(Map.Entry<String, String> e : vlookupMap.entrySet()) {
-            normalizedVlookupMap.put(e.getKey().toLowerCase(), e.getValue().toLowerCase());
-        }
-
-        System.out.println("Normalized Mapping: "+ normalizedDirectMap);
-        System.out.println("Normalized Vlookup Mapping: "+ normalizedVlookupMap);
-
-        // Ye loop change hua hai
-        // Building lookup maps from live file
-        Map<String, Map<String, String>> vlookupMappingArrMap = new HashMap<>();
-        for(Map.Entry<String, String> e : vlookupMap.entrySet()) {
-
-            Map<String, String> columnMapping = new HashMap<>();
-
-            for (int i = 1; i <= liveSheet.getLastRowNum(); i++) {
-                Row liveRow = liveSheet.getRow(i);
-
-                //System.out.println(liveRow);
-
-                if (liveRow == null) continue;
-
-                String modelCodeHeader = e.getValue().trim().toLowerCase();
-                String rewardTypeHeader = e.getKey().trim().toLowerCase();
-
-                if (!liveIndexes.containsKey(modelCodeHeader) || !liveIndexes.containsKey(rewardTypeHeader)) {
-                    System.out.println(liveIndexes);
-                    System.out.println("Missing expected headers in live file: " + e.getValue()+ " "+ modelCodeHeader + ", " + e.getKey()+" "+rewardTypeHeader);
-                    throw new RuntimeException("Missing expected headers in live file: " + e.getValue() + ", " + e.getKey());
-                }
-
-                String modelCode = getCellValueAsString(liveRow.getCell(liveIndexes.get(modelCodeHeader))).trim();
-                String rewardType = getCellValueAsString(liveRow.getCell(liveIndexes.get(rewardTypeHeader))).trim();
-
-                if (!modelCode.isEmpty() && !rewardType.isEmpty()) {
-                    columnMapping.put(modelCode, rewardType);
-                }
+            try (InputStream sheet = reader.getSheetsData().next()) {
+                parser.parse(new InputSource(sheet));
             }
-
-            // System.out.println("Column Mapping Banate time : "+ columnMapping);
-
-            vlookupMappingArrMap.put(e.getKey().trim().toLowerCase(), columnMapping);
+        } finally {
+            tempLive.delete();
         }
 
-        // Processing and writing result rows
+        // ----------------------------
+        // Step 4: Process rows & fill result sheet
+        // ----------------------------
         int rowNum = 1;
-
         for (Map<String, String> masterRow : masterRows) {
-            if(vehicleType.length > 0) {
 
-                // Normalizing vehicle type request values
+            if(vehicleType.length > 0) {
                 String vtKey = vehicleType[0].trim().toLowerCase();
                 String vtValue = vehicleType[1].trim();
-
-                // Processing the vehicle based solely on the provided vehicle type
                 if (!masterRow.containsKey(vtKey)) continue;
                 if (!masterRow.get(vtKey).equalsIgnoreCase(vtValue)) continue;
-
             }
 
             Row resultRow = resultSheet.createRow(rowNum++);
 
-            // Adding NULL in ID Column
             if (resultIndexes.containsKey("id")) {
                 resultRow.createCell(resultIndexes.get("id")).setCellValue("NULL");
             }
 
-            // Copying directly mapped columns from master to result file
-            for (Map.Entry<String, String> mapping : normalizedDirectMap.entrySet()) {
-                String resultCol = mapping.getKey();
-                String masterCol = mapping.getValue();
+            // Direct mappings
+            for (Map.Entry<String, String> mapping : directMap.entrySet()) {
+                String resultCol = mapping.getKey().toLowerCase();
+                String masterCol = mapping.getValue().toLowerCase();
                 int resultColIndex = resultIndexes.getOrDefault(resultCol, -1);
 
                 if (resultColIndex != -1) {
                     String value = masterRow.getOrDefault(masterCol, "");
                     resultRow.createCell(resultColIndex).setCellValue(value);
-                    // System.out.println("Master row keys: " + masterRow.keySet());
                 }
             }
 
-            // for reward vehicle fuel type column
+            // Fuel type normalization
             if (resultIndexes.containsKey(details[0])) {
                 String fuelType = masterRow.getOrDefault(details[1].toLowerCase(), "").trim();
-                String fuelMapped = switch (fuelType.toUpperCase()) {
-                    case "PETROL", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)", "PETROL P", "PETROL G" -> "Petrol";
-                    case "DIESEL", "DIESEL T", "DIESEL C", "DH", "DIESEL HYBRID(DH)", "DIESEL(D)", "DIESEL P", "DIESEL G" -> "Diesel";
-                    case "CNG", "CH", "CNG(C)" -> "CNG";
-                    case "LPG" -> "LPG";
-                    case "LNG" -> "LNG";
-                    case "ELECTRIC", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C", "ELECTRIC HYBRID", "BATTERY(B)", "BATTERY OPERATED", "ELECTRIC P"  -> "Electric";
-                    case "HYBRID", "HYBRID(H)" -> "Hybrid";
-                    default -> "";
-                };
+                String fuelMapped = mapFuelType(fuelType);
                 resultRow.createCell(resultIndexes.get(details[0])).setCellValue(fuelMapped);
             }
 
-            // For reward vehicle type column from live file to result file
-            // System.out.println("Ye hai service wala: "+normalizedVlookupMap);
-            for(Map.Entry<String, String> e : normalizedVlookupMap.entrySet()) {
+            // vlookup mappings
+            for (Map.Entry<String, String> e : vlookupMap.entrySet()) {
+                String rewardHeader = e.getKey().toLowerCase();
+                String modelHeader = e.getValue().toLowerCase();
 
-                Map<String, String> currentMapping = vlookupMappingArrMap.get(e.getKey().trim().toLowerCase());
+                Map<String, String> currentMapping = vlookupMappingArrMap.get(rewardHeader);
+                if (currentMapping == null) continue;
 
-                // System.out.println(currentMapping);
-
-                if (resultIndexes.containsKey(e.getValue()) && resultIndexes.containsKey(e.getKey())) {
-                    Cell modelCodeCell = resultRow.getCell(resultIndexes.get(e.getValue()));
+                if (resultIndexes.containsKey(rewardHeader) && resultIndexes.containsKey(modelHeader)) {
+                    Cell modelCodeCell = resultRow.getCell(resultIndexes.get(modelHeader));
                     String modelCode = getCellValueAsString(modelCodeCell).trim();
-
                     String valueFromMap = currentMapping.getOrDefault(modelCode, "#N/A");
 
-                    // Custom logic ONLY for reward vehicle type
-                    String resultColumn = e.getKey();
-                    String safeValue;
+                    String safeValue = ("reward_vehicle_type".equalsIgnoreCase(rewardHeader))
+                            ? handleRewardVehicleType(resultRow, resultIndexes, dbParam, modelCode, valueFromMap)
+                            : valueFromMap;
 
-                    // DB logic only for reward vehicle type
-                    if ("reward_vehicle_type".equalsIgnoreCase(resultColumn)) {
-
-                        StringBuilder sb = new StringBuilder();
-
-                        // String formation from specific column for db
-                        for (String key : dbParam) {
-                            int colIndex = resultIndexes.getOrDefault(key.toLowerCase(), -1);
-                            if (colIndex != -1) {
-                                Cell cell = resultRow.getCell(colIndex);
-                                String value = getCellValueAsString(cell).replaceAll("\\s+", ""); // removes all spaces
-                                sb.append(value);
-                            }
-                        }
-
-                        // Normalizing string
-                        String concatenatedString = sb.toString().toLowerCase();
-
-                        // System.out.println("Concatenated string: " + concatenatedString);
-                        Boolean containsConcatenatedString = vehicleMappingDao.containsVehicleModelString(concatenatedString);
-                        if("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) {
-
-                            // System.out.println("DB contains value for " + concatenatedString + " : " + containsConcatenatedString);
-
-                            if(containsConcatenatedString){
-
-                                valueFromMap = vehicleMappingDao.getRewardVehicleType(concatenatedString);
-
-                            }
-
-                        } else {
-
-                            if(!containsConcatenatedString) {
-                                Mapping newMappedValue = new Mapping(concatenatedString, valueFromMap);
-                                String mappingResponse = vehicleMappingDao.saveRewardVehicleType(newMappedValue);
-                                // System.out.println(mappingResponse);
-                            }
-                        }
-
-                        safeValue = ("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) ? "#N/A" : valueFromMap;
-
-                        // System.out.println("Value from Map "+ valueFromMap +", Safe Value: "+safeValue);
-
-                    } else {
-                        // For all other vlookup columns, just write the mapped value
-                        safeValue = valueFromMap;
-                    }
-
-                    resultRow.createCell(resultIndexes.get(resultColumn)).setCellValue(safeValue);
-
+                    resultRow.createCell(resultIndexes.get(rewardHeader)).setCellValue(safeValue);
                 }
             }
 
-
-            /* For reward vehicle power column (CC calculation - only for Electric vehicles)
-                If CC > 1000
-                  then reward vehicle power column = CC / 1000
-                else
-                 reward vehicle power column = CC
-            */
+            // Electric CC → Power
             if (resultIndexes.containsKey(details[2])) {
                 Cell ccCell = resultRow.getCell(resultIndexes.getOrDefault(details[3].toLowerCase(), 0));
                 Cell fuelTypeCell = resultRow.getCell(resultIndexes.getOrDefault(details[0], 0));
                 String ccStr = getCellValueAsString(ccCell).trim();
                 String fuelType = getCellValueAsString(fuelTypeCell).trim();
 
-                // System.out.println("Fuel type cell: "+ fuelTypeCell+ "Fuel type: "+ fuelType+ ", CC Cell: " + ccCell + ", CC Value: "+ ccStr + ", Detail[3]: " + details[3]);
-                // System.out.println("Electric".equalsIgnoreCase(fuelType) && !ccStr.isEmpty());
-
                 if ("Electric".equalsIgnoreCase(fuelType) && !ccStr.isEmpty()) {
                     try {
-                        //System.out.println(ccStr);
                         float ccValue = Float.parseFloat(ccStr);
                         float rawCC = ccValue < 1000 ? ccValue : ccValue / 1000f;
                         BigDecimal bd = new BigDecimal(rawCC).setScale(1, RoundingMode.HALF_UP);
-                        String finalCC = bd.toPlainString();
-                        resultRow.createCell(resultIndexes.get(details[2])).setCellValue(finalCC);
-
-                    } catch (NumberFormatException e) {
+                        resultRow.createCell(resultIndexes.get(details[2])).setCellValue(bd.toPlainString());
+                    } catch (NumberFormatException ex) {
                         resultRow.createCell(resultIndexes.get(details[2])).setCellValue(ccStr);
-                        System.out.println("Cubic capacity must be a Number, but it is : "+ ccStr);
-                        // throw new CubicCapacityException("Cubic capacity must be a Number but it is : "+ ccStr);
                     }
                 }
             }
@@ -352,11 +274,11 @@ public class ExcelService {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         resultWb.write(out);
         resultWb.close();
-        liveWb.close();
         return out;
     }
 
-    // Helper function for accessing and normalizing header row
+    // --- Helpers ---
+
     private Map<String, Integer> getColumnIndexes(Row headerRow) {
         Map<String, Integer> map = new HashMap<>();
         if (headerRow == null) return map;
@@ -369,7 +291,6 @@ public class ExcelService {
         return map;
     }
 
-    // Helper function for accessing value to cell
     private String getCellValueAsString(Cell cell) {
         if (cell == null) return "";
         return switch (cell.getCellType()) {
@@ -381,7 +302,6 @@ public class ExcelService {
         };
     }
 
-    // Helper function for getting specific cell index using cell reference
     private int getColumnIndex(String cellRef) {
         int col = 0;
         for (int i = 0; i < cellRef.length(); i++) {
@@ -390,7 +310,52 @@ public class ExcelService {
         }
         return col - 1;
     }
+
+    private Integer findHeaderIndex(Map<Integer, String> headers, String name) {
+        return headers.entrySet().stream()
+                .filter(e -> e.getValue().equalsIgnoreCase(name))
+                .map(Map.Entry::getKey)
+                .findFirst().orElse(null);
+    }
+
+    private String mapFuelType(String fuelType) {
+        return switch (fuelType.toUpperCase()) {
+            case "PETROL", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)", "PETROL P", "PETROL G" -> "Petrol";
+            case "DIESEL", "DIESEL T", "DIESEL C", "DH", "DIESEL HYBRID(DH)", "DIESEL(D)", "DIESEL P", "DIESEL G" -> "Diesel";
+            case "CNG", "CH", "CNG(C)" -> "CNG";
+            case "LPG" -> "LPG";
+            case "LNG" -> "LNG";
+            case "ELECTRIC", "ELECTRICAL", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C", "ELECTRIC HYBRID", "BATTERY(B)", "BATTERY OPERATED", "ELECTRIC P" -> "Electric";
+            case "HYBRID", "HYBRID(H)" -> "Hybrid";
+            default -> "";
+        };
+    }
+
+    private String handleRewardVehicleType(Row resultRow, Map<String, Integer> resultIndexes, String[] dbParam,
+                                           String modelCode, String valueFromMap) {
+
+        StringBuilder sb = new StringBuilder();
+        for (String key : dbParam) {
+            int colIndex = resultIndexes.getOrDefault(key.toLowerCase(), -1);
+            if (colIndex != -1) {
+                Cell cell = resultRow.getCell(colIndex);
+                String value = getCellValueAsString(cell).replaceAll("\\s+", "");
+                sb.append(value);
+            }
+        }
+        String concatenatedString = sb.toString().toLowerCase();
+
+        boolean contains = vehicleMappingDao.containsVehicleModelString(concatenatedString);
+        if ("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) {
+            if (contains) {
+                valueFromMap = vehicleMappingDao.getRewardVehicleType(concatenatedString);
+            }
+        } else {
+            if (!contains) {
+                Mapping newMappedValue = new Mapping(concatenatedString, valueFromMap);
+                vehicleMappingDao.saveRewardVehicleType(newMappedValue);
+            }
+        }
+        return ("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) ? "#N/A" : valueFromMap;
+    }
 }
-
-
-

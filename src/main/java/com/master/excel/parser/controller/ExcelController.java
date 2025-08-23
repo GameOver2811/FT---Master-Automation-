@@ -5,8 +5,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.master.excel.parser.exception.FileConversionException;
 import com.master.excel.parser.exception.InvalidExtension;
 import com.master.excel.parser.service.ExcelService;
+import com.master.excel.parser.utility.CsvToXlsxStreamingConverter;
 import com.master.excel.parser.utility.ExcelConverter;
 import java.io.ByteArrayOutputStream;
+
+import com.master.excel.parser.utility.XlsxToCsvSaxConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -28,11 +31,15 @@ public class ExcelController {
 
     private final ExcelService excelService;
     private final ExcelConverter excelConverter;
+    private final XlsxToCsvSaxConverter xlsxToCsvSaxConverter;
+    private final CsvToXlsxStreamingConverter csvToXlsxStreamingConverter;
 
     @Autowired
-    public ExcelController(ExcelService excelService, ExcelConverter excelConverter) {
+    public ExcelController(ExcelService excelService, ExcelConverter excelConverter, XlsxToCsvSaxConverter xlsxToCsvSaxConverter, CsvToXlsxStreamingConverter csvToXlsxStreamingConverter) {
         this.excelService = excelService;
         this.excelConverter = excelConverter;
+        this.xlsxToCsvSaxConverter = xlsxToCsvSaxConverter;
+        this.csvToXlsxStreamingConverter = csvToXlsxStreamingConverter;
     }
 
     @PostMapping(value = "/upload", consumes = {"multipart/form-data"})
@@ -55,7 +62,8 @@ public class ExcelController {
 
             // Check if conversion is required or not for master file!
             if((Objects.requireNonNull(master.getOriginalFilename()).endsWith(".csv"))) {
-                master = excelConverter.csvToXlsx(master);
+                // master = excelConverter.csvToXlsx(master);
+                master = csvToXlsxStreamingConverter.convertToXlsx(master.getOriginalFilename(), master.getInputStream());
             }
 
             // Checks for result template and live file
@@ -69,8 +77,10 @@ public class ExcelController {
 
             // Conversion of result template and live file if required
             try{
-                xlsxResult = excelConverter.csvToXlsx(result);
-                xlsxLive  = excelConverter.csvToXlsx(live);
+                // xlsxResult = excelConverter.csvToXlsx(result);
+                // xlsxLive  = excelConverter.csvToXlsx(live);
+                xlsxResult = csvToXlsxStreamingConverter.convertToXlsx(result.getOriginalFilename(), result.getInputStream());
+                xlsxLive = csvToXlsxStreamingConverter.convertToXlsx(live.getOriginalFilename(), live.getInputStream());
             } catch (Exception e) {
                 throw new FileConversionException("Error occurred while converting files from .csv to .xlsx");
             }
@@ -117,7 +127,9 @@ public class ExcelController {
             );
 
             // Converting back from .xlsx to .csv
-            MultipartFile csvOutputFile = excelConverter.xlsxToCsv(xlsxOutputFile);
+            // MultipartFile csvOutputFile = excelConverter.xlsxToCsv(xlsxOutputFile);
+
+            MultipartFile csvOutputFile = xlsxToCsvSaxConverter.convertToCsv(xlsxOutputFile.getOriginalFilename(), xlsxOutputFile.getInputStream());
 
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION,
