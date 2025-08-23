@@ -320,7 +320,7 @@ public class ExcelService {
 
     private String mapFuelType(String fuelType) {
         return switch (fuelType.toUpperCase()) {
-            case "PETROL", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)", "PETROL P", "PETROL G" -> "Petrol";
+            case "PETROL", "PETROL WITH CNG", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)", "PETROL P", "PETROL G" -> "Petrol";
             case "DIESEL", "DIESEL T", "DIESEL C", "DH", "DIESEL HYBRID(DH)", "DIESEL(D)", "DIESEL P", "DIESEL G" -> "Diesel";
             case "CNG", "CH", "CNG(C)" -> "CNG";
             case "LPG" -> "LPG";

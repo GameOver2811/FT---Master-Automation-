@@ -7,7 +7,7 @@ The **Master Excel Parser API** processes and maps data from multiple `.xlsx` fi
 
 ---
 
-## API Endpoint
+## API Endpoint 
 
 **Method:** `POST`  
 **Endpoint:** `/api/upload`  
