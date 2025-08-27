@@ -1,7 +1,11 @@
 package com.master.excel.parser.service;
 
-import com.master.excel.parser.dao.VehicleMappingDao;
-import com.master.excel.parser.dto.Mapping;
+import com.master.excel.parser.dao.VehicleMapping2WDao;
+import com.master.excel.parser.dao.VehicleMapping4WDao;
+import com.master.excel.parser.dao.VehicleMappingCVDao;
+import com.master.excel.parser.dto.VehicleMapping2W;
+import com.master.excel.parser.dto.VehicleMapping4W;
+import com.master.excel.parser.dto.VehicleMappingCV;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.openxml4j.opc.PackageAccess;
 import org.apache.poi.ss.usermodel.*;
@@ -11,6 +15,7 @@ import org.apache.poi.xssf.model.StylesTable;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
@@ -23,10 +28,17 @@ import java.math.RoundingMode;
 import java.util.*;
 
 @Service
+@Transactional
 public class ExcelService {
 
     @Autowired
-    VehicleMappingDao vehicleMappingDao;
+    VehicleMappingCVDao vehicleMappingCVDao;
+
+    @Autowired
+    VehicleMapping2WDao vehicleMapping2WDao;
+
+    @Autowired
+    VehicleMapping4WDao vehicleMapping4WDao;
 
     public ByteArrayOutputStream automateExcelPopulation(
             MultipartFile masterFile,
@@ -199,10 +211,17 @@ public class ExcelService {
         for (Map<String, String> masterRow : masterRows) {
 
             if(vehicleType.length > 0) {
-                String vtKey = vehicleType[0].trim().toLowerCase();
-                String vtValue = vehicleType[1].trim();
-                if (!masterRow.containsKey(vtKey)) continue;
-                if (!masterRow.get(vtKey).equalsIgnoreCase(vtValue)) continue;
+                String vehicleTypeKey = vehicleType[0].trim().toLowerCase();
+                if (!masterRow.containsKey(vehicleTypeKey)) continue;
+                boolean hasMatchingType = false;
+                for (int i = 1; i < vehicleType.length; i++) {
+                    String candidateType = vehicleType[i].trim();
+                    if (masterRow.get(vehicleTypeKey).equalsIgnoreCase(candidateType)) {
+                        hasMatchingType = true;
+                        break;
+                    }
+                }
+                if (!hasMatchingType) continue;
             }
 
             Row resultRow = resultSheet.createRow(rowNum++);
@@ -244,7 +263,7 @@ public class ExcelService {
                     String valueFromMap = currentMapping.getOrDefault(modelCode, "#N/A");
 
                     String safeValue = ("reward_vehicle_type".equalsIgnoreCase(rewardHeader))
-                            ? handleRewardVehicleType(resultRow, resultIndexes, dbParam, modelCode, valueFromMap)
+                            ? handleRewardVehicleType(resultRow, resultIndexes, dbParam, modelCode, valueFromMap, details)
                             : valueFromMap;
 
                     resultRow.createCell(resultIndexes.get(rewardHeader)).setCellValue(safeValue);
@@ -320,19 +339,19 @@ public class ExcelService {
 
     private String mapFuelType(String fuelType) {
         return switch (fuelType.toUpperCase()) {
-            case "PETROL", "PETROL WITH CNG", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)", "PETROL P", "PETROL G" -> "Petrol";
+            case "PETROL", "PETROL WITH CNG", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)", "PETROL P", "PETROL G", "PETROL+LPG" -> "Petrol";
             case "DIESEL", "DIESEL T", "DIESEL C", "DH", "DIESEL HYBRID(DH)", "DIESEL(D)", "DIESEL P", "DIESEL G" -> "Diesel";
             case "CNG", "CH", "CNG(C)" -> "CNG";
             case "LPG" -> "LPG";
             case "LNG" -> "LNG";
             case "ELECTRIC", "ELECTRICAL", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C", "ELECTRIC HYBRID", "BATTERY(B)", "BATTERY OPERATED", "ELECTRIC P" -> "Electric";
-            case "HYBRID", "HYBRID(H)" -> "Hybrid";
+            case "HYBRID", "HYBRID(H)", "MILD HYBRID", "PLUG IN HYBRID", "HYBRID ELECTRIC VEHICLE" -> "Hybrid";
             default -> "";
         };
     }
 
     private String handleRewardVehicleType(Row resultRow, Map<String, Integer> resultIndexes, String[] dbParam,
-                                           String modelCode, String valueFromMap) {
+                                           String modelCode, String valueFromMap, String[] details) {
 
         StringBuilder sb = new StringBuilder();
         for (String key : dbParam) {
@@ -345,17 +364,61 @@ public class ExcelService {
         }
         String concatenatedString = sb.toString().toLowerCase();
 
-        boolean contains = vehicleMappingDao.containsVehicleModelString(concatenatedString);
-        if ("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) {
-            if (contains) {
-                valueFromMap = vehicleMappingDao.getRewardVehicleType(concatenatedString);
-            }
-        } else {
-            if (!contains) {
-                Mapping newMappedValue = new Mapping(concatenatedString, valueFromMap);
-                vehicleMappingDao.saveRewardVehicleType(newMappedValue);
-            }
+        switch (details[4].trim().toUpperCase()) {
+            case "2W" -> valueFromMap = handle2wData(concatenatedString, valueFromMap, details[4], details[5]);
+            case "4W" -> valueFromMap = handle4wData(concatenatedString, valueFromMap, details[4], details[5]);
+            case "CV", "PCV", "GCV", "MISD" -> valueFromMap = handleCvData(concatenatedString, valueFromMap, details[4], details[5]);
         }
         return ("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) ? "#N/A" : valueFromMap;
     }
+
+    private String handleCvData(String concatenatedString, String valueFromMap, String product, String ic) {
+        boolean contains = vehicleMappingCVDao.containsVehicleModelString(concatenatedString, ic);
+        if("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) {
+            if(contains) {
+                return vehicleMappingCVDao.getRewardVehicleType(concatenatedString, ic);
+            }
+        } else {
+            if(!contains) {
+                VehicleMappingCV data = new VehicleMappingCV(concatenatedString, valueFromMap, product, ic);
+                vehicleMappingCVDao.save(data, ic);
+            }
+        }
+        return valueFromMap;
+    }
+
+    private String handle4wData(String concatenatedString, String valueFromMap, String product, String ic) {
+        Boolean contains = vehicleMapping4WDao.containsVehicleModelString(concatenatedString);
+
+        if (("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) && contains) {
+            return vehicleMapping4WDao.getRewardVehicleType(concatenatedString);
+        }
+
+        if (!"NULL".equals(valueFromMap) && !"#N/A".equals(valueFromMap) && !contains) {
+            VehicleMapping4W data = new VehicleMapping4W(concatenatedString, valueFromMap, product, ic);
+            vehicleMapping4WDao.save(data);
+        }
+
+        return valueFromMap;
+
+    }
+
+    private String handle2wData(String concatenatedString, String valueFromMap, String product, String ic) {
+        Boolean contains = vehicleMapping2WDao.containsVehicleModelString(concatenatedString);
+
+        System.out.println("Concat : " + concatenatedString + ", valueFromMap : " + valueFromMap + ", product : " + product + ", IC : " + ic);
+
+        if (("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) && contains) {
+            return vehicleMapping2WDao.getRewardVehicleType(concatenatedString);
+        }
+
+        if (!"NULL".equals(valueFromMap) && !"#N/A".equals(valueFromMap) && !contains) {
+            VehicleMapping2W data = new VehicleMapping2W(concatenatedString, valueFromMap, product, ic);
+            vehicleMapping2WDao.save(data);
+        }
+
+        return valueFromMap;
+
+    }
+
 }
