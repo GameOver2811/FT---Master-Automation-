@@ -339,12 +339,12 @@ public class ExcelService {
 
     private String mapFuelType(String fuelType) {
         return switch (fuelType.toUpperCase()) {
-            case "PETROL", "PETROL WITH CNG", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)", "PETROL P", "PETROL G", "PETROL+LPG" -> "Petrol";
-            case "DIESEL", "DIESEL T", "DIESEL C", "DH", "DIESEL HYBRID(DH)", "DIESEL(D)", "DIESEL P", "DIESEL G" -> "Diesel";
-            case "CNG", "CH", "CNG(C)" -> "CNG";
+            case "PETROL", "PETROL WITH CNG", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)", "PETROL P", "PETROL G", "PETROL+LPG", "P" -> "Petrol";
+            case "DIESEL", "DIESEL T", "DIESEL C", "DH", "DIESEL HYBRID(DH)", "DIESEL(D)", "DIESEL P", "DIESEL G", "D" -> "Diesel";
+            case "CNG", "CH", "CNG(C)", "C" -> "CNG";
             case "LPG" -> "LPG";
             case "LNG" -> "LNG";
-            case "ELECTRIC", "ELECTRICAL", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C", "ELECTRIC HYBRID", "BATTERY(B)", "BATTERY OPERATED", "ELECTRIC P" -> "Electric";
+            case "ELECTRIC", "ELECTRICAL", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C", "ELECTRIC HYBRID", "BATTERY(B)", "BATTERY OPERATED", "ELECTRIC P", "B" -> "Electric";
             case "HYBRID", "HYBRID(H)", "MILD HYBRID", "PLUG IN HYBRID", "HYBRID ELECTRIC VEHICLE" -> "Hybrid";
             default -> "";
         };

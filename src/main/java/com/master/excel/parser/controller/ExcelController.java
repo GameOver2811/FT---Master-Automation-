@@ -67,9 +67,7 @@ public class ExcelController {
             }
 
             // Checks for result template and live file
-            if (live.isEmpty()|| result.isEmpty()
-                    || !(Objects.requireNonNull(live.getOriginalFilename()).endsWith(".csv"))
-                    || !(Objects.requireNonNull(result.getOriginalFilename()).endsWith(".csv"))) {
+            if (live.isEmpty()|| result.isEmpty()) {
                 throw new InvalidExtension("Live or Result is empty or file extension is invalid, try using .csv extension!");
             }
 
@@ -77,10 +75,19 @@ public class ExcelController {
 
             // Conversion of result template and live file if required
             try{
-                // xlsxResult = excelConverter.csvToXlsx(result);
-                // xlsxLive  = excelConverter.csvToXlsx(live);
-                xlsxResult = csvToXlsxStreamingConverter.convertToXlsx(result.getOriginalFilename(), result.getInputStream());
-                xlsxLive = csvToXlsxStreamingConverter.convertToXlsx(live.getOriginalFilename(), live.getInputStream());
+                if(Objects.requireNonNull(result.getOriginalFilename()).endsWith(".csv"))
+                    xlsxResult = csvToXlsxStreamingConverter.convertToXlsx(result.getOriginalFilename(), result.getInputStream());
+                else if(result.getOriginalFilename().endsWith(".xlsx"))
+                    xlsxResult = result;
+                else
+                    throw new FileConversionException("Try using .xlsx or .csv for result file");
+
+                if(Objects.requireNonNull(live.getOriginalFilename()).endsWith(".csv"))
+                    xlsxLive = csvToXlsxStreamingConverter.convertToXlsx(live.getOriginalFilename(), live.getInputStream());
+                else if(live.getOriginalFilename().endsWith(".xlsx"))
+                    xlsxLive = live;
+                else
+                    throw new FileConversionException("Try using .xlsx or .csv for live file");
             } catch (Exception e) {
                 throw new FileConversionException("Error occurred while converting files from .csv to .xlsx");
             }
