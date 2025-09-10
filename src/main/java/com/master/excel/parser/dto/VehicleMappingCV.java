@@ -3,27 +3,48 @@ package com.master.excel.parser.dto;
 import jakarta.persistence.*;
 
 @Entity
-public class Mapping {
-
+@Table(name = "vehicle_mapping_cv")
+public class VehicleMappingCV {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-increment
     private Integer id;
-
     private String vehicleModelString;
     private String rewardVehicleType;
+    private String productType;
+    private String ic;
 
-    public Mapping() {
+    public VehicleMappingCV() {
     }
 
-    public Mapping(Integer id, String vehicleModelString, String rewardVehicleType) {
+    public VehicleMappingCV(Integer id, String vehicleModelString, String rewardVehicleType, String productType, String ic) {
         this.id = id;
         this.vehicleModelString = vehicleModelString;
         this.rewardVehicleType = rewardVehicleType;
+        this.productType = productType;
+        this.ic = ic;
     }
 
-    public Mapping(String concatenatedString, String rewardType) {
-        this.rewardVehicleType = rewardType;
-        this.vehicleModelString = concatenatedString;
+    public VehicleMappingCV(String vehicleModelString, String rewardVehicleType, String productType, String ic) {
+        this.vehicleModelString = vehicleModelString;
+        this.rewardVehicleType = rewardVehicleType;
+        this.productType = productType;
+        this.ic = ic;
+    }
+
+    public String getProductType() {
+        return productType;
+    }
+
+    public void setProductType(String productType) {
+        this.productType = productType;
+    }
+
+    public String getIc() {
+        return ic;
+    }
+
+    public void setIc(String ic) {
+        this.ic = ic;
     }
 
     public Integer getId() {
@@ -50,4 +71,3 @@ public class Mapping {
         this.rewardVehicleType = rewardVehicleType;
     }
 }
-

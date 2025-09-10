@@ -1,5 +1,7 @@
 package com.master.excel.parser.utility;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVRecord;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.springframework.mock.web.MockMultipartFile;
@@ -14,11 +16,12 @@ public class CsvToXlsxStreamingConverter {
 
     /**
      * Converts CSV to XLSX efficiently using SXSSFWorkbook (streaming, no OOM).
+     * Handles quoted fields and commas inside values using Apache Commons CSV.
      */
     public MultipartFile convertToXlsx(String originalFilename, InputStream csvInput) {
         File tempFile = null;
         try (
-                BufferedReader br = new BufferedReader(new InputStreamReader(csvInput, StandardCharsets.UTF_8))
+                Reader reader = new InputStreamReader(csvInput, StandardCharsets.UTF_8)
         ) {
             // ✅ Create temp file to hold XLSX instead of keeping in memory
             tempFile = File.createTempFile("csv-to-xlsx-", ".xlsx");
@@ -27,14 +30,16 @@ public class CsvToXlsxStreamingConverter {
                  SXSSFWorkbook workbook = new SXSSFWorkbook(100)) { // keep 100 rows in memory
 
                 Sheet sheet = workbook.createSheet("Sheet1");
-                String line;
-                int rowNum = 0;
 
-                while ((line = br.readLine()) != null) {
+                Iterable<CSVRecord> records = CSVFormat.DEFAULT
+                        .withTrim()
+                        .parse(reader);
+
+                int rowNum = 0;
+                for (CSVRecord record : records) {
                     Row row = sheet.createRow(rowNum++);
-                    String[] cells = line.split(",", -1); // -1 keeps empty values
-                    for (int i = 0; i < cells.length; i++) {
-                        row.createCell(i).setCellValue(cells[i]);
+                    for (int i = 0; i < record.size(); i++) {
+                        row.createCell(i).setCellValue(record.get(i));
                     }
                 }
 
