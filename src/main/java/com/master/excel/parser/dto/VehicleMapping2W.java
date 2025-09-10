@@ -11,6 +11,9 @@ public class VehicleMapping2W {
     private String vehicleModelString;
     private String rewardVehicleType;
     private String productType;
+    private String vehiclePowerBi;
+    private String vehicleFuel;
+    private String rewardModel;
 
     @Column(name = "ic", nullable = false)
     private String ic;
@@ -30,6 +33,24 @@ public class VehicleMapping2W {
         this.vehicleModelString = vehicleModelString;
         this.rewardVehicleType = rewardVehicleType;
         this.productType = productType;
+        this.ic = ic;
+    }
+
+    public VehicleMapping2W(String vehicleModelString, String rewardVehicleType, String productType, String vehiclePowerBi, String vehicleFuel, String rewardModel, String ic) {
+        this.vehicleModelString = vehicleModelString;
+        this.rewardVehicleType = rewardVehicleType;
+        this.productType = productType;
+        this.vehiclePowerBi = vehiclePowerBi;
+        this.vehicleFuel = vehicleFuel;
+        this.rewardModel = rewardModel;
+        this.ic = ic;
+    }
+
+    public VehicleMapping2W(String vehicleModelString, String rewardVehicleType, String productType, String vehiclePowerBi, String ic) {
+        this.vehicleModelString = vehicleModelString;
+        this.rewardVehicleType = rewardVehicleType;
+        this.productType = productType;
+        this.vehiclePowerBi = vehiclePowerBi;
         this.ic = ic;
     }
 
@@ -71,5 +92,29 @@ public class VehicleMapping2W {
 
     public void setRewardVehicleType(String rewardVehicleType) {
         this.rewardVehicleType = rewardVehicleType;
+    }
+
+    public String getVehiclePowerBi() {
+        return vehiclePowerBi;
+    }
+
+    public void setVehiclePowerBi(String vehicle_power_bi) {
+        this.vehiclePowerBi = vehicle_power_bi;
+    }
+
+    public String getVehicleFuel() {
+        return vehicleFuel;
+    }
+
+    public void setVehicleFuel(String vehicle_fuel) {
+        this.vehicleFuel = vehicle_fuel;
+    }
+
+    public String getRewardModel() {
+        return rewardModel;
+    }
+
+    public void setRewardModel(String reward_model) {
+        this.rewardModel = reward_model;
     }
 }

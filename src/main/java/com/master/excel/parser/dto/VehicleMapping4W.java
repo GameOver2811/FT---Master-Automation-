@@ -12,6 +12,9 @@ public class VehicleMapping4W {
     private String rewardVehicleType;
     private String productType;
     private String ic;
+    private String vehiclePowerBi;
+    private String vehicleFuel;
+    private String rewardModel;
 
     public VehicleMapping4W() {
     }
@@ -29,6 +32,40 @@ public class VehicleMapping4W {
         this.rewardVehicleType = rewardVehicleType;
         this.productType = productType;
         this.ic = ic;
+    }
+
+    public VehicleMapping4W(String vehicleModelString, String rewardVehicleType, String productType, String ic, String vehiclePowerBi, String vehicleFuel, String rewardModel) {
+        this.vehicleModelString = vehicleModelString;
+        this.rewardVehicleType = rewardVehicleType;
+        this.productType = productType;
+        this.ic = ic;
+        this.vehiclePowerBi = vehiclePowerBi;
+        this.vehicleFuel = vehicleFuel;
+        this.rewardModel = rewardModel;
+    }
+
+    public String getVehiclePowerBi() {
+        return vehiclePowerBi;
+    }
+
+    public void setVehiclePowerBi(String vehiclePowerBi) {
+        this.vehiclePowerBi = vehiclePowerBi;
+    }
+
+    public String getVehicleFuel() {
+        return vehicleFuel;
+    }
+
+    public void setVehicleFuel(String vehicleFuel) {
+        this.vehicleFuel = vehicleFuel;
+    }
+
+    public String getRewardModel() {
+        return rewardModel;
+    }
+
+    public void setRewardModel(String rewardModel) {
+        this.rewardModel = rewardModel;
     }
 
     public String getProductType() {

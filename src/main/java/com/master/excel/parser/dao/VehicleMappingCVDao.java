@@ -37,4 +37,25 @@ public class VehicleMappingCVDao {
                 .orElse(null);
     }
 
+    public String getVehiclePowerBi(String vehicleModelString, String ic) {
+        return vehicleMappingCVRepository
+                .findByVehicleModelStringAndIc(vehicleModelString, ic)
+                .map(VehicleMappingCV::getVehiclePowerBi)
+                .orElse(null);
+    }
+
+    public String getRewardModel(String vehicleModelString, String ic) {
+        return vehicleMappingCVRepository
+                .findByVehicleModelStringAndIc(vehicleModelString, ic)
+                .map(VehicleMappingCV::getRewardModel)
+                .orElse(null);
+    }
+
+    public String getRewardVehicleFuelType(String vehicleModelString, String ic) {
+        return vehicleMappingCVRepository
+                .findByVehicleModelStringAndIc(vehicleModelString, ic)
+                .map(VehicleMappingCV::getVehicleFuel)
+                .orElse(null);
+    }
+
 }

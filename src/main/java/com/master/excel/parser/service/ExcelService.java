@@ -250,6 +250,9 @@ public class ExcelService {
             }
 
             // vlookup mappings
+            // Yaha bhi development chal raha
+            Map<String, String> rowVlookupValues = new HashMap<>();
+            // yaha tak
             for (Map.Entry<String, String> e : vlookupMap.entrySet()) {
                 String rewardHeader = e.getKey().toLowerCase();
                 String modelHeader = e.getValue().toLowerCase();
@@ -266,18 +269,47 @@ public class ExcelService {
                             ? handleRewardVehicleType(resultRow, resultIndexes, dbParam, modelCode, valueFromMap, details)
                             : valueFromMap;
 
+                    // Yaha chal raha development abhi
+/*
+                    String safeValue = valueFromMap;
+
+                    rowVlookupValues.put(rewardHeader, valueFromMap);
+
+                    if(("reward_vehicle_type".equalsIgnoreCase(rewardHeader))) {
+                        safeValue = handleRewardVehicleType(resultRow, resultIndexes, dbParam, valueFromMap, details);
+                    }
+                    if(("vehicle_power_bi".equalsIgnoreCase(rewardHeader))) {
+                        safeValue = handleVehiclePowerBi(resultRow, resultIndexes, dbParam, valueFromMap, details);
+                    }
+                    if(("reward_model".equalsIgnoreCase(rewardHeader))) {
+                        safeValue = handleRewardModel(resultRow, resultIndexes, dbParam, valueFromMap, details);
+                    }
+                    if(("reward_vehicle_fuel_type".equalsIgnoreCase(rewardHeader))) {
+                        safeValue = handleRewardVehicleFuelType(resultRow, resultIndexes, dbParam, valueFromMap, details);
+                    }
+
+                    // Yaha tak
+
+ */
+
                     resultRow.createCell(resultIndexes.get(rewardHeader)).setCellValue(safeValue);
                 }
             }
+
+            // yaha bhi development chal raha
+/*
+            saveRowInDb(resultRow, resultIndexes, dbParam, rowVlookupValues, details);
+*/
+            // Yaha tak
 
             // Electric CC → Power
             if (resultIndexes.containsKey(details[2])) {
                 Cell ccCell = resultRow.getCell(resultIndexes.getOrDefault(details[3].toLowerCase(), 0));
                 Cell fuelTypeCell = resultRow.getCell(resultIndexes.getOrDefault(details[0], 0));
-                String ccStr = getCellValueAsString(ccCell).trim();
+                String ccStr = getCellValueAsString(ccCell).trim().replace(",", "");
                 String fuelType = getCellValueAsString(fuelTypeCell).trim();
 
-                if ("Electric".equalsIgnoreCase(fuelType) && !ccStr.isEmpty()) {
+                if ("Electric".equalsIgnoreCase(fuelType)) {
                     try {
                         float ccValue = Float.parseFloat(ccStr);
                         float rawCC = ccValue < 1000 ? ccValue : ccValue / 1000f;
@@ -295,6 +327,187 @@ public class ExcelService {
         resultWb.close();
         return out;
     }
+
+    // Yaha bhi chal raha development
+/*
+    private String handleRewardVehicleType(Row resultRow, Map<String, Integer> resultIndexes, String[] dbParam,
+                                           String valueFromMap, String[] details) {
+        StringBuilder sb = new StringBuilder();
+        for (String key : dbParam) {
+            int colIndex = resultIndexes.getOrDefault(key.toLowerCase(), -1);
+            if (colIndex != -1) {
+                Cell cell = resultRow.getCell(colIndex);
+                String value = getCellValueAsString(cell).replaceAll("\\s+", "");
+                sb.append(value);
+            }
+        }
+
+        String concatenatedString = sb.toString().toLowerCase();
+
+        switch (details[4].trim().toUpperCase()) {
+            case "2W" -> valueFromMap = vehicleMapping2WDao.getRewardVehicleType(concatenatedString);
+            case "4W" -> valueFromMap = vehicleMapping4WDao.getRewardVehicleType(concatenatedString);
+            case "CV" -> valueFromMap = vehicleMappingCVDao.getRewardVehicleType(concatenatedString, details[5].trim());
+        }
+        return ("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) ? "#N/A" : valueFromMap;
+
+    }
+
+    private String handleRewardVehicleFuelType(Row resultRow, Map<String, Integer> resultIndexes, String[] dbParam,
+                                               String valueFromMap, String[] details) {
+        StringBuilder sb = new StringBuilder();
+        for (String key : dbParam) {
+            int colIndex = resultIndexes.getOrDefault(key.toLowerCase(), -1);
+            if (colIndex != -1) {
+                Cell cell = resultRow.getCell(colIndex);
+                String value = getCellValueAsString(cell).replaceAll("\\s+", "");
+                sb.append(value);
+            }
+        }
+
+        String concatenatedString = sb.toString().toLowerCase();
+
+        switch (details[4].trim().toUpperCase()) {
+            case "2W" -> valueFromMap = vehicleMapping2WDao.getRewardVehicleFuelType(concatenatedString);
+            case "4W" -> valueFromMap = vehicleMapping4WDao.getRewardVehicleFuelType(concatenatedString);
+            case "CV" -> valueFromMap = vehicleMappingCVDao.getRewardVehicleFuelType(concatenatedString, details[5].trim());
+        }
+        return ("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) ? "#N/A" : valueFromMap;
+
+    }
+
+    private String handleRewardModel(Row resultRow, Map<String, Integer> resultIndexes, String[] dbParam,
+                                     String valueFromMap, String[] details) {
+        StringBuilder sb = new StringBuilder();
+        for (String key : dbParam) {
+            int colIndex = resultIndexes.getOrDefault(key.toLowerCase(), -1);
+            if (colIndex != -1) {
+                Cell cell = resultRow.getCell(colIndex);
+                String value = getCellValueAsString(cell).replaceAll("\\s+", "");
+                sb.append(value);
+            }
+        }
+
+        String concatenatedString = sb.toString().toLowerCase();
+
+        switch (details[4].trim().toUpperCase()) {
+            case "2W" -> valueFromMap = vehicleMapping2WDao.getRewardModel(concatenatedString);
+            case "4W" -> valueFromMap = vehicleMapping4WDao.getRewardModel(concatenatedString);
+            case "CV" -> valueFromMap = vehicleMappingCVDao.getRewardModel(concatenatedString, details[5].trim());
+        }
+        return ("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) ? "#N/A" : valueFromMap;
+
+    }
+
+    private String handleVehiclePowerBi(Row resultRow, Map<String, Integer> resultIndexes, String[] dbParam,
+                                        String valueFromMap, String[] details) {
+        StringBuilder sb = new StringBuilder();
+        for (String key : dbParam) {
+            int colIndex = resultIndexes.getOrDefault(key.toLowerCase(), -1);
+            if (colIndex != -1) {
+                Cell cell = resultRow.getCell(colIndex);
+                String value = getCellValueAsString(cell).replaceAll("\\s+", "");
+                sb.append(value);
+            }
+        }
+        String concatenatedString = sb.toString().toLowerCase();
+
+        switch (details[4].trim().toUpperCase()) {
+            case "2W" -> valueFromMap = vehicleMapping2WDao.getVehiclePowerBi(concatenatedString);
+            case "4W" -> valueFromMap = vehicleMapping4WDao.getVehiclePowerBi(concatenatedString);
+            case "CV" -> valueFromMap = vehicleMappingCVDao.getVehiclePowerBi(concatenatedString, details[5].trim());
+        }
+        return ("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) ? "#N/A" : valueFromMap;
+    }
+
+    private void saveRowInDb(Row resultRow, Map<String, Integer> resultIndexes, String[] dbParam, Map<String, String> rowVlookupValues, String[] details) {
+
+        StringBuilder sb = new StringBuilder();
+        for (String key : dbParam) {
+            int colIndex = resultIndexes.getOrDefault(key.toLowerCase(), -1);
+            if (colIndex != -1) {
+                Cell cell = resultRow.getCell(colIndex);
+                String value = getCellValueAsString(cell).replaceAll("\\s+", "");
+                sb.append(value);
+            }
+        }
+        String concatenatedString = sb.toString().toLowerCase();
+
+        switch (details[4].trim().toUpperCase()) {
+            case "2W" -> save2wData(concatenatedString, rowVlookupValues, details[4].trim(), details[5].trim());
+            case "4W" -> save4wData(concatenatedString, rowVlookupValues, details[4].trim(), details[5].trim());
+            case "CV", "PCV", "GCV", "MISD" -> saveCvData(concatenatedString, rowVlookupValues, details[4].trim(), details[5].trim());
+        }
+    }
+
+    private void saveCvData(String concatenatedString, Map<String, String> rowVlookupValues, String product, String ic) {
+        Boolean contains = vehicleMappingCVDao.containsVehicleModelString(concatenatedString, ic);
+
+        //System.out.println("Concat : " + concatenatedString + ", valueFromMap : " + valueFromMap + ", product : " + product + ", IC : " + ic);
+
+        if (!"NULL".equals(rowVlookupValues.get("reward_vehicle_type")) && !"#N/A".equals(rowVlookupValues.get("reward_vehicle_type")) && !contains) {
+            VehicleMappingCV data = new VehicleMappingCV(
+                    concatenatedString,
+                    rowVlookupValues.get("reward_vehicle_type"),
+                    product,
+                    rowVlookupValues.getOrDefault("vehicle_power_bi", null),
+                    rowVlookupValues.getOrDefault("reward_vehicle_fuel_type", null),
+                    rowVlookupValues.getOrDefault("reward_model", null),
+                    ic
+            );
+            vehicleMappingCVDao.save(data, ic);
+        }
+    }
+
+    private void save4wData(String concatenatedString, Map<String, String> rowVlookupValues, String product, String ic) {
+        Boolean contains = vehicleMapping4WDao.containsVehicleModelString(concatenatedString);
+
+        System.out.println("Naya waala");
+        System.out.println(
+                "Concat : " + concatenatedString
+                        + ", product : " + product
+                        + ", IC : " + ic
+                        + ", Reward Vehicle Type: " + rowVlookupValues.get("reward_vehicle_type")
+                        + ", Vehicle Power BI ; " + rowVlookupValues.get("vehicle_power_bi")
+                        + ", Reward vehicle fuel type : " + rowVlookupValues.get("reward_vehicle_fuel_type")
+                        + ", Reward model : " + rowVlookupValues.get("reward_model")
+        );
+
+        if (!"NULL".equals(rowVlookupValues.get("reward_vehicle_type")) && !"#N/A".equals(rowVlookupValues.get("reward_vehicle_type")) && !contains) {
+            VehicleMapping4W data = new VehicleMapping4W(
+                    concatenatedString,
+                    rowVlookupValues.get("reward_vehicle_type"),
+                    product,
+                    ic,
+                    rowVlookupValues.getOrDefault("vehicle_power_bi", null),
+                    rowVlookupValues.getOrDefault("reward_vehicle_fuel_type", null),
+                    rowVlookupValues.getOrDefault("reward_model", null)
+            );
+            vehicleMapping4WDao.save(data);
+        }
+    }
+
+    private void save2wData(String concatenatedString, Map<String, String> rowVlookupValues,String product, String ic) {
+        Boolean contains = vehicleMapping2WDao.containsVehicleModelString(concatenatedString);
+
+        //System.out.println("Concat : " + concatenatedString + ", valueFromMap : " + valueFromMap + ", product : " + product + ", IC : " + ic);
+
+        if (!"NULL".equals(rowVlookupValues.get("reward_vehicle_type")) && !"#N/A".equals(rowVlookupValues.get("reward_vehicle_type")) && !contains) {
+            VehicleMapping2W data = new VehicleMapping2W(
+                    concatenatedString,
+                    rowVlookupValues.get("reward_vehicle_type"),
+                    product,
+                    rowVlookupValues.getOrDefault("vehicle_power_bi", null),
+                    rowVlookupValues.getOrDefault("reward_vehicle_fuel_type", null),
+                    rowVlookupValues.getOrDefault("reward_model", null),
+                    ic
+            );
+            vehicleMapping2WDao.save(data);
+        }
+    }
+*/
+
+    // Yahe tak hai bhai
 
     // --- Helpers ---
 
@@ -339,13 +552,13 @@ public class ExcelService {
 
     private String mapFuelType(String fuelType) {
         return switch (fuelType.toUpperCase()) {
-            case "PETROL", "PETROL WITH CNG", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)", "PETROL P", "PETROL G", "PETROL+LPG", "P" -> "Petrol";
-            case "DIESEL", "DIESEL T", "DIESEL C", "DH", "DIESEL HYBRID(DH)", "DIESEL(D)", "DIESEL P", "DIESEL G", "D" -> "Diesel";
-            case "CNG", "CH", "CNG(C)", "C" -> "CNG";
-            case "LPG" -> "LPG";
+            case "1", "PETROL", "PETROL WITH LPG", "PETROL WITH CNG", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)", "PETROL P", "PETROL G", "PETROL+LPG", "P" -> "Petrol";
+            case "2", "DIESEL", "DIESEL T", "DIESEL C", "DH", "DIESEL HYBRID(DH)", "DIESEL(D)", "DIESEL P", "DIESEL G", "D" -> "Diesel";
+            case "8", "3", "CNG", "CH", "CNG(C)", "C" -> "CNG";
+            case "9", "4", "LPG" -> "LPG";
             case "LNG" -> "LNG";
-            case "ELECTRIC", "ELECTRICAL", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C", "ELECTRIC HYBRID", "BATTERY(B)", "BATTERY OPERATED", "ELECTRIC P", "B" -> "Electric";
-            case "HYBRID", "HYBRID(H)", "MILD HYBRID", "PLUG IN HYBRID", "HYBRID ELECTRIC VEHICLE" -> "Hybrid";
+            case "7", "ELECTRIC", "ELECTRICAL", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C", "ELECTRIC HYBRID", "BATTERY(B)", "BATTERY OPERATED", "ELECTRIC P", "B" -> "Electric";
+            case "5", "HYBRID", "HYBRID(H)", "MILD HYBRID", "PLUG IN HYBRID", "HYBRID ELECTRIC VEHICLE" -> "Hybrid";
             default -> "";
         };
     }
@@ -365,9 +578,9 @@ public class ExcelService {
         String concatenatedString = sb.toString().toLowerCase();
 
         switch (details[4].trim().toUpperCase()) {
-            case "2W" -> valueFromMap = handle2wData(concatenatedString, valueFromMap, details[4], details[5]);
-            case "4W" -> valueFromMap = handle4wData(concatenatedString, valueFromMap, details[4], details[5]);
-            case "CV", "PCV", "GCV", "MISD" -> valueFromMap = handleCvData(concatenatedString, valueFromMap, details[4], details[5]);
+            case "2W" -> valueFromMap = handle2wData(concatenatedString, valueFromMap, details[4].trim(), details[5].trim());
+            case "4W" -> valueFromMap = handle4wData(concatenatedString, valueFromMap, details[4].trim(), details[5].trim());
+            case "CV", "PCV", "GCV", "MISD", "TRAILER" -> valueFromMap = handleCvData(concatenatedString, valueFromMap, details[4], details[5]);
         }
         return ("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) ? "#N/A" : valueFromMap;
     }
