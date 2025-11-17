@@ -1,0 +1,4954 @@
+{
+	"info": {
+		"_postman_id": "36927651-9eb2b527-372e-4cfd-993b-50b2beab3673",
+		"name": "Excel Parser for FT",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "IC-HDFC",
+			"item": [
+				{
+					"name": "2W_HDFC",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "36927651-58587a16-f0de-4843-9ab1-c1d3fce7fd17",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/FT @ Testing for Parser/master.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/FT @ Testing for Parser/result.xlsx"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/FT @ Testing for Parser/live.xlsx"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"manufacturer\": \"MANUFACTURER\",\n  \"vehiclemodelcode\": \"VEHICLEMODELCODE\",\n  \"vehiclemodel\": \"VEHICLEMODEL\",\n  \"numberofwheels\": \"NUMBEROFWHEELS\",\n  \"cubiccapacity\": \"CUBICCAPACITY\",\n  \"grossvehicleweight\": \"GROSSVEHICLEWEIGHT\",\n  \"seatingcapacity\": \"SEATINGCAPACITY\",\n  \"carryingcapacity\": \"CARRYINGCAPACITY\",\n  \"txt_fuel\": \"TXT_FUEL\",\n  \"txt_variant\": \"TXT_VARIANT\"\n}\n",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, TXT_FUEL, reward_vehicle_power, cubiccapacity",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4W_HDFC",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-82b4ca9b-9546-4f39-a4f4-83167a71de06",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/HDFC/4W/hdfc_car_master.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/HDFC/4W/result_hdfc_car_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/HDFC/4W/live_hdfc_car_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_code\":\"VEHICLEMODELCODE\",\n  \"vehicle_make\":\"MANUFACTURER\",\n  \"vehicle_model\":\"VEHICLEMODEL\",\n  \"vehicle_variant\":\"TXT_VARIANT\",\n  \"no_of_wheels\":\"NUMBEROFWHEELS\",\n  \"cubic_capacity\":\"CUBICCAPACITY\",\n  \"gross_weight\":\"GROSSVEHICLEWEIGHT\",\n  \"seating_capacity\":\"SEATINGCAPACITY\",\n  \"carrying_capacity\":\"CARRYINGCAPACITY\",\n  \"fuel_type\":\"TXT_FUEL\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, TXT_FUEL, reward_vehicle_power, cubic_capacity, 4W, HDFC",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"type": "text",
+									"uuid": "f81ec40d-90d0-45f7-9d84-cfe829417b44"
+								},
+								{
+									"key": "dbParam",
+									"value": "vehicle_make, vehicle_model, vehicle_variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "70e3ff92-a583-4c12-9448-0c01a5592bb7"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-e88bd57a-9bc1-4d45-aaaa-3afd3469e4ec"
+		},
+		{
+			"name": "IC-MAGMA",
+			"item": [
+				{
+					"name": "4W_MAGMA",
+					"id": "36927651-6a566581-9d3e-44aa-adfa-4710f5f4500a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Magma/4W/PCP_MHDI_VehicleModelMaster (1).xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Magma/4W/result_magma4w_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Magma/4W/livd_magma4w_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"manufacturer\": \"MANUFACTURER\",\n  \"manufacturercode\": \"MANUFACTURERCODE\",\n  \"vehiclemodel\": \"VEHICLEMODEL\",\n  \"vehiclemodelnamecode\": \"VEHICLEMODELNAME\",\n  \"txt_variant\": \"TXT_VARIANT\",\n  \"vehiclemodelcode\": \"VEHICLEMODELCODE\",\n  \"productcode\": \"PRODUCTCODE\",\n  \"vehicleclasscode\": \"VEHICLECLASSCODE\",\n  \"vehicleclassdesc\": \"VEHICLECLASSDESC\",\n  \"allow_subclass\": \"ALLOW_SUBCLASS\",\n  \"numberofwheels\": \"NUMBEROFWHEELS\",\n  \"cubiccapacity\": \"CUBICCAPACITY\",\n  \"grossvehicleweight\": \"GROSSVEHICLEWEIGHT\",\n  \"seatingcapacity\": \"SEATINGCAPACITY\",\n  \"carryingcapacity\": \"CARRYINGCAPACITY\",\n  \"bodytypecode\": \"BODYTYPECODE\",\n  \"vehiclebodytypedescription\": \"VEHICLEBODYTYPEDESCRIPTION\",\n  \"txt_fuel\": \"TXT_FUEL\",\n  \"txt_segmenttype\": \"TXT_SEGMENTTYPE\",\n  \"txt_tacmakecode\": \"TXT_TACMAKECODE\"\n}\n",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, TXT_FUEL, reward_vehicle_power, cubiccapacity, 4W, MAGMA",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "vehicleclasscode, 45",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehiclemodelcode\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacturer, vehiclemodel, txt_variant, cubiccapacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2W_MAGMA",
+					"id": "36927651-7b4a9e06-819f-41db-a6a5-e2024788b0b6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Magma/2W/TW_MHDI_VehicleModelMaster (1).xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Magma/2W/result_magma2w_vehicle_master_ - Copy.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Magma/2W/live_magma2w_vehicle.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"manufacturer\": \"MANUFACTURER\",\n  \"manufacturercode\": \"MANUFACTURERCODE\",\n  \"vehiclemodel\": \"VEHICLEMODEL\",\n  \"vehiclemodelnamecode\": \"VEHICLEMODELNAMECODE\",\n  \"txt_variant\": \"TXT_VARIANT\",\n  \"vehiclemodelcode\": \"VEHICLEMODELCODE\",\n  \"productcode\": \"PRODUCTCODE\",\n  \"vehicleclasscode\": \"VEHICLECLASSCODE\",\n  \"vehicleclassdesc\": \"VEHICLECLASSDESC\",\n  \"allow_subclass\": \"ALLOW_SUBCLASS\",\n  \"numberofwheels\":\"NUMBEROFWHEELS\",\n  \"cubiccapacity\":\"CUBICCAPACITY\",\n\"grossvehicleweight\":\"GROSSVEHICLEWEIGHT\",\n\"seatingcapacity\":\"SEATINGCAPACITY\",\n\"carryingcapacity\":\"CARRYINGCAPACITY\",\n\"bodytypecode\":\"BODYTYPECODE\",\n\"vehiclebodytypedescription\":\"VEHICLEBODYTYPEDESCRIPTION\",\n\"txt_fuel\":\"TXT_FUEL\",\n\"txt_segmenttype\":\"TXT_SEGMENTTYPE\",\n\"txt_tacmakecode\":\"TXT_TACMAKECODE\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, TXT_FUEL, reward_vehicle_power, cubiccapacity, 2W, MAGMA",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehiclemodelcode\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacturer, vehiclemodel, txt_variant, cubiccapacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-d27fd91d-a56a-4fb6-8954-303321618f20"
+		},
+		{
+			"name": "IC-KOTAK",
+			"item": [
+				{
+					"name": "4W-KOTAK",
+					"id": "36927651-553cfd04-ae5f-4533-ae57-34164920cd11",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Kotak/4W/06 Nov 25 Model Master.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Kotak/4W/result_kotak_4w_vehicle_master - Copy.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Kotak/4W/live_kotak_4w.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehiclemanufacturecode\": \"MANUFACTURERCODE\",\n  \"vehiclemanufacturename\": \"MANUFACTURER\",\n  \"num_parent_model_code\": \"NUM_PARENT_MODEL_CODE\",\n  \"vehiclemodel\": \"VEHICLEMODEL\",\n  \"variant_code\": \"VEHICLEMODELCODE\",\n  \"txt_variant\": \"TXT_VARIANT\",\n  \"txt_segmenttype\": \"TXT_SEGMENTTYPE\",\n  \"seatingcapacity\": \"SEATINGCAPACITY\",\n  \"txt_fuel\": \"TXT_FUEL\",\n  \"txt_model_cluster\": \"TXT_MODEL_CLUSTER\",\n  \"cubiccapacity\": \"CUBICCAPACITY\",\n  \"uwstatus\": \"TXT_STATUS_FLAG\"\n}\n",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, TXT_FUEL, reward_vehicle_power, cubiccapacity, 4W, KOTAK",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "TXT_SEGMENTTYPE, COMPACT CARS, HIGH END CARS, MIDSIZE CARS, MINI VEHICLES, SPORTS AND UTILITY VEHICLES, HIGH RISK, NON HIGH END CARS_AT, HIGH END CARS_AT",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"variant_code\"}",
+									"type": "text",
+									"uuid": "6ffb2eed-3d0a-4bef-9eaa-92d3a9fb82c9"
+								},
+								{
+									"key": "dbParam",
+									"value": "vehiclemanufacturename, vehiclemodel, txt_variant, cubiccapacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "5d1f23f2-5510-4245-991e-30462ebcf1c3"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2W-KOTAK",
+					"id": "36927651-b27a83bc-26be-40b0-a3f7-b5216595da9f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "4549548c-334c-4ff8-8231-15630ace0d9a",
+									"value": null
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "941a9957-84e2-48d4-a206-0804f0721490",
+									"value": null
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "2760e69e-fdff-48d3-992d-6d2388363660",
+									"value": null
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehiclemanufacturecode\": \"MANUFACTURERCODE\",\n  \"vehiclemanufacturename\": \"MANUFACTURER\",\n  \"num_parent_model_code\": \"NUM_PARENT_MODEL_CODE\",\n  \"vehiclemodel\": \"VEHICLEMODEL\",\n  \"variant_code\": \"TXT_VARIANT\",\n  \"txt_variant\": \"TXT_VARIANT\",\n  \"txt_segmenttype\": \"TXT_SEGMENTTYPE\",\n  \"seatingcapacity\": \"SEATINGCAPACITY\",\n  \"txt_fuel\": \"TXT_FUEL\",\n  \"txt_model_cluster\": \"TXT_MODEL_CLUSTER\",\n  \"cubiccapacity\": \"CUBICCAPACITY\",\n  \"uwstatus\": \"TXT_STATUS_FLAG\"\n}\n",
+									"type": "text",
+									"uuid": "63b858cf-acf2-49ee-aadf-434f2e0b43de"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, TXT_FUEL, reward_vehicle_power, cubiccapacity",
+									"type": "text",
+									"uuid": "458ae5c0-0473-4903-a721-4044bd3184dd"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "e21d7209-1899-4195-b68c-f92e473ec2f1"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"variant_code\"}",
+									"type": "text",
+									"uuid": "e52b7940-ad14-4b2e-9491-055da43d2eff"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-17356e4e-cc15-4fb8-a7e9-584dd3c7defc"
+		},
+		{
+			"name": "IC-UNITED",
+			"item": [
+				{
+					"name": "2W-UNITED",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-0f43da8f-8c69-4a88-b18c-36ab1b297e95",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/United/2W/Master (5).xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/United/2W/result.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/United/2W/live.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n \"vehicle_make_code\":\"Make ID\",\n\"vehicle_model_code\":\"Model ID\",\n\"vehicle_ibb_code\":\"Variant ID\",\n\"vehicle_make\":\"Make\",\n\"vehicle_model\":\"Model\",\n\"vehicle_variant\":\"Variant\",\n\"variant_period\":\"Variant Period\",\n\"vehicle_cc\":\"CC_KW\",\n\"vehicle_body_type\":\"Body Type\",\n\"vehicle_mileage\":\"Mileage\",\n\"vehicle_type\":\"TYPE\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, TXT_FUEL, reward_vehicle_power, vehicle_cc, 2W, UNITED",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_model_code\", \"reward_vehicle_fuel_type\":\"vehicle_model_code\", \"vehicle_power_bi\":\"vehicle_model_code\"}",
+									"type": "text",
+									"uuid": "692ff935-ae47-4245-a592-5cceaeb6693f"
+								},
+								{
+									"key": "dbParam",
+									"value": "vehicle_make, vehicle_model, vehicle_variant, vehicle_cc, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "d87477c7-2866-4972-b676-62badae0dfad"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4W-UNITED",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-0ff1f322-e67c-44c1-bf24-52d494a7f824",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/United/4W/Master (5).xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/United/4W/result.xlsx"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/United/4W/live.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_make\":\"Make\",\n  \"vehicle_model\":\"Model\",\n  \"vehicle_variant\":\"Variant\",\n  \"vehicle_ibb_code\":\"Variant ID\",\n  \"variant_period\":\"Variant Period\",\n  \"vehicle_ibb_tac_code\":\"ibb_unique_code\",\n  \"vehicle_body_type\":\"Body Type\",\n  \"vehicle_seating_capacity\":\"Seating Capacity\",\n  \"vehicle_cubic_capacity\":\"Cubic cap / Kilowatt\",\n  \"vehicle_fuel_type\":\"Fuel Type\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, Fuel Type, reward_vehicle_power, vehicle_cubic_capacity, 4W, UNITED",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_ibb_code\", \"vehicle_active_status\":\"vehicle_ibb_code\", \"vehicle_make_code\":\"vehicle_ibb_code\"}",
+									"type": "text",
+									"uuid": "692ff935-ae47-4245-a592-5cceaeb6693f"
+								},
+								{
+									"key": "dbParam",
+									"value": "vehicle_make, vehicle_model, vehicle_variant, vehicle_cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "0b279db7-b48b-4297-aab7-f133d2b7882d"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-6e1ee358-31f4-41d8-b61d-30970b2fd4b2"
+		},
+		{
+			"name": "IC_ICICI",
+			"item": [
+				{
+					"name": "4W_ICICI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-94bafed6-6bcb-46cb-aaad-ee6e80ac5b21",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/ICICI/4W/Master_4W_icici.csv"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/ICICI/4W/result_ICICI_4W - Copy.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/ICICI/4W/live_ICICI_4W.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"manufacturer\": \"Manufacture\",\n  \"vehiclemodelcode\": \"VehicleModelCode\",\n  \"vehiclemodel\": \"VehicleModel\",\n  \"numberofvehicles\": \"NumberOfWheels\",\n  \"cubiccapacity\": \"CubicCapacity\",\n  \"seatingcapacity\": \"SeatingCapacity\",\n  \"carryingcapacity\": \"CarringCapacity\",\n  \"fueltype\": \"FuelType\",\n  \"vehicleclasscode\": \"VehicleClassCode\",\n  \"vehiclemodelstatus\": \"VehicleModelStatus\",\n  \"activeflag\": \"ActiveFlag\",\n  \"carcategory\": \"CarCategory\",\n  \"segment\": \"Segment\",\n  \"gvw\": \"GVW\",\n  \"exshowroomslab\": \"ExShowroomSlab\",\n\n\n\"vehiclemaufacturercode\":\"VehicleManufactureCode\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FuelType, reward_vehicle_power, cubiccapacity, 4W, ICICI",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "vehicleclasscode, 45",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehiclemodelcode\", \"reward_model\":\"vehiclemodel\" }",
+									"type": "text",
+									"uuid": "f215bae7-ccd2-4695-b3ab-279acd78342f"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacturer, vehiclemodel, cubiccapacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "5f9444a6-1aa3-493a-a353-ac46b62cb9ad"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2W_ICICI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-7bc94e81-bb17-4c64-87e9-7cea0f5b4f88",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/ICICI/2W/Master_2W_ICICI.csv"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/ICICI/2W/result.xlsx"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/ICICI/2W/live.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"icici_code\": \"VehicleModelCode\",\n  \"model_code\": \"VehicleModelCode\",\n  \"make_code\": \"VehicleManufactureCode\",\n  \"make_name\": \"Manufacture\",\n  \"model_name\": \"VehicleModel\",\n  \"cubic_capacity\": \"CubicCapacity\",\n  \"seating_capacity\": \"SeatingCapacity\",\n  \"status\": \"VehicleModelStatus\",\n  \"fuel_type\": \"FuelType\",\n  \"min_price\": \"MinimumPrice\",\n  \"max_price\": \"MaxPrice\",\n  \"segment\": \"CarCategory\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FuelType, reward_vehicle_power, cubic_capacity, 2W, ICICI",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_code\", \"reward_model\":\"model_name\"}",
+									"type": "text",
+									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
+								},
+								{
+									"key": "dbParam",
+									"value": "make_name, model_name, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PCV_ICICI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "36927651-007d6d80-d34b-43e7-ae62-641bd158b056",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/ICICI - Completed/CV/PCV/master_icici_pcv_12-08-2025.csv"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/ICICI - Completed/CV/PCV/gen_result_icici_cv_pcv_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/ICICI - Completed/CV/PCV/result_icici_cv_pcv_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"VehicleClassCode\":\"VehicleClassCode\",\n  \"vehicleSubClassDesc\":\"VehicleSubClassDesc\",\n  \"VehicleManufactureCode\":\"VehicleManufactureCode\",\n  \"Manufacture\":\"Manufacture\",\n  \"VehicleModelCode\":\"VehicleModelCode\",\n  \"VehicleModel\":\"VehicleModel\",\n  \"CubicCapacity\":\"CubicCapacity\",\n  \"SeatingCapacity\":\"SeatingCapacity\",\n  \"CarringCapacity\":\"CarringCapacity\",\n  \"VehicleModelStatus\":\"VehicleModelStatus\",\n  \"ActiveFlag\":\"ActiveFlag\",\n  \"ModelBuild\":\"ModelBuild\",\n  \"CarCategory\":\"CarCategory\",\n  \"FuelType\":\"FuelType\",\n  \"Segment\":\"Segment\",\n  \"GVW\":\"GVW\",\n  \"NumberOfWheels\":\"NumberOfWheels\",\n  \"ExShowroomSlab\":\"ExShowroomSlab\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FuelType, reward_vehicle_power, CubicCapacity, PCV, ICICI",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"VehicleModelCode\", \"reward_product_type\":\"VehicleModelCode\"}",
+									"type": "text",
+									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
+								},
+								{
+									"key": "dbParam",
+									"value": "Manufacture, VehicleModel, CubicCapacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GCV_ICICI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "36927651-6fc9ceab-9f03-4d69-87be-82edacad46e7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/ICICI - Completed/CV/GCV/master_icici_gcv_12-08-2025.csv"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/ICICI - Completed/CV/GCV/gen_icici_cv_gcv_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/ICICI - Completed/CV/GCV/result_icici_cv_gcv_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"VehicleClassCode\":\"VehicleClassCode\",\n  \"vehicleSubClassDesc\":\"VehicleSubClassDesc\",\n  \"VehicleManufactureCode\":\"VehicleManufactureCode\",\n  \"Manufacture\":\"Manufacture\",\n  \"VehicleModelCode\":\"VehicleModelCode\",\n  \"VehicleModel\":\"VehicleModel\",\n  \"CubicCapacity\":\"CubicCapacity\",\n  \"SeatingCapacity\":\"SeatingCapacity\",\n  \"CarringCapacity\":\"CarringCapacity\",\n  \"VehicleModelStatus\":\"VehicleModelStatus\",\n  \"ActiveFlag\":\"ActiveFlag\",\n  \"ModelBuild\":\"ModelBuild\",\n  \"CarCategory\":\"CarCategory\",\n  \"FuelType\":\"FuelType\",\n  \"Segment\":\"Segment\",\n  \"GVW\":\"GVW\",\n  \"NumberOfWheels\":\"NumberOfWheels\",\n  \"ExShowroomSlab\":\"ExShowroomSlab\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FuelType, reward_vehicle_power, CubicCapacity, GCV, ICICI",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"VehicleModelCode\", \"reward_product_type\":\"VehicleModelCode\"}",
+									"type": "text",
+									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
+								},
+								{
+									"key": "dbParam",
+									"value": "Manufacture, VehicleModel, CubicCapacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-7d98eb17-4eb7-4a50-a34b-e410be4f1d77"
+		},
+		{
+			"name": "IC-TATA",
+			"item": [
+				{
+					"name": "2W_TATA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-2728470f-9e98-460a-90ee-dc3b96ef4381",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/2W/TW MMV Master_01-11-2025.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/2W/result_tata_tw_vehicle_master (2).csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/2W/live_tata_tw_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"manufacture_code\": \"num_manufacturercode\",\n  \"manufacture_name\":\"txt_manufacturername\",\n  \"model_code\":\"num_model_code\",\n  \"model_name\":\"txt_model_name\",\n  \"variant_code\":\"num_model_variant_code\",\n  \"variant_name\":\"txt_model_variant\",\n  \"product_code\":\"num_product\",\n  \"status\":\"txt_status\",\n  \"vehicle_class\":\"num_vehicle_class\",\n  \"vehicle_sub_class\":\"num_vehicle_sub_class\",\n  \"body_type\":\"txt_body_type\",\n  \"body_type_code\":\"num_body_type\",\n  \"segment\":\"txt_segment\",\n  \"segment_code\":\"num_segement\",\n  \"fuel_type_code\":\"num_fuel_type\",\n  \"fuel_type\":\"txt_fuel_type\",\n  \"cubic_capacity\":\"num_cubic_capacity\",\n  \"seating_capacity\":\"num_seating_capacity\",\n  \"carrying_capacity\":\"num_carrying_capacity\",\n  \"gross_vehicle_weight\":\"num_gross_vehicle_weight\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, txt_fuel_type, reward_vehicle_power, cubic_capacity, 2W, TATA",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_code\"}",
+									"type": "text",
+									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacture_name, model_name, variant_name, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c486c033-e956-4a2c-a680-80df526dac70"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4W_TATA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-8c71625c-f48d-4f88-b967-9f74544b019c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/4W/PC MMV Master_01-11-2025.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/4W/Result_tata_aig_car_master (3).csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/4W/live_tata_aig_car_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"make_code\":\"num_manufacturercode\",\n  \"make_name\":\"txt_manufacturername\",\n  \"model_code\":\"num_model_code\",\n  \"model_name\":\"txt_model_name\",\n  \"variant_code\":\"num_model_variant_code\",\n  \"variant_name\":\"txt_model_variant\",\n  \"segment_code\":\"num_segement\",\n  \"segment\":\"txt_segment\",\n  \"fuel_type_code\":\"num_fuel_type\",\n  \"fuel_type\":\"txt_fuel_type\",\n  \"cubic_capacity\":\"num_cubic_capacity\",\n  \"seating_capacity\":\"num_seating_capacity\",\n  \"body_type_code\":\"num_body_type\",\n  \"body_type\":\"txt_body_type\",\n  \"status\":\"txt_status\", \"tata_aig_code\":\"num_model_variant_code\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, txt_fuel_type, reward_vehicle_power, cubic_capacity, 4W, TATA",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_code\"}",
+									"type": "text",
+									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
+								},
+								{
+									"key": "dbParam",
+									"value": "make_name, model_name, variant_name, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "74368f14-6035-4875-84d6-7b83e2472427"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PCV_TATA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-5f247d93-3f85-48ce-9727-30994a82a56d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/PCV/PCV MMV Master_01-11-2025.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/PCV/result_tata_PCV_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/PCV/live_PCV_tata_cv_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"manufacture_code\":\"num_manufacturercode\",\n  \"manufacture_name\":\"txt_manufacturername\",\n  \"model_code\":\"num_model_code\",\n  \"model_name\":\"txt_model_name\",\n  \"variant_code\":\"num_model_variant_code\",\n  \"variant_name\":\"txt_model_variant\",\n  \"num_product\":\"num_product\",\n  \"veh_start_date\":\"dat_start_date\",\n  \"veh_end_date\":\"dat_end_date\",\n  \"num_veh_class\":\"num_vehicle_class\",\n  \"num_veh_sub_class\":\"num_vehicle_sub_class\",\n  \"body_type\":\"txt_body_type\",\n  \"body_type_num\":\"num_body_type\",\n  \"segment_type\":\"txt_segment\",\n  \"segment_type_num\":\"num_segement\",\n  \"fuel_type\":\"txt_fuel_type\",\n  \"fuel_type_num\":\"num_fuel_type\",\n  \"cubic_capacity\":\"num_cubic_capacity\",\n  \"seating_capacity\":\"num_seating_capacity\",\n  \"carrying_capacity\":\"num_carrying_capacity\",\n  \"gross_veh_weight\":\"num_gross_vehicle_weight\",\n  \"status\":\"txt_status\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, txt_fuel_type, reward_vehicle_power, cubic_capacity, PCV, TATA",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_code\", \"reward_product_type\":\"model_code\"}",
+									"type": "text",
+									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacture_name, model_name, variant_name, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MISD_TATA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "36927651-2b1b824c-d570-4313-9898-2dd153ae2388",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/TATA/AUG TATA CV- Live pending from Arpit sir's end/MISD/MISCD_PRODUCTION_MASTER (1).xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/TATA/AUG TATA CV- Live pending from Arpit sir's end/MISD/gen_MISCD_result_tata_cv_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/TATA/AUG TATA CV- Live pending from Arpit sir's end/MISD/MISCD_result_tata_cv_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"manufacture_code\":\"num_manufacturercode\",\n  \"manufacture_name\":\"txt_manufacturername\",\n  \"model_code\":\"num_model_code\",\n  \"model_name\":\"txt_model_name\",\n  \"variant_code\":\"num_model_variant_code\",\n  \"variant_name\":\"txt_model_variant\",\n  \"num_product\":\"num_product\",\n  \"veh_start_date\":\"dat_start_date\",\n  \"veh_end_date\":\"dat_end_date\",\n  \"num_veh_class\":\"num_vehicle_class\",\n  \"num_veh_sub_class\":\"num_vehicle_sub_class\",\n  \"body_type\":\"txt_body_type\",\n  \"body_type_num\":\"num_body_type\",\n  \"segment_type\":\"txt_segment\",\n  \"segment_type_num\":\"num_segement\",\n  \"fuel_type\":\"txt_fuel_type\",\n  \"fuel_type_num\":\"num_fuel_type\",\n  \"cubic_capacity\":\"num_cubic_capacity\",\n  \"seating_capacity\":\"num_seating_capacity\",\n  \"carrying_capacity\":\"num_carrying_capacity\",\n  \"gross_veh_weight\":\"num_gross_vehicle_weight\",\n  \"status\":\"txt_status\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, txt_fuel_type, reward_vehicle_power, cubic_capacity, MISD, TATA",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_code\", \"reward_product_type\":\"model_code\"}",
+									"type": "text",
+									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacture_name, model_name, variant_name, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GCV_TATA",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-a800e58d-fe0c-4804-b847-f1ca9e1d597b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/GCV/GCV MMV_01-11-2025.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/GCV/result_tata_GCV_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/GCV/live_GCV_result_tata_cv_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"manufacture_code\":\"num_manufacturercode\",\n  \"manufacture_name\":\"txt_manufacturername\",\n  \"model_code\":\"num_model_code\",\n  \"model_name\":\"txt_model_name\",\n  \"variant_code\":\"num_model_variant_code\",\n  \"variant_name\":\"txt_model_variant\",\n  \"num_product\":\"num_product\",\n  \"veh_start_date\":\"dat_start_date\",\n  \"veh_end_date\":\"dat_end_date\",\n  \"num_veh_class\":\"num_vehicle_class\",\n  \"num_veh_sub_class\":\"num_vehicle_sub_class\",\n  \"body_type\":\"txt_body_type\",\n  \"body_type_num\":\"num_body_type\",\n  \"segment_type\":\"txt_segment\",\n  \"segment_type_num\":\"num_segement\",\n  \"fuel_type\":\"txt_fuel_type\",\n  \"fuel_type_num\":\"num_fuel_type\",\n  \"cubic_capacity\":\"num_cubic_capacity\",\n  \"seating_capacity\":\"num_seating_capacity\",\n  \"carrying_capacity\":\"num_carrying_capacity\",\n  \"gross_veh_weight\":\"num_gross_vehicle_weight\",\n  \"status\":\"txt_status\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, txt_fuel_type, reward_vehicle_power, cubic_capacity, GCV, TATA",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_code\", \"reward_product_type\":\"model_code\"}",
+									"type": "text",
+									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacture_name, model_name, variant_name, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-4cd69c26-47d4-4029-a43e-6ff0ab946a4d"
+		},
+		{
+			"name": "IC-BAJAJ",
+			"item": [
+				{
+					"name": "2W_BAJAJ",
+					"id": "36927651-8db36472-7b35-4f46-9e5f-42c491da1aa2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Bajaj/2W/2w_response.csv"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Bajaj/2W/result_bajaj_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Bajaj/2W/live_bajaj_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_code\" : \"vehiclecode\",\n  \"make\":\"vehiclemake\",\n  \"model\":\"vehiclemodel\",\n  \"variant\":\"vehiclesubtype\",\n  \"vehicle_type\":\"vehicletype\",\n  \"vehicle_make_code\":\"vehiclemakecode\",\n  \"vehicle_model_code\":\"vehiclemodelcode\",\n  \"vehicle_subtype_code\":\"vehiclesubtypecode\",\n  \"fuel\":\"fuel\",\n  \"cubic_capacity\":\"cubiccapacity\",\n  \"carrying_capacity\":\"carryingcapacity\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, fuel, reward_vehicle_power, cubic_capacity, 2W, BAJAJ",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_model_code\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model, variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4W_BAJAJ",
+					"id": "36927651-3497e71c-2a2d-4e00-9ed3-8d49da7ac23f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Bajaj/4W/4W_response.csv"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Bajaj/4W/result.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Bajaj/4W/live.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_code\" : \"vehiclecode\",\n  \"make\":\"vehiclemake\",\n  \"model\":\"vehiclemodel\",\n  \"variant\":\"vehiclesubtype\",\n  \"vehicle_type\":\"vehicletype\",\n  \"vehicle_make_code\":\"vehiclemakecode\",\n  \"vehicle_model_code\":\"vehiclemodelcode\",\n  \"vehicle_subtype_code\":\"vehiclesubtypecode\",\n  \"fuel\":\"fuel\",\n  \"cubic_capacity\":\"cubiccapacity\",\n  \"carrying_capacity\":\"carryingcapacity\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, fuel, reward_vehicle_power, cubic_capacity, 4W, BAJAJ",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_model_code\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model, variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-c81f754a-2036-41ba-993d-623bdabaffa9"
+		},
+		{
+			"name": "IC-FGI",
+			"item": [
+				{
+					"name": "4W_FGI",
+					"id": "36927651-6a1da8f7-5427-4899-9a1d-c56ae131bce0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/4W/MMV.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/4W/result_fgi_4w_master (1).csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/4W/live_fgi_4w_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_code\":\"PASIA_CODE\",\n  \"vehicle_make\":\"VEHICLE_MAKE\",\n  \"vehicle_model\":\"VEHICLE_MODEL\",\n  \"vehicle_variant\":\"SUBTYPE\",\n  \"vehicle_fuel_type\":\"FUEL_TYPE\",\n  \"vehicle_cubic_capacity\":\"CC\",\n  \"vehicle_seating_capacity\":\"SEATING_CAPACITY\",\n  \"vehicle_carrying_capacity\":\"CARRYING_CAPACITY\",\n  \"vehicle_body_type\":\"BODY_TYPE\",\n  \"vehicle_active_status\":\"VEHICLE_STATUS\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, vehicle_cubic_capacity, 4W, FGI",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "vehicle_make, vehicle_model, vehicle_variant, vehicle_cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MISD_FGI",
+					"id": "36927651-50b7c11c-a05b-432a-975c-edf33c176ebf",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/CV/MISD/MMV.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/CV/MISD/result_fgi_cv_varient_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/CV/MISD/live_fgi_cv_varient_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"veh_code\":\"PASIA_CODE\",\n  \"make\":\"VEHICLE_MAKE\",\n  \"model_name\":\"VEHICLE_MODEL\",\n  \"variant\":\"SUBTYPE\",\n  \"veh_type\":\"VEHICLE_TYPE\",\n  \"fuel\":\"FUEL_TYPE\",\n  \"veh_cc\":\"CC\",\n  \"veh_gvw\":\"GVW\",\n  \"veh_seating\":\"SEATING_CAPACITY\",\n  \"veh_carrying\":\"CARRYING_CAPACITY\",\n  \"body_type\":\"BODY_TYPE\",\n  \"vehicle_active_status\":\"VEHICLE_STATUS\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, veh_cc, MISD, FGI",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"veh_code\", \"manf_type\":\"veh_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model_name, varient, veh_cc, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PCV_FGI",
+					"id": "36927651-c819a886-b33b-4bbc-bdce-596154a5f950",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/CV/PCV/MMV.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/CV/PCV/result_fgi_cv_varient_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/CV/PCV/live_fgi_cv_varient_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"veh_code\":\"PASIA_CODE\",\n  \"make\":\"VEHICLE_MAKE\",\n  \"model_name\":\"VEHICLE_MODEL\",\n  \"variant\":\"SUBTYPE\",\n  \"veh_type\":\"VEHICLE_TYPE\",\n  \"fuel\":\"FUEL_TYPE\",\n  \"veh_cc\":\"CC\",\n  \"veh_gvw\":\"GVW\",\n  \"veh_seating\":\"SEATING_CAPACITY\",\n  \"veh_carrying\":\"CARRYING_CAPACITY\",\n  \"body_type\":\"BODY_TYPE\",\n  \"vehicle_active_status\":\"VEHICLE_STATUS\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, veh_cc, PCV, FGI",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"veh_code\", \"manf_type\":\"veh_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model_name, varient, veh_cc, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GCV_FGI",
+					"id": "36927651-091992a2-7fe2-4465-a7ab-a223abd82ed9",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/CV/GCV/MMV.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/CV/GCV/result_fgi_cv_varient_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/CV/GCV/live_fgi_cv_varient_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"veh_code\":\"PASIA_CODE\",\n  \"make\":\"VEHICLE_MAKE\",\n  \"model_name\":\"VEHICLE_MODEL\",\n  \"variant\":\"SUBTYPE\",\n  \"veh_type\":\"VEHICLE_TYPE\",\n  \"fuel\":\"FUEL_TYPE\",\n  \"veh_cc\":\"CC\",\n  \"veh_gvw\":\"GVW\",\n  \"veh_seating\":\"SEATING_CAPACITY\",\n  \"veh_carrying\":\"CARRYING_CAPACITY\",\n  \"body_type\":\"BODY_TYPE\",\n  \"vehicle_active_status\":\"VEHICLE_STATUS\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, veh_cc, GCV, FGI",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"veh_code\", \"manf_type\":\"veh_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model_name, varient, veh_cc, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-371e051b-25a3-45ea-b7de-136ddb9f91e3"
+		},
+		{
+			"name": "IC-DIGIT",
+			"item": [
+				{
+					"name": "2W_4W_DIGIT",
+					"id": "36927651-0651c4dc-d0fc-4284-bd3f-c0cbdb21f3ac",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/DIGIT/Vehicle Master_New (19).xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/DIGIT/result_digit_vehicle_master (3).csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/DIGIT/live_digit_vehicle_master (3).csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_code\":\"Vehicle Code\",\n  \"make\":\"Make\",\n  \"model\":\"Model\",\n  \"variant\":\"Variant\",\n  \"body_type\":\"Body Type\",\n  \"seating_capacity\":\"Seating Capacity\",\n  \"power\":\"Power\",\n  \"cubic_capacity\":\"Cubic Capacity\",\n  \"gross_vehicle_weight\":\"Gross Vehicle Weight\",\n  \"fuel_type\":\"Fuel Type\",\n  \"no_of_wheels\":\"No Of Wheels\",\n  \"abs\":\"Abs\",\n  \"airbags\":\"Air Bags\",\n  \"length\":\"Length\",\n  \"ex_showroom_price\":\"EX Showroom Price\",\n  \"price_year\":\"Price Year\",\n  \"production\":\"Production\",\n  \"manufacturing\":\"Manufacturing\",\n  \"vehicle_type\":\"Vehicle Type\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, Fuel Type, reward_vehicle_power, cubic_capacity",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model, variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2W_DIGIT",
+					"id": "36927651-efeff093-79dc-4625-92f9-564f0718ec4f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/Vehicle Master_New (37).xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/result_digit_vehicle_master (3).csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/live_digit_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_code\":\"Vehicle Code\",\n  \"make\":\"Make\",\n  \"model\":\"Model\",\n  \"variant\":\"Variant\",\n  \"body_type\":\"Body Type\",\n  \"seating_capacity\":\"Seating Capacity\",\n  \"power\":\"Power\",\n  \"cubic_capacity\":\"Cubic Capacity\",\n  \"gross_vehicle_weight\":\"Gross Vehicle Weight\",\n  \"fuel_type\":\"Fuel Type\",\n  \"no_of_wheels\":\"No Of Wheels\",\n  \"abs\":\"Abs\",\n  \"airbags\":\"Air Bags\",\n  \"length\":\"Length\",\n  \"ex_showroom_price\":\"EX Showroom Price\",\n  \"price_year\":\"Price Year\",\n  \"production\":\"Production\",\n  \"manufacturing\":\"Manufacturing\",\n  \"vehicle_type\":\"Vehicle Type\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, Fuel Type, reward_vehicle_power, cubic_capacity, 2W, DIGIT",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "Vehicle Type, Motorbike, Scooter",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model, variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4W_DIGIT",
+					"id": "36927651-0a74f490-cb31-4437-b676-3834ca17a8ce",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/Vehicle Master_New (37).xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/result_digit_vehicle_master (3).csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/live_digit_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_code\":\"Vehicle Code\",\n  \"make\":\"Make\",\n  \"model\":\"Model\",\n  \"variant\":\"Variant\",\n  \"body_type\":\"Body Type\",\n  \"seating_capacity\":\"Seating Capacity\",\n  \"power\":\"Power\",\n  \"cubic_capacity\":\"Cubic Capacity\",\n  \"gross_vehicle_weight\":\"Gross Vehicle Weight\",\n  \"fuel_type\":\"Fuel Type\",\n  \"no_of_wheels\":\"No Of Wheels\",\n  \"abs\":\"Abs\",\n  \"airbags\":\"Air Bags\",\n  \"length\":\"Length\",\n  \"ex_showroom_price\":\"EX Showroom Price\",\n  \"price_year\":\"Price Year\",\n  \"production\":\"Production\",\n  \"manufacturing\":\"Manufacturing\",\n  \"vehicle_type\":\"Vehicle Type\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, Fuel Type, reward_vehicle_power, cubic_capacity, 4W, DIGIT",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "Vehicle Type, Vehicle",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model, variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GCV_DIGIT",
+					"id": "36927651-a8629a6c-1143-4ae6-b9f6-2a4d0891e61f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/Vehicle Master_New (37).xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/result_digit_vehicle_master (3).csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/live_digit_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_code\":\"Vehicle Code\",\n  \"make\":\"Make\",\n  \"model\":\"Model\",\n  \"variant\":\"Variant\",\n  \"body_type\":\"Body Type\",\n  \"seating_capacity\":\"Seating Capacity\",\n  \"power\":\"Power\",\n  \"cubic_capacity\":\"Cubic Capacity\",\n  \"gross_vehicle_weight\":\"Gross Vehicle Weight\",\n  \"fuel_type\":\"Fuel Type\",\n  \"no_of_wheels\":\"No Of Wheels\",\n  \"abs\":\"Abs\",\n  \"airbags\":\"Air Bags\",\n  \"length\":\"Length\",\n  \"ex_showroom_price\":\"EX Showroom Price\",\n  \"price_year\":\"Price Year\",\n  \"production\":\"Production\",\n  \"manufacturing\":\"Manufacturing\",\n  \"vehicle_type\":\"Vehicle Type\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, Fuel Type, reward_vehicle_power, cubic_capacity, GCV, DIGIT",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "Vehicle Type, Goods carrying Vehicle",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model, variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PCV_DIGIT",
+					"id": "36927651-ad784220-8125-4af9-8527-c84f62dc8394",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/Vehicle Master_New (37).xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/result_digit_vehicle_master (3).csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/live_digit_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_code\":\"Vehicle Code\",\n  \"make\":\"Make\",\n  \"model\":\"Model\",\n  \"variant\":\"Variant\",\n  \"body_type\":\"Body Type\",\n  \"seating_capacity\":\"Seating Capacity\",\n  \"power\":\"Power\",\n  \"cubic_capacity\":\"Cubic Capacity\",\n  \"gross_vehicle_weight\":\"Gross Vehicle Weight\",\n  \"fuel_type\":\"Fuel Type\",\n  \"no_of_wheels\":\"No Of Wheels\",\n  \"abs\":\"Abs\",\n  \"airbags\":\"Air Bags\",\n  \"length\":\"Length\",\n  \"ex_showroom_price\":\"EX Showroom Price\",\n  \"price_year\":\"Price Year\",\n  \"production\":\"Production\",\n  \"manufacturing\":\"Manufacturing\",\n  \"vehicle_type\":\"Vehicle Type\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, Fuel Type, reward_vehicle_power, cubic_capacity, PCV, DIGIT",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "Vehicle Type, Passenger carrying Vehicle",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model, variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MISD_DIGIT",
+					"id": "36927651-856a89f9-b223-4120-be03-70fff9285485",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/Vehicle Master_New (37).xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/result_digit_vehicle_master (3).csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/live_digit_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_code\":\"Vehicle Code\",\n  \"make\":\"Make\",\n  \"model\":\"Model\",\n  \"variant\":\"Variant\",\n  \"body_type\":\"Body Type\",\n  \"seating_capacity\":\"Seating Capacity\",\n  \"power\":\"Power\",\n  \"cubic_capacity\":\"Cubic Capacity\",\n  \"gross_vehicle_weight\":\"Gross Vehicle Weight\",\n  \"fuel_type\":\"Fuel Type\",\n  \"no_of_wheels\":\"No Of Wheels\",\n  \"abs\":\"Abs\",\n  \"airbags\":\"Air Bags\",\n  \"length\":\"Length\",\n  \"ex_showroom_price\":\"EX Showroom Price\",\n  \"price_year\":\"Price Year\",\n  \"production\":\"Production\",\n  \"manufacturing\":\"Manufacturing\",\n  \"vehicle_type\":\"Vehicle Type\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, Fuel Type, reward_vehicle_power, cubic_capacity, MISD, DIGIT",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "Vehicle Type, Misc D vehicles",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model, variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TRAILER_DIGIT",
+					"id": "36927651-ec6f9a58-2cc4-47e2-9f63-af55e584a494",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/Vehicle Master_New (37).xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/result_digit_vehicle_master (3).csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/live_digit_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_code\":\"Vehicle Code\",\n  \"make\":\"Make\",\n  \"model\":\"Model\",\n  \"variant\":\"Variant\",\n  \"body_type\":\"Body Type\",\n  \"seating_capacity\":\"Seating Capacity\",\n  \"power\":\"Power\",\n  \"cubic_capacity\":\"Cubic Capacity\",\n  \"gross_vehicle_weight\":\"Gross Vehicle Weight\",\n  \"fuel_type\":\"Fuel Type\",\n  \"no_of_wheels\":\"No Of Wheels\",\n  \"abs\":\"Abs\",\n  \"airbags\":\"Air Bags\",\n  \"length\":\"Length\",\n  \"ex_showroom_price\":\"EX Showroom Price\",\n  \"price_year\":\"Price Year\",\n  \"production\":\"Production\",\n  \"manufacturing\":\"Manufacturing\",\n  \"vehicle_type\":\"Vehicle Type\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, Fuel Type, reward_vehicle_power, cubic_capacity, TRAILER, DIGIT",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "Vehicle Type, Trailer",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model, variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-4ad8b579-5fde-47f3-b5a4-ca057f2327a5"
+		},
+		{
+			"name": "IC-RELIANCE",
+			"item": [
+				{
+					"name": "2W_RELIANCE",
+					"id": "36927651-f2d70eb0-68d3-4569-8994-65a566681754",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Reliance/2W/4W 2W MASTER 03112025.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Reliance/2W/result_reliance_vehicle_masters (2).csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Reliance/2W/live_reliance_vehicle_masters.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"reliance_code\":\"Model_ID_PK\",\n  \"make_id\":\"Make_ID_PK\",\n  \"make_name\":\"Make_Name\",\n  \"model_id\":\"Model_ID_PK\",\n  \"model_name\":\"Model_Name\",\n  \"variance\":\"Variance\",\n  \"wheels\":\"Wheels\",\n  \"operated_by\":\"Operated_By\",\n  \"cubic_capacity\":\"CC\",\n  \"seating_capacity\":\"Seating_Capacity\",\n  \"carrying_capacity\":\"Carrying_Capacity\",\n  \"vehicle_type_name\":\"Veh_Type_Name\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, Operated_By, reward_vehicle_power, cubic_capacity, 2W, RELIANCE",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_id\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "make_name, model_name, variance, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4W_RELIANCE",
+					"id": "36927651-e12a9c71-f362-4c39-8173-4e3e5f1bf298",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Reliance/4W/4W 2W MASTER 03112025.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Reliance/4W/result_reliance_4W.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Reliance/4W/live_reliance_4W.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"reliance_code\":\"Model_ID_PK\",\n  \"make_id\":\"Make_ID_PK\",\n  \"make_name\":\"Make_Name\",\n  \"model_id\":\"Model_ID_PK\",\n  \"model_name\":\"Model_Name\",\n  \"variance\":\"Variance\",\n  \"wheels\":\"Wheels\",\n  \"operated_by\":\"Operated_By\",\n  \"cubic_capacity\":\"CC\",\n  \"seting_capacity\":\"Seating_Capacity\",\n  \"carrying_capacity\":\"Carrying_Capacity\",\n  \"veh_type_name\":\"Veh_Type_Name\", \"veh_type\":\"Veh_Type_ID_FK\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, Operated_By, reward_vehicle_power, cubic_capacity, 4W, RELIANCE",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_id\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "make_name, model_name, variance, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-cf985354-c52e-4814-9aa3-bcc21dcee4b0"
+		},
+		{
+			"name": "IC-LIBERTY",
+			"item": [
+				{
+					"name": "2W_LIBERTY",
+					"id": "36927651-846991ca-26e7-4137-a7ed-54fe35341cd7",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Liberty/2W/Make Model Variant Master_V10.2_27.10.2025.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Liberty/2W/result_liberty_tw_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Liberty/2W/live_liberty_tw_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_make\":\"MANUFACTURER\",\n  \"vehicle_make_code\":\"MANUFACTURER CODE\",\n  \"vehicle_model\":\"VEHICLE MODEL\",\n  \"vehicle_model_code\":\"VEHICLE MODEL CODE\",\n  \"vehicle_variant\":\"VARIANT\",\n  \"cubic_capacity\":\"CUBIC CAPACITY\",\n  \"vehicle_fuel_type\":\"fuel type\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, fuel type, reward_vehicle_power, cubic_capacity, 2W, LIBERTY",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "VEHICLE CLASS DESC, Two Wheeler",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_model_code\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "vehicle_make, vehicle_model, vehicle_variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4W_LIBERTY",
+					"id": "36927651-943d0211-8ff4-46ce-8947-47798cff668c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Liberty/4W/Make Model Variant Master_V10.2_27.10.2025.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Liberty/4W/result_result_liberty_car_master (2).csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Liberty/4W/live_liberty_car_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_make\":\"MANUFACTURER\",\n  \"vehicle_make_code\":\"MANUFACTURER CODE\",\n  \"vehicle_model\":\"VEHICLE MODEL\",\n  \"vehicle_model_code\":\"VEHICLE MODEL CODE\",\n  \"vehicle_variant\":\"VARIANT\",\n  \"no_of_wheels\":\"NUMBER OF WHEELS\",\n  \"gross_weight\":\"GROSS VEHICLE WEIGHT\",\n  \"seating_capacity\":\"SEATING CAPACITY\",\n  \"carrying_capacity\":\"CARRYING CAPACITY\",\n  \"vehicle_body_type\":\"VEHICLE BODY TYPE DESCRIPTION\",\n  \"vehicle_segment_type\":\"segment type\",\n  \"cubic_capacity\":\"CUBIC CAPACITY\",\n  \"vehicle_fuel_type\":\"fuel type\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, fuel type, reward_vehicle_power, cubic_capacity, 4W, LIBERTY",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "VEHICLE CLASS DESC, PrivateCar",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_model_code\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "vehicle_make, vehicle_model, vehicle_variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-f0f4541e-8cd3-42eb-8890-75c28af440cd"
+		},
+		{
+			"name": "IC-RSA",
+			"item": [
+				{
+					"name": "4W_RSA",
+					"id": "36927651-c5821060-c2f0-441d-b3de-adbf26defb9a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/4W/Master.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/4W/result_rsa_car_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/4W/live_rsa_car_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_code\":\"MODEL_CODE\",\n  \"vehicle_make\":\"MAKE\",\n  \"model_name\":\"MODEL_NAME\",\n  \"engine_capacity_amount\":\"ENGINE_CAPACITY_AMOUNT\",\n  \"vehicle_seating_capacity\":\"SEATING_CAPACITY\",\n  \"vehicle_body_type\":\"BODY_STYLE\",\n  \"vehicle_fuel_type\":\"FUEL_TYPE\",\n  \"make_final\":\"MAKEFINAL\",\n  \"model_final\":\"MODELFINAL\",\n  \"vehicle_type\":\"VEHICLE_TYPE\",\n  \"modelname\":\"MODELNAME\",\n  \"variant_name\":\"VARIANT_NAME\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, engine_capacity_amount, 4W, RSA",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "SUBLINE, privatePassengerCar",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "vehicle_make, model_name, variant_name, engine_capacity_amount, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PCV_RSA",
+					"id": "36927651-88921814-b281-45ce-9423-ac132a4e17cb",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/CV/Master.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/CV/result_rsa_cv_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/CV/live_rsa_cv_master (2).csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"subline\":\"SUBLINE\",\n  \"model_code\":\"MODEL_CODE\",\n  \"make\":\"MAKE\",\n  \"model_name\":\"MODEL_NAME\",\n  \"business_status\":\"BUSINESS_STATUS\",\n  \"engine_capacity_amount\":\"ENGINE_CAPACITY_AMOUNT\",\n  \"seating_capacity\":\"SEATING_CAPACITY\",\n  \"vehicle_weight\":\"VEHICLEWEIGHT\",\n  \"body_style\":\"BODY_STYLE\",\n  \"fuel_type\":\"FUEL_TYPE\",\n  \"min_seating_capacity\":\"MIN_SEATINGCAPACITY\",\n  \"max_seating_capacity\":\"MAX_SEATINGCAPACITY\",\n  \"vehicle_type\":\"VEHICLE_TYPE\",\n  \"variant_name\":\"VARIANT_NAME\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, engine_capacity_amount, PCV, RSA",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "SUBLINE, VPCV",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model_name, variant_name, engine_capacity_amount, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								},
+								{
+									"key": "fixedValues",
+									"value": "created_at, NULL, updated_at, NULL, reward_product_type, PCV",
+									"type": "text",
+									"uuid": "50116804-5f00-4b1c-ba5f-97c6f3e94726"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MISD_RSA",
+					"id": "36927651-e0e5c38b-648c-4c82-8e60-f07b871ace4b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/CV/Master.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/CV/result_rsa_cv_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/CV/live_rsa_cv_master (2).csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"subline\":\"SUBLINE\",\n  \"model_code\":\"MODEL_CODE\",\n  \"make\":\"MAKE\",\n  \"model_name\":\"MODEL_NAME\",\n  \"business_status\":\"BUSINESS_STATUS\",\n  \"engine_capacity_amount\":\"ENGINE_CAPACITY_AMOUNT\",\n  \"seating_capacity\":\"SEATING_CAPACITY\",\n  \"vehicle_weight\":\"VEHICLEWEIGHT\",\n  \"body_style\":\"BODY_STYLE\",\n  \"fuel_type\":\"FUEL_TYPE\",\n  \"min_seating_capacity\":\"MIN_SEATINGCAPACITY\",\n  \"max_seating_capacity\":\"MAX_SEATINGCAPACITY\",\n  \"vehicle_type\":\"VEHICLE_TYPE\",\n  \"variant_name\":\"VARIANT_NAME\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, engine_capacity_amount, MISD, RSA",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "SUBLINE, VOC",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model_name, variant_name, engine_capacity_amount, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								},
+								{
+									"key": "fixedValues",
+									"value": "created_at, NULL, updated_at, NULL, reward_product_type, MISD",
+									"type": "text",
+									"uuid": "50116804-5f00-4b1c-ba5f-97c6f3e94726"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GCV_RSA",
+					"id": "36927651-7f8e7db4-a5fc-4440-8928-97c1eedc6a74",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/CV/Master.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/CV/result_rsa_cv_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/CV/live_rsa_cv_master (2).csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"subline\":\"SUBLINE\",\n  \"model_code\":\"MODEL_CODE\",\n  \"make\":\"MAKE\",\n  \"model_name\":\"MODEL_NAME\",\n  \"business_status\":\"BUSINESS_STATUS\",\n  \"engine_capacity_amount\":\"ENGINE_CAPACITY_AMOUNT\",\n  \"seating_capacity\":\"SEATING_CAPACITY\",\n  \"vehicle_weight\":\"VEHICLEWEIGHT\",\n  \"body_style\":\"BODY_STYLE\",\n  \"fuel_type\":\"FUEL_TYPE\",\n  \"min_seating_capacity\":\"MIN_SEATINGCAPACITY\",\n  \"max_seating_capacity\":\"MAX_SEATINGCAPACITY\",\n  \"vehicle_type\":\"VEHICLE_TYPE\",\n  \"variant_name\":\"VARIANT_NAME\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, engine_capacity_amount, GCV, RSA",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "SUBLINE, commercialVehicle",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model_name, variant_name, engine_capacity_amount, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								},
+								{
+									"key": "fixedValues",
+									"value": "created_at, NULL, updated_at, NULL, reward_product_type, GCV",
+									"type": "text",
+									"uuid": "50116804-5f00-4b1c-ba5f-97c6f3e94726"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2W_RSA",
+					"id": "36927651-8b50ed6d-b64b-4c85-8172-6efacdc5dfab",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/2W/Master.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/2W/result_rsa_tw_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/2W/live_rsa_tw_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"model_code\":\"MODEL_CODE\",\n  \"make\":\"MAKE\",\n  \"model_name\":\"MODEL_NAME\",\n  \"business_status\":\"BUSINESS_STATUS\",\n  \"engine_capacity_amount\":\"ENGINE_CAPACITY_AMOUNT\",\n  \"seating_capacity\":\"SEATING_CAPACITY\",\n  \"vehicle_class\":\"VEHICLE_CLASS\",\n  \"vehicle_weight\":\"VEHICLEWEIGHT\",\n  \"subline\":\"SUBLINE\",\n  \"body_style\":\"BODY_STYLE\",\n  \"fuel_type\":\"FUEL_TYPE\",\n  \"min_seating_capacity\":\"MIN_SEATINGCAPACITY\",\n  \"max_seating_capacity\":\"MAX_SEATINGCAPACITY\",\n  \"bike_scooter\":\"BIKE_SCOOTER\",\n  \"make_final\":\"MAKEFINAL\",\n  \"model_final\":\"MODELFINAL\",\n  \"vehicle_type\":\"VEHICLE_TYPE\",\n  \"sc_band\":\"SC_BAND\",\n  \"modelname\":\"MODELNAME\",\n  \"variant_name\":\"VARIANT_NAME\",\n  \"iib_tac_code\":\"IIB_TAC_CODE\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, engine_capacity_amount, 2W, RSA",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "SUBLINE, motorCycle",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model_name, variant_name, engine_capacity_amount, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-10294eec-8063-41d2-91d9-9da44878a65a"
+		},
+		{
+			"name": "IC-SRIRAM",
+			"item": [
+				{
+					"name": "CV_SRIRAM",
+					"id": "36927651-17540d20-514c-4c4e-a766-8406fc195e3e",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/SRIRAM/CV/master_VEHICLE_MASTER(PCCV_GCCV)MAR25.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/SRIRAM/CV/gen_shriram_cv_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/SRIRAM/CV/result_shriram_cv_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"manf_code\":\"MANF_CODE\",\n  \"manufacture\":\"MANUFACTURER\",\n  \"main_variant\":\"MAIN_VARIANT\",\n  \"model_variant_code\":\"MODEL_VARIANT_CODE\",\n  \"model_description\":\"MODEL_DESCRIPTION\",\n  \"body_code\":\"BODY_CODE\",\n  \"body_desc\":\"BODY_DESC\",\n  \"product_code\":\"PRODUCT_CODE\",\n  \"product_class\":\"PROD_CLASS\",\n  \"vehicle_code\":\"VEHICLE_CODE\",\n  \"body_ex_show_price\":\"EX_SHOWROOM_PRICE\",\n  \"vehicle_type\":\"VEHICLE_TYPE\",\n  \"driver\":\"DRIVER\",\n  \"fuel\":\"FUEL_DESC\",\n  \"fuel_code\":\"FUEL_CODE\",\n  \"veh_gvw\":\"VEH_GVW\",\n  \"veh_cc\":\"VEH_CC\",\n  \"product_category\":\"PRODUCT_CATEGORY\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_DESC, reward_vehicle_power, veh_cc",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_variant_code\", \"reward_product_type\":\"model_variant_code\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacture, model_description, main_variant, veh_cc, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2W_SRIRAM",
+					"id": "36927651-f684c5d8-b177-487c-88ea-63eff745c516",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram - Master Pending/2W/VEHICLE_MASTER(2W_PVT_CAR) PRODTILL_NOV25.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram - Master Pending/2W/result_shriram_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram - Master Pending/2W/live_shriram_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"product_code\":\"PRODUCT_CODE\",\n  \"product_class\":\"PROD_CLASS\",\n  \"vehicle_code\":\"VEHICLE_CODE\",\n  \"manufacture_code\":\"MANF_CODE\",\n  \"manufacture\":\"MANUFACTURER\",\n  \"main_variant\":\"MAIN_VARIANT\",\n  \"model_variant_code\":\"MODEL_VARIANT_CODE\",\n  \"model_description\":\"MODEL_DESCRIPTION\",\n  \"body_code\":\"BODY_CODE\",\n  \"body_desc\":\"BODY_DESC\",\n  \"veh_cc\":\"VEH_CC\",\n  \"veh_gvw\":\"VEH_GVW\",\n  \"fuel_code\":\"FUEL_CODE\",\n  \"fuel_desc\":\"FUEL_DESC\",\n  \"sc_exc_driver\":\"SC_EXC_DRIVER\",\n  \"product_category\":\"PRODUCT_CATEGORY\",\n  \"vehicle_status\":\"VEHICLE_STATUS\",\n  \"vehicle_type\":\"VEHICLE_TYPE\",\n  \"exshowroom_price\":\"EX_SHOWROOM_PRICE\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_DESC, reward_vehicle_power, VEH_CC, 2W, SRIRAM",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "PROD_CLASS, Two Wheeler",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacturer, model_description, veh_cc, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4W_SRIRAM",
+					"id": "36927651-9cfea422-579e-4889-8c0d-519fdfed5ace",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram - Master Pending/4W/VEHICLE_MASTER(2W_PVT_CAR) PRODTILL_NOV25.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram - Master Pending/4W/result_shriram_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram - Master Pending/4W/live_shriram_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"product_code\":\"PRODUCT_CODE\",\n  \"product_class\":\"PROD_CLASS\",\n  \"vehicle_code\":\"VEHICLE_CODE\",\n  \"manufacture_code\":\"MANF_CODE\",\n  \"manufacture\":\"MANUFACTURER\",\n  \"main_variant\":\"MAIN_VARIANT\",\n  \"model_variant_code\":\"MODEL_VARIANT_CODE\",\n  \"model_description\":\"MODEL_DESCRIPTION\",\n  \"body_code\":\"BODY_CODE\",\n  \"body_desc\":\"BODY_DESC\",\n  \"veh_cc\":\"VEH_CC\",\n  \"veh_gvw\":\"VEH_GVW\",\n  \"fuel_code\":\"FUEL_CODE\",\n  \"fuel_desc\":\"FUEL_DESC\",\n  \"sc_exc_driver\":\"SC_EXC_DRIVER\",\n  \"product_category\":\"PRODUCT_CATEGORY\",\n  \"vehicle_status\":\"VEHICLE_STATUS\",\n  \"vehicle_type\":\"VEHICLE_TYPE\",\n  \"exshowroom_price\":\"EX_SHOWROOM_PRICE\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_DESC, reward_vehicle_power, VEH_CC, 4W, SRIRAM",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "PROD_CLASS, Private Car",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacturer, model_description, veh_cc, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-42185fbd-8af0-4e2a-ab6a-b0606bd974f7"
+		},
+		{
+			"name": "IC-USGI",
+			"item": [
+				{
+					"name": "2W_4W_CV_USGI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "36927651-5592f0d1-4f54-4486-ad5d-e72b77640dda",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/USGI/Master.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/USGI/gen_usgi_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/USGI/result_usgi_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicleclasscode\":\"VEHICLECLASSCODE\",\n  \"manufacturercode\":\"MANUFACTURER CODE\",\n  \"manufacturer\":\"MANUFACTURER\",\n  \"vehiclemodelcode\":\"VEHICLEMODELCODE\",\n  \"vehiclemodel\":\"VEHICLEMODEL\",\n  \"numberofwheels\":\"NUMBEROFWHEELS\",\n  \"cubiccapacity\":\"CUBICCAPACITY\",\n  \"grossvehicleweight\":\"GROSSVEHICLEWEIGHT\",\n  \"seatingcapacity\":\"SEATINGCAPACITY\",\n  \"carryingcapacity\":\"CARRYINGCAPACITY\",\n  \"tabrowindx\":\"TABROWINDX\",\n  \"bodytypecode\":\"BODYTYPECODE\",\n  \"vehiclemodelstatus\":\"VEHICLEMODELSTATUS\",\n  \"txtobsoleteflag\":\"TXT_OBSOLETE_FLAG\",\n  \"numvehiclesubclasscode\":\"NUM_VEHICLE_SUBCLASS_CODE\",\n  \"activeflag\":\"ACTIVE_FLAG\",\n  \"txtmodelcluster\":\"TXT_MODEL_CLUSTER\",\n  \"numberoffaxle\":\"NUMBEROFAXLE\",\n  \"cnvmfueltype\":\"FUEL_TYPE\",\n  \"applicability\":\"TXT_APPLICABILITY\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, cubiccapacity",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehiclemodelcode\", \"reward_product_type\":\"vehiclemodelcode\"}",
+									"type": "text",
+									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacturer, vehiclemodel, cubiccapacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MISD_USGI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-26abd16f-7d97-4bef-8918-c54b27be0d68",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/USGI MAKE MODEL MASTER - AS 0N 03.11.25.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/result_usgi_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/live_usgi_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicleclasscode\":\"VEHICLECLASSCODE\",\n  \"manufacturercode\":\"MANUFACTURER CODE\",\n  \"manufacturer\":\"MANUFACTURER\",\n  \"vehiclemodelcode\":\"VEHICLEMODELCODE\",\n  \"vehiclemodel\":\"VEHICLEMODEL\",\n  \"numberofwheels\":\"NUMBEROFWHEELS\",\n  \"cubiccapacity\":\"CUBICCAPACITY\",\n  \"grossvehicleweight\":\"GROSSVEHICLEWEIGHT\",\n  \"seatingcapacity\":\"SEATINGCAPACITY\",\n  \"carryingcapacity\":\"CARRYINGCAPACITY\",\n  \"tabrowindx\":\"TABROWINDX\",\n  \"bodytypecode\":\"BODYTYPECODE\",\n  \"vehiclemodelstatus\":\"VEHICLEMODELSTATUS\",\n  \"txtobsoleteflag\":\"TXT_OBSOLETE_FLAG\",\n  \"numvehiclesubclasscode\":\"NUM_VEHICLE_SUBCLASS_CODE\",\n  \"activeflag\":\"ACTIVE_FLAG\",\n  \"txtmodelcluster\":\"TXT_MODEL_CLUSTER\",\n  \"numberoffaxle\":\"NUMBEROFAXLE\",\n  \"cnvmfueltype\":\"FUEL_TYPE\",\n  \"applicability\":\"TXT_APPLICABILITY\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, cubiccapacity, MISD, USGI",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "VEHICLECLASSCODE, 35",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehiclemodelcode\", \"reward_product_type\":\"vehiclemodelcode\"}",
+									"type": "text",
+									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacturer, vehiclemodel, cubiccapacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PCV_USGI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-1c00fdc3-916a-4dc6-8aa0-7f58fb2df642",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/USGI MAKE MODEL MASTER - AS 0N 03.11.25.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/result_usgi_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/live_usgi_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicleclasscode\":\"VEHICLECLASSCODE\",\n  \"manufacturercode\":\"MANUFACTURER CODE\",\n  \"manufacturer\":\"MANUFACTURER\",\n  \"vehiclemodelcode\":\"VEHICLEMODELCODE\",\n  \"vehiclemodel\":\"VEHICLEMODEL\",\n  \"numberofwheels\":\"NUMBEROFWHEELS\",\n  \"cubiccapacity\":\"CUBICCAPACITY\",\n  \"grossvehicleweight\":\"GROSSVEHICLEWEIGHT\",\n  \"seatingcapacity\":\"SEATINGCAPACITY\",\n  \"carryingcapacity\":\"CARRYINGCAPACITY\",\n  \"tabrowindx\":\"TABROWINDX\",\n  \"bodytypecode\":\"BODYTYPECODE\",\n  \"vehiclemodelstatus\":\"VEHICLEMODELSTATUS\",\n  \"txtobsoleteflag\":\"TXT_OBSOLETE_FLAG\",\n  \"numvehiclesubclasscode\":\"NUM_VEHICLE_SUBCLASS_CODE\",\n  \"activeflag\":\"ACTIVE_FLAG\",\n  \"txtmodelcluster\":\"TXT_MODEL_CLUSTER\",\n  \"numberoffaxle\":\"NUMBEROFAXLE\",\n  \"cnvmfueltype\":\"FUEL_TYPE\",\n  \"applicability\":\"TXT_APPLICABILITY\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, cubiccapacity, PCV, USGI",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "VEHICLECLASSCODE, 41",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehiclemodelcode\", \"reward_product_type\":\"vehiclemodelcode\"}",
+									"type": "text",
+									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacturer, vehiclemodel, cubiccapacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GCV_USGI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-89ddfe3a-d506-4ced-9421-3fe2c2442278",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/USGI MAKE MODEL MASTER - AS 0N 03.11.25.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/result_usgi_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/live_usgi_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicleclasscode\":\"VEHICLECLASSCODE\",\n  \"manufacturercode\":\"MANUFACTURER CODE\",\n  \"manufacturer\":\"MANUFACTURER\",\n  \"vehiclemodelcode\":\"VEHICLEMODELCODE\",\n  \"vehiclemodel\":\"VEHICLEMODEL\",\n  \"numberofwheels\":\"NUMBEROFWHEELS\",\n  \"cubiccapacity\":\"CUBICCAPACITY\",\n  \"grossvehicleweight\":\"GROSSVEHICLEWEIGHT\",\n  \"seatingcapacity\":\"SEATINGCAPACITY\",\n  \"carryingcapacity\":\"CARRYINGCAPACITY\",\n  \"tabrowindx\":\"TABROWINDX\",\n  \"bodytypecode\":\"BODYTYPECODE\",\n  \"vehiclemodelstatus\":\"VEHICLEMODELSTATUS\",\n  \"txtobsoleteflag\":\"TXT_OBSOLETE_FLAG\",\n  \"numvehiclesubclasscode\":\"NUM_VEHICLE_SUBCLASS_CODE\",\n  \"activeflag\":\"ACTIVE_FLAG\",\n  \"txtmodelcluster\":\"TXT_MODEL_CLUSTER\",\n  \"numberoffaxle\":\"NUMBEROFAXLE\",\n  \"cnvmfueltype\":\"FUEL_TYPE\",\n  \"applicability\":\"TXT_APPLICABILITY\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, cubiccapacity, GCV, USGI",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "VEHICLECLASSCODE, 24",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehiclemodelcode\", \"reward_product_type\":\"vehiclemodelcode\"}",
+									"type": "text",
+									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacturer, vehiclemodel, cubiccapacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4W_USGI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-01cadee3-8048-43ee-80a3-9a344482a50f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/USGI MAKE MODEL MASTER - AS 0N 03.11.25.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/result_usgi_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/live_usgi_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicleclasscode\":\"VEHICLECLASSCODE\",\n  \"manufacturercode\":\"MANUFACTURER CODE\",\n  \"manufacturer\":\"MANUFACTURER\",\n  \"vehiclemodelcode\":\"VEHICLEMODELCODE\",\n  \"vehiclemodel\":\"VEHICLEMODEL\",\n  \"numberofwheels\":\"NUMBEROFWHEELS\",\n  \"cubiccapacity\":\"CUBICCAPACITY\",\n  \"grossvehicleweight\":\"GROSSVEHICLEWEIGHT\",\n  \"seatingcapacity\":\"SEATINGCAPACITY\",\n  \"carryingcapacity\":\"CARRYINGCAPACITY\",\n  \"tabrowindx\":\"TABROWINDX\",\n  \"bodytypecode\":\"BODYTYPECODE\",\n  \"vehiclemodelstatus\":\"VEHICLEMODELSTATUS\",\n  \"txtobsoleteflag\":\"TXT_OBSOLETE_FLAG\",\n  \"numvehiclesubclasscode\":\"NUM_VEHICLE_SUBCLASS_CODE\",\n  \"activeflag\":\"ACTIVE_FLAG\",\n  \"txtmodelcluster\":\"TXT_MODEL_CLUSTER\",\n  \"numberoffaxle\":\"NUMBEROFAXLE\",\n  \"cnvmfueltype\":\"FUEL_TYPE\",\n  \"applicability\":\"TXT_APPLICABILITY\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, cubiccapacity, 4W, USGI",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "VEHICLECLASSCODE, 45",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehiclemodelcode\", \"reward_product_type\":\"vehiclemodelcode\"}",
+									"type": "text",
+									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacturer, vehiclemodel, cubiccapacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2W_USGI",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-0102926f-2e9e-4ad2-a661-ade8a97afaba",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/USGI MAKE MODEL MASTER - AS 0N 03.11.25.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/result_usgi_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/live_usgi_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicleclasscode\":\"VEHICLECLASSCODE\",\n  \"manufacturercode\":\"MANUFACTURER CODE\",\n  \"manufacturer\":\"MANUFACTURER\",\n  \"vehiclemodelcode\":\"VEHICLEMODELCODE\",\n  \"vehiclemodel\":\"VEHICLEMODEL\",\n  \"numberofwheels\":\"NUMBEROFWHEELS\",\n  \"cubiccapacity\":\"CUBICCAPACITY\",\n  \"grossvehicleweight\":\"GROSSVEHICLEWEIGHT\",\n  \"seatingcapacity\":\"SEATINGCAPACITY\",\n  \"carryingcapacity\":\"CARRYINGCAPACITY\",\n  \"tabrowindx\":\"TABROWINDX\",\n  \"bodytypecode\":\"BODYTYPECODE\",\n  \"vehiclemodelstatus\":\"VEHICLEMODELSTATUS\",\n  \"txtobsoleteflag\":\"TXT_OBSOLETE_FLAG\",\n  \"numvehiclesubclasscode\":\"NUM_VEHICLE_SUBCLASS_CODE\",\n  \"activeflag\":\"ACTIVE_FLAG\",\n  \"txtmodelcluster\":\"TXT_MODEL_CLUSTER\",\n  \"numberoffaxle\":\"NUMBEROFAXLE\",\n  \"cnvmfueltype\":\"FUEL_TYPE\",\n  \"applicability\":\"TXT_APPLICABILITY\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, cubiccapacity, 2W, USGI",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "VEHICLECLASSCODE, 37",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehiclemodelcode\", \"reward_product_type\":\"vehiclemodelcode\"}",
+									"type": "text",
+									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacturer, vehiclemodel, cubiccapacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-6ce6383e-80c3-4128-94bc-b98e38bc3951"
+		},
+		{
+			"name": "IC-CHOLA",
+			"item": [
+				{
+					"name": "4W_CHOLA",
+					"id": "36927651-43e339de-d493-4017-ac7d-bae3683d0116",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Sep'25/CHOLA/4W/Master.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Sep'25/CHOLA/4W/result_chola_car_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Sep'25/CHOLA/4W/live_chola_car_vehicle_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"make\":\"MAKE\",\n  \"make_code\":\"\",\n  \"vehicle_model\":\"VEHICLE_MODEL\",\n  \"model_code\":\"MODEL_CODE\",\n  \"body_type\":\"BODY_TYPE\",\n  \"cubic_capacity\":\"CUBIC_CAPACITY\",\n  \"kilowatt\":\"KILOWATT\",\n  \"seating_capacity\":\"SEATING_CAPACITY\",\n  \"fuel_type\":\"FUEL_TYPE\",\n  \"num_state_code\":\"NUM_STATE_CODE\",\n  \"state\":\"STATE\",\n  \"state_name\":\"STATE_NAME\",\n  \"city\":\"CITY\",\n  \"exshowroom\":\"EXSHOWROOM\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, cubic_capacity, 4W, CHOLA",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_code\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, vehicle_model, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-a2b7a166-568a-46ab-a05c-b6f52533270e"
+		},
+		{
+			"name": "IC-SBI",
+			"item": [
+				{
+					"name": "2W_SBI",
+					"id": "36927651-4473ebd8-f6c3-46f9-a8c4-0f150e03a16d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/SBI/2W/SBI_2WL_MMV.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/SBI/2W/result_sbi_tw_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/SBI/2W/live_sbi_tw_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"make_id\":\"MAKE_ID\",\n  \"make_description\":\"MAKE\",\n  \"model_id\":\"MOD_ID\",\n  \"model_description\":\"MODEL\",\n  \"variant_code\":\"VA_ID\",\n  \"variant_name\":\"VARIANT\",\n  \"vehicle_cubic_capacity\":\"CC\",\n  \"vehicle_wheels\":\"WHEELS\",\n  \"vehicle_seating_capacity\":\"SEATING\",\n  \"vehicle_carrying_capacity\":\"CARRYING\",\n  \"vehicle_fuel_type\":\"FUEL_TYPE\",\n  \"vehicle_make_tac\":\"MAKE_TAC\",\n  \"vehicle_model_tac\":\"MODEL_TAC\",\n  \"vehicle_active_status\":\"BLACKLISTED\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, vehicle_cubic_capacity, 2W, SBI",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_id\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "make_description, model_description, variant_name, vehicle_cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4W_SBI",
+					"id": "36927651-eb99cfe7-c8c9-4d9c-b64d-818fc400ac0c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/SBI/4W/sbi_4wl_mmv.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/SBI/4W/result_sbi_4w_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/SBI/4W/live_sbi_4w_master.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"variant_id\":\"VA_ID\",\n  \"variant_name\":\"VARIANT\",\n  \"model_id\":\"MOD_ID\",\n  \"model_name\":\"MODEL\",\n  \"make_id\":\"MAKE_ID\",\n  \"make_name\":\"MAKE\",\n  \"vehicle_segment\":\"BODYSTYLE\",\n  \"vehicle_cubic_capacity\":\"CC\",\n  \"vehicle_wheels\":\"WHEELS\",\n  \"vehicle_seating_capacity\":\"SEATING\",\n  \"vehicle_carrying_capacity\":\"CARRYING\",\n  \"vehicle_fuel_type\":\"FUEL_TYPE\",\n  \"vehicle_make_tac\":\"MAKE_TAC\",\n  \"vehicle_model_tac\":\"MODEL_TAC\",\n  \"vehicle_active_status\":\"BLACKLISTED\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, vehicle_cubic_capacity, 4W, SBI",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_id\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "make_name, model_name, variant_name, vehicle_cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-b953ce88-0571-4719-9c61-1320890ec39c"
+		},
+		{
+			"name": "IC-NIC",
+			"item": [
+				{
+					"name": "2W_NIC",
+					"id": "36927651-86788209-2fa4-49c2-a1d5-b2d95e6d8b27",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Sep'25/NIC - Pending/MMV_MASTER_PROD_MCY.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Sep'25/NIC - Pending/live_nic_tw_masters.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Sep'25/NIC - Pending/live_nic_tw_masters.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"UNIQUE_ID\":\"UNIQUE_ID\",\n  \"IBB_CODE\":\"IBB_CODE\",\n  \"MAKE_NAME\":\"MAKE_NAME\",\n  \"MODEL_NAME\":\"MODEL_NAME\",\n  \"VARIANT_NAME\":\"VARIANT_NAME\",\n  \"VARIANT_PERIOD\":\"VARIANT_PERIOD\",\n  \"CUBIC_CAPACITY\":\"CUBIC_CAPACITY\",\n  \"MAX_POWER\":\"MAX_POWER\",\n  \"VEHICLE_TYPE\":\"VEHICLE_TYPE\",\n  \"BODY_TYPE\":\"BODY_TYPE\",\n  \"POWER_BI\":\"POWER_BI\",\n  \"MILEAGE\":\"MILEAGE\", \"MODEL_PERIOD_START\":\"MODEL_PERIOD_START\",\n  \"MODEL_PERIOD_END\":\"MODEL_PERIOD_END\",\n  \"SERIAL_NO\":\"SERIAL_NO\",\n  \"MAKE_CODE\":\"MAKE_CODE\",\n  \"MODEL_CODE\":\"MODEL_CODE\",\n  \"VARIANT_CODE\":\"VARIANT_CODE\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, CUBIC_CAPACITY, 2W, NIC",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"MODEL_CODE\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "MAKE_NAME, MODEL_NAME, VARIANT_NAME, CUBIC_CAPACITY, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-faecf65c-19ba-42db-9683-ced6cd09941a"
+		},
+		{
+			"name": "IC-RAHEJA",
+			"item": [
+				{
+					"name": "4W_RAHEJA",
+					"id": "36927651-bcb0bbec-8fc6-49b9-b41c-81b47d3ad307",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/4W/MMV-FPV.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Raheja/4W/result_raheja_car_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Raheja/4W/live_raheja_car_master (1).csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"make_id\":\"Make_ID_PK\",\n  \"make_name\":\"Make_Name\",\n  \"model_id\":\"Model_ID_PK\",\n  \"model_name\":\"MODEL_DESC\",\n  \"veh_class_code\":\"VehClassCode\",\n  \"variant_id\":\"Variant_ID_PK\",\n  \"variant_name\":\"Variant\",\n  \"cubic_capacity\":\"CC\",\n  \"seating\":\"Seating_Capacity\",\n  \"carrying\":\"Carrying_Capacity\",\n  \"rsk_type\":\"RskType\",\n  \"fuel_type\":\"FuelType\",\n  \"segment\":\"Segment\",\n  \"fuel\":\"Fuel\",\n  \"ex_showroom_price\":\"ExShowroomPrice\",\n  \"created_at\":\"Created_Date\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, Fuel, reward_vehicle_power, cubic_capacity, 4W, RAHEJA",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "VehClassCode, 45, 24",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"variant_id\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make_name, model_name, variant_name, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								},
+								{
+									"key": "fixedValues",
+									"value": "created_at, NULL, updated_at, NULL",
+									"type": "text",
+									"uuid": "9c825ccc-b35f-4eb0-8e49-7d477a7f04d3"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"id": "36927651-a15b0483-f2fa-4d86-ba94-275f1df08062"
+		},
+		{
+			"name": "XLSX-TO-CSV",
+			"id": "36927651-813fa0c0-60b4-4331-bd01-b095a081c99d",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "xlsx",
+							"type": "file",
+							"uuid": "91ed69da-1929-45fb-9885-540710ac17e8",
+							"value": null
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/get/xlsx-csv",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"get",
+						"xlsx-csv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CSV-XLSX",
+			"id": "36927651-960c6eb9-45cc-4baf-82bf-5ef7e21e8e30",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "csv",
+							"type": "file",
+							"uuid": "91ed69da-1929-45fb-9885-540710ac17e8",
+							"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/DIGIT/live_digit_vehicle_master (3).csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/get/csv-xlsx",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"get",
+						"csv-xlsx"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CSV-TO-SQL",
+			"id": "36927651-21d1f4c7-0250-426c-8ecc-5bb885a84fc1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "csv",
+							"type": "file",
+							"uuid": "d160605f-0390-4df6-9503-f4ab11fcb216",
+							"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Chola - Manually/4W/result_chola_car_vehicle_master.csv"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/get/csv-to-sql",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"get",
+						"csv-to-sql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
