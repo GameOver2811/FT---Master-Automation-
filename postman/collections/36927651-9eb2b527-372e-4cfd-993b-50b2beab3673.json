@@ -927,7 +927,7 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/ICICI/2W/Master_2W_ICICI.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/ICICI/2W/latest_MMV_rto (2).csv"
 								},
 								{
 									"key": "result",
@@ -970,6 +970,12 @@
 									"value": "make_name, model_name, cubic_capacity, reward_vehicle_fuel_type",
 									"type": "text",
 									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								},
+								{
+									"key": "fixedValues",
+									"value": "reward_model, NULL",
+									"type": "text",
+									"uuid": "d82a1687-ad58-463c-baa3-2827b525a0cd"
 								}
 							]
 						},
