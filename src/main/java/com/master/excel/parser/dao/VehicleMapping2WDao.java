@@ -37,4 +37,25 @@ public class VehicleMapping2WDao {
                 .orElse(null);
     }
 
+    public String getVehiclePowerBi(String vehicleModelString) {
+        return vehicleMapping2WRepository
+                .findByVehicleModelString(vehicleModelString)
+                .map(VehicleMapping2W::getVehiclePowerBi)
+                .orElse(null);
+    }
+
+    public String getRewardModel(String vehicleModelString) {
+        return vehicleMapping2WRepository
+                .findByVehicleModelString(vehicleModelString)
+                .map(VehicleMapping2W::getRewardModel)
+                .orElse(null);
+    }
+
+    public String getRewardVehicleFuelType(String vehicleModelString) {
+        return vehicleMapping2WRepository
+                .findByVehicleModelString(vehicleModelString)
+                .map(VehicleMapping2W::getVehicleFuel)
+                .orElse(null);
+    }
+
 }
