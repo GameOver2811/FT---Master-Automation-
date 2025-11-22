@@ -3543,7 +3543,7 @@
 			"name": "IC-SRIRAM",
 			"item": [
 				{
-					"name": "CV_SRIRAM",
+					"name": "PCV_SRIRAM",
 					"id": "36927651-17540d20-514c-4c4e-a766-8406fc195e3e",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
