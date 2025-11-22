@@ -3558,19 +3558,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/SRIRAM/CV/master_VEHICLE_MASTER(PCCV_GCCV)MAR25.xlsx"
+									"value": null
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/SRIRAM/CV/gen_shriram_cv_vehicle_master.csv"
+									"value": null
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/SRIRAM/CV/result_shriram_cv_vehicle_master.csv"
+									"value": null
 								},
 								{
 									"key": "mapping",
@@ -3580,13 +3580,13 @@
 								},
 								{
 									"key": "details",
-									"value": "reward_vehicle_fuel_type, FUEL_DESC, reward_vehicle_power, veh_cc",
+									"value": "reward_vehicle_fuel_type, FUEL_DESC, reward_vehicle_power, veh_cc, PCV, SRIRAM",
 									"type": "text",
 									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
 								},
 								{
 									"key": "vehicleType",
-									"value": "",
+									"value": "PROD_CLASS, PCCV",
 									"type": "text",
 									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
 								},
@@ -3601,6 +3601,12 @@
 									"value": "manufacture, model_description, main_variant, veh_cc, reward_vehicle_fuel_type",
 									"type": "text",
 									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								},
+								{
+									"key": "fixedValues",
+									"value": "created_at, NULL, updated_at, NULL, reward_product_type, PCV",
+									"type": "text",
+									"uuid": "a2182749-504a-47bf-a5eb-e7b2c4d81171"
 								}
 							]
 						},
