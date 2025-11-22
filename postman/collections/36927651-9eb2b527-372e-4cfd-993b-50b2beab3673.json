@@ -3663,13 +3663,13 @@
 								},
 								{
 									"key": "details",
-									"value": "reward_vehicle_fuel_type, FUEL_DESC, reward_vehicle_power, veh_cc, PCV, SRIRAM",
+									"value": "reward_vehicle_fuel_type, FUEL_DESC, reward_vehicle_power, veh_cc, GCV, SRIRAM",
 									"type": "text",
 									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
 								},
 								{
 									"key": "vehicleType",
-									"value": "PROD_CLASS, PCCV",
+									"value": "PROD_CLASS, GCCV",
 									"type": "text",
 									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
 								},
