@@ -3626,6 +3626,89 @@
 					"response": []
 				},
 				{
+					"name": "GCV_SRIRAM",
+					"id": "36927651-4fe4402a-c715-4c80-9a9a-4d24f993df68",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram/CV/VEHICLE_MASTER(PCCV_GCCV)NOV25.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram/CV/result_shriram_cv_vehicle_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram/CV/live_shriram_cv_vehicle_master (2).csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"manf_code\":\"MANF_CODE\",\n  \"manufacture\":\"MANUFACTURER\",\n  \"main_variant\":\"MAIN_VARIANT\",\n  \"model_variant_code\":\"MODEL_VARIANT_CODE\",\n  \"model_description\":\"MODEL_DESCRIPTION\",\n  \"body_code\":\"BODY_CODE\",\n  \"body_desc\":\"BODY_DESC\",\n  \"product_code\":\"PRODUCT_CODE\",\n  \"product_class\":\"PROD_CLASS\",\n  \"vehicle_code\":\"VEHICLE_CODE\",\n  \"body_ex_show_price\":\"EX_SHOWROOM_PRICE\",\n  \"vehicle_type\":\"VEHICLE_TYPE\",\n  \"driver\":\"DRIVER\",\n  \"fuel\":\"FUEL_DESC\",\n  \"fuel_code\":\"FUEL_CODE\",\n  \"veh_gvw\":\"VEH_GVW\",\n  \"veh_cc\":\"VEH_CC\",\n  \"product_category\":\"PRODUCT_CATEGORY\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_DESC, reward_vehicle_power, veh_cc, PCV, SRIRAM",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "PROD_CLASS, PCCV",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_variant_code\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "manufacture, model_description, main_variant, veh_cc, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								},
+								{
+									"key": "fixedValues",
+									"value": "created_at, NULL, updated_at, NULL, reward_product_type, PCV",
+									"type": "text",
+									"uuid": "a2182749-504a-47bf-a5eb-e7b2c4d81171"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "2W_SRIRAM",
 					"id": "36927651-f684c5d8-b177-487c-88ea-63eff745c516",
 					"protocolProfileBehavior": {
