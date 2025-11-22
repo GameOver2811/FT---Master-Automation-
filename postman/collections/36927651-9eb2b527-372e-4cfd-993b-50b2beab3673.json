@@ -1025,7 +1025,8 @@
 									"pm.visualizer.set(template, constructVisualizerPayload());"
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -1043,19 +1044,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/ICICI - Completed/CV/PCV/master_icici_pcv_12-08-2025.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/ICICI/CV/PCV_rto (2).csv"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/ICICI - Completed/CV/PCV/gen_result_icici_cv_pcv_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/ICICI/CV/result_icici_cv_pcv_master.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Aug'25/ICICI - Completed/CV/PCV/result_icici_cv_pcv_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/ICICI/CV/live_icici_cv_pcv_master (1).csv"
 								},
 								{
 									"key": "mapping",
@@ -1077,7 +1078,7 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"VehicleModelCode\", \"reward_product_type\":\"VehicleModelCode\"}",
+									"value": "{\"reward_vehicle_type\":\"VehicleModelCode\"}",
 									"type": "text",
 									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
 								},
@@ -1086,6 +1087,12 @@
 									"value": "Manufacture, VehicleModel, CubicCapacity, reward_vehicle_fuel_type",
 									"type": "text",
 									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								},
+								{
+									"key": "fixedValues",
+									"value": "reward_product_type, PCV",
+									"type": "text",
+									"uuid": "a0656d1f-0e7f-40f8-80f7-93fff7c89ba6"
 								}
 							]
 						},
