@@ -3558,19 +3558,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
-									"value": null
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram/CV/VEHICLE_MASTER(PCCV_GCCV)NOV25.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
-									"value": null
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram/CV/result_shriram_cv_vehicle_master.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
-									"value": null
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram/CV/live_shriram_cv_vehicle_master (2).csv"
 								},
 								{
 									"key": "mapping",
@@ -3592,7 +3592,7 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"model_variant_code\", \"reward_product_type\":\"model_variant_code\"}",
+									"value": "{\"reward_vehicle_type\":\"model_variant_code\"}",
 									"type": "text",
 									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
 								},
