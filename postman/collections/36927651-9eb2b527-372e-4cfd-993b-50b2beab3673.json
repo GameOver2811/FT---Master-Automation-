@@ -2966,6 +2966,83 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "4W_RELIANCE Copy",
+					"id": "36927651-3f71befb-218e-4cd5-b37b-197bb138f458",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Reliance/4W/4W 2W MASTER 03112025.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Reliance/4W/result_reliance_4W.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Reliance/4W/live_reliance_4W.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"reliance_code\":\"Model_ID_PK\",\n  \"make_id\":\"Make_ID_PK\",\n  \"make_name\":\"Make_Name\",\n  \"model_id\":\"Model_ID_PK\",\n  \"model_name\":\"Model_Name\",\n  \"variance\":\"Variance\",\n  \"wheels\":\"Wheels\",\n  \"operated_by\":\"Operated_By\",\n  \"cubic_capacity\":\"CC\",\n  \"seting_capacity\":\"Seating_Capacity\",\n  \"carrying_capacity\":\"Carrying_Capacity\",\n  \"veh_type_name\":\"Veh_Type_Name\", \"veh_type\":\"Veh_Type_ID_FK\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, Operated_By, reward_vehicle_power, cubic_capacity, 4W, RELIANCE",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_id\"}",
+									"type": "text",
+									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
+								},
+								{
+									"key": "dbParam",
+									"value": "make_name, model_name, variance, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "36927651-cf985354-c52e-4814-9aa3-bcc21dcee4b0"
