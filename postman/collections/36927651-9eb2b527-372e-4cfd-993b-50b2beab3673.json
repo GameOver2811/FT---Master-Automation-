@@ -2983,35 +2983,35 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Reliance/4W/4W 2W MASTER 03112025.xlsx"
+									"value": null
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Reliance/4W/result_reliance_4W.csv"
+									"value": null
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Reliance/4W/live_reliance_4W.csv"
+									"value": null
 								},
 								{
 									"key": "mapping",
-									"value": "{\n  \"reliance_code\":\"Model_ID_PK\",\n  \"make_id\":\"Make_ID_PK\",\n  \"make_name\":\"Make_Name\",\n  \"model_id\":\"Model_ID_PK\",\n  \"model_name\":\"Model_Name\",\n  \"variance\":\"Variance\",\n  \"wheels\":\"Wheels\",\n  \"operated_by\":\"Operated_By\",\n  \"cubic_capacity\":\"CC\",\n  \"seting_capacity\":\"Seating_Capacity\",\n  \"carrying_capacity\":\"Carrying_Capacity\",\n  \"veh_type_name\":\"Veh_Type_Name\", \"veh_type\":\"Veh_Type_ID_FK\"\n}",
+									"value": "{\n  \"type_id\":\"Veh_Type_ID_PK\",\n  \"type_name\":\"Veh_Type_Name\",\n  \"sub_type_name\":\"Veh_Sub_Type_Name\",\n  \"make_id\":\"Make_ID_FK\",\n  \"model_id\":\"Model_ID_PK\",\n  \"make_name\":\"Make_Name\",\n  \"model_name\":\"Model_Name\",\n  \"variance\":\"Variance\",\n  \"wheels\":\"Wheels\",\n  \"operated_by\":\"Operated_By\",\n  \"cubic_capacity\":\"CC\",\n  \"unit_name\":\"Unit_Name\",\n  \"battery_manufacturer\":\"Battery_Manufacturer\",\n  \"gross_weight\":\"Gross_Weight\",\n  \"seating_capacity\":\"Seating_Capacity\",\n  \"carrying_capacity\":\"Carrying_Capacity\",\n  \"min_seating_capacity\":\"Min_Seating_Capacity\",\n  \"max_seating_capacity\":\"Max_Seating_Capacity\",\n  \"min_carrying_capacity\":\"Min_carrying_Capacity\",\n  \"max_carrying_capacity\":\"Max_carrying_Capacity\",\n  \"vehicle_segment_name\":\"Vehicle_Segment_Name\",\n  \"COM_Segment\":\"COM_Segment\",\n  \"ExMumbai_Body_Price\":\"ExMumbai_Body_Price\",\n  \"ExMumbai_Model_Price\":\"ExMumbai_Model_Price\",\n  \"ExMumbai_Chasis_Price\":\"ExMumbai_Chasis_Price\",  \n  \"ExNewDelhi_Body_Price\":\"ExNewDelhi_Body_Price\",\n  \"ExNewDelhi_Model_Price\":\"ExNewDelhi_Model_Price\",\n  \"ExNewDelhi_Chasis_Price\":\"ExNewDelhi_Chasis_Price\",\n  \"ExBangalore_Body_Price\":\"ExBangalore_Body_Price\",\n  \"ExBangalore_Model_Price\":\"ExBangalore_Model_Price\",\n  \"ExBangalore_Chasis_Price\":\"ExBangalore_Chasis_Price\",\n  \"ExKolkatta_Body_Price\":\"ExKolkatta_Body_Price\",\n  \"ExKolkatta_Model_Price\":\"ExKolkatta_Model_Price\",\n  \"ExKolkatta_Chasis_Price\":\"ExKolkatta_Chasis_Price\",\n  \"ExAhmedabad_Body_Price\":\"ExAhmedabad_Body_Price\",\n  \"ExAhmedabad_Model_Price\":\"ExAhmedabad_Model_Price\",\n  \"ExAhmedabad_Chasis_Price\":\"ExAhmedabad_Chasis_Price\",\n  \"ExChandigarh_Body_Price\":\"ExChandigarh_Body_Price\",\n  \"ExChandigarh_Model_Price\":\"ExChandigarh_Model_Price\",\n  \"ExChandigarh_Chasis_Price\":\"ExChandigarh_Chasis_Price\",\n  \"ExShimla_Body_Price\":\"ExShimla_Body_Price\",\n  \"ExShimla_Model_Price\":\"ExShimla_Model_Price\",\n  \"ExShimla_Chasis_Price\":\"ExShimla_Chasis_Price\",\n  \"ExFaridabad_Body_Price\":\"ExFaridabad_Body_Price\",\n  \"ExFaridabad_Model_Price\":\"ExFaridabad_Model_Price\",\n  \"ExFaridabad_Chasis_Price\":\"ExFaridabad_Chasis_Price\",\n  \"ExLucknow_Body_Price\":\"ExLucknow_Body_Price\",\n  \"ExLucknow_Model_Price\":\"ExLucknow_Model_Price\",\n  \"ExLucknow_Chasis_Price\":\"ExLucknow_Chasis_Price\",\n  \"ExDehradun_Body_Price\":\"ExDehradun_Body_Price\",\n  \"ExDehradun_Model_Price\":\"ExDehradun_Model_Price\",\n  \"ExDehradun_Chasis_Price\":\"ExDehradun_Chasis_Price\",\n  \"ExKohima_Body_Price\":\"ExKohima_Body_Price\",\n  \"ExKohima_Model_Price\":\"ExKohima_Model_Price\",\n  \"ExKohima_Chasis_Price\":\"ExKohima_Chasis_Price\",\n  \"ExPatna_Body_Price\":\"ExPatna_Body_Price\",\n  \"ExPatna_Model_Price\":\"ExPatna_Model_Price\",\n  \"ExPatna_Chasis_Price\":\"ExPatna_Chasis_Price\",\n  \"ExChennai_Body_Price\":\"ExChennai_Body_Price\",\n  \"ExChennai_Model_Price\":\"ExChennai_Model_Price\",\n  \"ExChennai_Chasis_Price\":\"ExChennai_Chasis_Price\",\n  \"ExThiruvananthapuram_Body_Price\":\"ExThiruvananthapuram_Body_Price\",\n  \"ExThiruvananthapuram_Model_Price\":\"ExThiruvananthapuram_Model_Price\",\n  \"ExThiruvananthapuram_Chasis_Price\":\"ExThiruvananthapuram_Chasis_Price\",\n  \"ExHyderabad_Body_Price\":\"ExHyderabad_Body_Price\",\n  \"ExHyderabad_Model_Price\":\"ExHyderabad_Model_Price\",\n  \"ExHyderabad_Chasis_Price\":\"ExHyderabad_Chasis_Price\",\n  \"ExBhopal_Body_Price\":\"ExBhopal_Body_Price\",\n  \"ExBhopal_Model_Price\":\"ExBhopal_Model_Price\",\n  \"ExBhopal_Chasis_Price\":\"ExBhopal_Chasis_Price\",\n  \"ExRaipur_Body_Price\":\"ExRaipur_Body_Price\",\n  \"ExRaipur_Model_Price\":\"ExRaipur_Model_Price\",\n  \"ExRaipur_Chasis_Price\":\"ExRaipur_Chasis_Price\",\n  \"ExJaipur_Body_Price\":\"ExJaipur_Body_Price\",\n  \"ExJaipur_Model_Price\":\"ExJaipur_Model_Price\",\n  \"ExJaipur_Chasis_Price\":\"ExJaipur_Chasis_Price\",\n  \"ExPanaji_Body_Price\":\"ExPanaji_Body_Price\",\n  \"ExPanaji_Model_Price\":\"ExPanaji_Model_Price\",\n  \"ExPanaji_Chasis_Price\":\"ExPanaji_Chasis_Price\",\n  \"Mfg_BuildIn\":\"Mfg_BuildIn\",\n  \"status\":\"ModelStatus\"\n}",
 									"type": "text",
 									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
 								},
 								{
 									"key": "details",
-									"value": "reward_vehicle_fuel_type, Operated_By, reward_vehicle_power, cubic_capacity, 4W, RELIANCE",
+									"value": "reward_vehicle_fuel_type, Operated_By, reward_vehicle_power, cubic_capacity, GCV, RELIANCE",
 									"type": "text",
 									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
 								},
 								{
 									"key": "vehicleType",
-									"value": "",
+									"value": "Veh_Type_Name, GCV",
 									"type": "text",
 									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
 								},
@@ -3026,6 +3026,12 @@
 									"value": "make_name, model_name, variance, cubic_capacity, reward_vehicle_fuel_type",
 									"type": "text",
 									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								},
+								{
+									"key": "fixedValues",
+									"value": "",
+									"type": "text",
+									"uuid": "710f9636-0468-4626-9c24-cbd2059652c9"
 								}
 							]
 						},
