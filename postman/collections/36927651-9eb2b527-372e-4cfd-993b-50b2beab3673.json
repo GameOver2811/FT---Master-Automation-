@@ -2983,19 +2983,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
-									"value": null
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/Nov'25/Reliance/CV/GCV/CV MASTER 03112025 1.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
-									"value": null
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/Nov'25/Reliance/CV/GCV/result_reliance_cv_masters.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
-									"value": null
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/Nov'25/Reliance/CV/GCV/live_reliance_cv_masters (2).csv"
 								},
 								{
 									"key": "mapping",
@@ -3029,7 +3029,7 @@
 								},
 								{
 									"key": "fixedValues",
-									"value": "",
+									"value": "reward_product_type, GCV",
 									"type": "text",
 									"uuid": "710f9636-0468-4626-9c24-cbd2059652c9"
 								}
