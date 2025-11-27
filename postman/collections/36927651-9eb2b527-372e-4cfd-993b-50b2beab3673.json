@@ -3011,7 +3011,7 @@
 								},
 								{
 									"key": "vehicleType",
-									"value": "Veh_Type_Name, GCV",
+									"value": "",
 									"type": "text",
 									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
 								},
