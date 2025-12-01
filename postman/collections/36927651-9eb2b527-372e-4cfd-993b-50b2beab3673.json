@@ -317,19 +317,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Magma/2W/TW_MHDI_VehicleModelMaster (1).xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/MAGMA/2W/2W_MAGMA_01-12-25.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Magma/2W/result_magma2w_vehicle_master_ - Copy.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/MAGMA/2W/result_magma2w_vehicle_master_ - Copy.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Magma/2W/live_magma2w_vehicle.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/MAGMA/2W/live_magma2w_vehicle_master.csv"
 								},
 								{
 									"key": "mapping",
@@ -360,6 +360,12 @@
 									"value": "manufacturer, vehiclemodel, txt_variant, cubiccapacity, reward_vehicle_fuel_type",
 									"type": "text",
 									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								},
+								{
+									"key": "fixedValues",
+									"value": "",
+									"type": "text",
+									"uuid": "0fdfed68-c6bd-42b5-9471-967678e9156b"
 								}
 							]
 						},
