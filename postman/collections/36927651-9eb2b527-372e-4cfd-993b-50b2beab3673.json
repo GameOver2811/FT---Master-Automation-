@@ -5059,19 +5059,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/United/4W/Master (5).xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/UNITED/4W/4W_UNITED_01-12-25.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/United/4W/result.xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/UNITED/4W/result.xlsx"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/United/4W/live.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/UNITED/4W/live.csv"
 								},
 								{
 									"key": "mapping",
@@ -5093,7 +5093,7 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"vehicle_ibb_code\", \"vehicle_active_status\":\"vehicle_ibb_code\", \"vehicle_make_code\":\"vehicle_ibb_code\"}",
+									"value": "{\"reward_vehicle_type\":\"vehicle_ibb_code\", \"vehicle_make_code\":\"vehicle_ibb_code\"}",
 									"type": "text",
 									"uuid": "692ff935-ae47-4245-a592-5cceaeb6693f"
 								},
@@ -5102,6 +5102,12 @@
 									"value": "vehicle_make, vehicle_model, vehicle_variant, vehicle_cubic_capacity, reward_vehicle_fuel_type",
 									"type": "text",
 									"uuid": "0b279db7-b48b-4297-aab7-f133d2b7882d"
+								},
+								{
+									"key": "fixedValues",
+									"value": "vehicle_active_status, 1",
+									"type": "text",
+									"uuid": "413b843c-3cc5-4f0f-9950-a452ed41c876"
 								}
 							]
 						},
