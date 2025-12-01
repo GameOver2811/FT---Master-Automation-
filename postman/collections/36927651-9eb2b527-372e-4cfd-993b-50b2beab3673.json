@@ -1979,19 +1979,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/CV/GCV/MMV.xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/FGI/GCV/GCV_FGI_01-12-25.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/CV/GCV/result_fgi_cv_varient_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/FGI/GCV/result_fgi_cv_varient_master.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/FGI/CV/GCV/live_fgi_cv_varient_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/FGI/GCV/live_gcv_fgi_cv_varient_master.csv"
 								},
 								{
 									"key": "mapping",
@@ -2022,6 +2022,12 @@
 									"value": "make, model_name, varient, veh_cc, reward_vehicle_fuel_type",
 									"type": "text",
 									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								},
+								{
+									"key": "fixedValues",
+									"value": "reward_product_type, GCV, effective_date, NULL, created_at, NULL, updated_at, NULL, veh_hp, NULL, veh_kw, NULL, make_code, NULL, model_code, NULL",
+									"type": "text",
+									"uuid": "c489336e-95ea-40e5-bb32-9c7e88084d16"
 								}
 							]
 						},
