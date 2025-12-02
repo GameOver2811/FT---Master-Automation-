@@ -5143,7 +5143,107 @@
 		},
 		{
 			"name": "IC-ZUNO",
-			"item": [],
+			"item": [
+				{
+					"name": "2W_HDFC Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "36927651-d9d2f51b-2aa8-4a07-a519-75fcf1d2804d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/FT @ Testing for Parser/master.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/FT @ Testing for Parser/result.xlsx"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/FT @ Testing for Parser/live.xlsx"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"manufacturer\": \"MANUFACTURER\",\n  \"vehiclemodelcode\": \"VEHICLEMODELCODE\",\n  \"vehiclemodel\": \"VEHICLEMODEL\",\n  \"numberofwheels\": \"NUMBEROFWHEELS\",\n  \"cubiccapacity\": \"CUBICCAPACITY\",\n  \"grossvehicleweight\": \"GROSSVEHICLEWEIGHT\",\n  \"seatingcapacity\": \"SEATINGCAPACITY\",\n  \"carryingcapacity\": \"CARRYINGCAPACITY\",\n  \"txt_fuel\": \"TXT_FUEL\",\n  \"txt_variant\": \"TXT_VARIANT\"\n}\n",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, TXT_FUEL, reward_vehicle_power, cubiccapacity",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				}
+			],
 			"id": "36927651-d9820620-9cf8-4812-ae08-5b0935da9d53"
 		},
 		{
