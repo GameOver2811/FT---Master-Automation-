@@ -30,14 +30,12 @@ import java.util.Optional;
 public class ExcelController {
 
     private final ExcelService excelService;
-    private final ExcelConverter excelConverter;
     private final XlsxToCsvSaxConverter xlsxToCsvSaxConverter;
     private final CsvToXlsxStreamingConverter csvToXlsxStreamingConverter;
 
     @Autowired
     public ExcelController(ExcelService excelService, ExcelConverter excelConverter, XlsxToCsvSaxConverter xlsxToCsvSaxConverter, CsvToXlsxStreamingConverter csvToXlsxStreamingConverter) {
         this.excelService = excelService;
-        this.excelConverter = excelConverter;
         this.xlsxToCsvSaxConverter = xlsxToCsvSaxConverter;
         this.csvToXlsxStreamingConverter = csvToXlsxStreamingConverter;
     }
@@ -51,7 +49,8 @@ public class ExcelController {
             @RequestParam("details") String[] details,
             @RequestParam("vehicleType") String[] vehicleType,
             @RequestParam("vlookupMapping") String vlookupMapping,
-            @RequestParam("dbParam") String[] dbParam
+            @RequestParam("dbParam") String[] dbParam,
+            @RequestParam("fixedValues") String[] fixedValues
     ) {
         try {
 
@@ -109,21 +108,16 @@ public class ExcelController {
             System.out.println(vlookupMapping);
 
             // Calling the service method
-            ByteArrayOutputStream outputStream = excelService.automateExcelPopulation(master, xlsxLive, xlsxResult, directMap, vlookupMap, details, vehicleType, dbParam);
+            ByteArrayOutputStream outputStream = excelService.automateExcelPopulation(master, xlsxLive, xlsxResult, directMap, vlookupMap, details, vehicleType, dbParam, fixedValues);
 
             // Getting the original filename or using a default value
             String originalFileName = Optional.ofNullable(result.getOriginalFilename()).orElse("result_template.xlsx");
-
-            // Ensuring .xlsx extension
-//            if (!originalFileName.endsWith(".xlsx")) {
-//                originalFileName = originalFileName + ".xlsx";
-//            }
 
             // Timestamp for uniqueness
             String todayDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
 
             // Cleaning filename
-            String safeFileName = "auto_generated_"+originalFileName.replaceAll("[^a-zA-Z0-9._-]", "_"+todayDate);
+            String safeFileName = "auto_generated_"+ details[4] + "_" + details[5] + "_" + todayDate + ".csv";
 
             // Preparing download response
             MultipartFile xlsxOutputFile = new MockMultipartFile(
@@ -140,7 +134,7 @@ public class ExcelController {
 
             return ResponseEntity.ok()
                     .header(HttpHeaders.CONTENT_DISPOSITION,
-                            "attachment; filename=" + safeFileName.replace(".xlsx", "_" + ".csv"))
+                            "attachment; filename=" + safeFileName)
                     .contentType(MediaType.parseMediaType("text/csv"))
                     .body(csvOutputFile.getBytes());
 

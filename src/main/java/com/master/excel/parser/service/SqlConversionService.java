@@ -7,6 +7,7 @@ import org.apache.commons.csv.CSVRecord;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+@Service
 public class SqlConversionService {
     public ResponseEntity<?> getSqlFromCsv(MultipartFile file) {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()));
