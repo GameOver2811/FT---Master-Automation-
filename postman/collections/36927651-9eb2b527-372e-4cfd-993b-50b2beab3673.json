@@ -5260,6 +5260,123 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "2W_ZUNO Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-cb908fa2-b6fb-4268-85c1-57cff47664dd",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/ZUNO - Live Pending/2W/2W_ZUNO_01-12-25.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/ZUNO - Live Pending/2W/result_zuno_tw_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/ZUNO - Live Pending/2W/live_zuno_tw_master (2).csv"
+								},
+								{
+									"key": "mapping",
+									"value": "  {\n    \"vehicle_code\":\"ZZMASTERCODE_CD\",\n    \"make\":\"ZZMAKE_CD\",\n    \"model\":\"ZZMODEL_CD\",\n    \"varient\":\"ZZVARIANT_CD\",\n    \"cubic_capacity\":\"ZZCAPACITY_VL\",\n    \"seating_capacity\":\"ZZSEATNR_VL\",\n    \"fuel_type\":\"ZZFUELTYP_CD\"\n  }",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, ZZFUELTYP_CD, reward_vehicle_power, cubic_capacity, 2W, ZUNO",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "de827938-4fd3-4f28-ae7b-7e785b72162d"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"type": "text",
+									"uuid": "9f244398-cbe5-4b26-88cc-42f7e27955d7"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model, variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "fixedValues",
+									"value": "",
+									"type": "text",
+									"uuid": "fb7b14b1-70db-4b4a-a82e-132a13445f04"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"id": "36927651-d9820620-9cf8-4812-ae08-5b0935da9d53"
