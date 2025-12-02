@@ -5145,7 +5145,7 @@
 			"name": "IC-ZUNO",
 			"item": [
 				{
-					"name": "2W_HDFC Copy",
+					"name": "2W_ZUNO",
 					"event": [
 						{
 							"listen": "test",
