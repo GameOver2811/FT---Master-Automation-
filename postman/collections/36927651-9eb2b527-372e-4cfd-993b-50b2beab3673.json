@@ -5311,19 +5311,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/ZUNO - Live Pending/2W/2W_ZUNO_01-12-25.xlsx"
+									"value": null
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/ZUNO - Live Pending/2W/result_zuno_tw_master.csv"
+									"value": null
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/ZUNO - Live Pending/2W/live_zuno_tw_master (2).csv"
+									"value": null
 								},
 								{
 									"key": "mapping",
@@ -5333,7 +5333,7 @@
 								},
 								{
 									"key": "details",
-									"value": "reward_vehicle_fuel_type, ZZFUELTYP_CD, reward_vehicle_power, cubic_capacity, 2W, ZUNO",
+									"value": "reward_vehicle_fuel_type, ZZFUELTYP_CD, reward_vehicle_power, cubic_capacity, 4W, ZUNO",
 									"type": "text",
 									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
 								},
