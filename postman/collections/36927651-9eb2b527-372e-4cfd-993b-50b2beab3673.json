@@ -5175,7 +5175,8 @@
 									"pm.visualizer.set(template, constructVisualizerPayload());"
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -5193,38 +5194,55 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
-									"src": "/C:/Users/HP/Desktop/FT @ Testing for Parser/master.xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/ZUNO - Live Pending/2W/2W_ZUNO_01-12-25.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
-									"src": "/C:/Users/HP/Desktop/FT @ Testing for Parser/result.xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/ZUNO - Live Pending/2W/result_zuno_tw_master.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
-									"src": "/C:/Users/HP/Desktop/FT @ Testing for Parser/live.xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/ZUNO - Live Pending/2W/live_zuno_tw_master (2).csv"
 								},
 								{
 									"key": "mapping",
-									"value": "{\n  \"manufacturer\": \"MANUFACTURER\",\n  \"vehiclemodelcode\": \"VEHICLEMODELCODE\",\n  \"vehiclemodel\": \"VEHICLEMODEL\",\n  \"numberofwheels\": \"NUMBEROFWHEELS\",\n  \"cubiccapacity\": \"CUBICCAPACITY\",\n  \"grossvehicleweight\": \"GROSSVEHICLEWEIGHT\",\n  \"seatingcapacity\": \"SEATINGCAPACITY\",\n  \"carryingcapacity\": \"CARRYINGCAPACITY\",\n  \"txt_fuel\": \"TXT_FUEL\",\n  \"txt_variant\": \"TXT_VARIANT\"\n}\n",
+									"value": "  {\n    \"vehicle_code\":\"ZZMASTERCODE_CD\",\n    \"make\":\"ZZMAKE_CD\",\n    \"model\":\"ZZMODEL_CD\",\n    \"varient\":\"ZZVARIANT_CD\",\n    \"cubic_capacity\":\"ZZCAPACITY_VL\",\n    \"seating_capacity\":\"ZZSEATNR_VL\",\n    \"fuel_type\":\"ZZFUELTYP_CD\"\n  }",
 									"type": "text",
 									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
 								},
 								{
 									"key": "details",
-									"value": "reward_vehicle_fuel_type, TXT_FUEL, reward_vehicle_power, cubiccapacity",
+									"value": "reward_vehicle_fuel_type, ZZFUELTYP_CD, reward_vehicle_power, cubic_capacity, 2W, ZUNO",
 									"type": "text",
 									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
 								},
 								{
-									"key": "",
+									"key": "vehicleType",
 									"value": "",
 									"type": "text",
-									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847",
-									"disabled": true
+									"uuid": "de827938-4fd3-4f28-ae7b-7e785b72162d"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"type": "text",
+									"uuid": "9f244398-cbe5-4b26-88cc-42f7e27955d7"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model, variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "fixedValues",
+									"value": "",
+									"type": "text",
+									"uuid": "fb7b14b1-70db-4b4a-a82e-132a13445f04"
 								}
 							]
 						},
