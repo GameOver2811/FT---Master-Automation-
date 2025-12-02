@@ -5327,7 +5327,7 @@
 								},
 								{
 									"key": "mapping",
-									"value": "  {\n    \"vehicle_code\":\"ZZMASTERCODE_CD\",\n    \"make\":\"ZZMAKE_CD\",\n    \"model\":\"ZZMODEL_CD\",\n    \"varient\":\"ZZVARIANT_CD\",\n    \"cubic_capacity\":\"ZZCAPACITY_VL\",\n    \"seating_capacity\":\"ZZSEATNR_VL\",\n    \"fuel_type\":\"ZZFUELTYP_CD\"\n  }",
+									"value": "  {\n    \"vehicle_code\":\"ZZMASTERCODE_CD\",\n    \"make\":\"ZZMAKE_CD\",\n    \"model\":\"ZZMODEL_CD\",\n    \"varient\":\"ZZVARIANT_CD\",\n    \"cubic_capacity\":\"ZZCAPACITY_VL\",\n    \"seating_capacity\":\"ZZSEATNR_VL\",\n    \"fuel_type\":\"ZZFUELTYP_CD\",\n    \"revised_segment\":\"\",\n    \"exshowroom_price\":\"ZZEXSHWRUMPRC_AM\"\n  }",
 									"type": "text",
 									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
 								},
