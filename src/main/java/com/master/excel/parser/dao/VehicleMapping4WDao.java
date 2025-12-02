@@ -1,9 +1,12 @@
 package com.master.excel.parser.dao;
 
+import com.master.excel.parser.dto.MakeModelCode;
 import com.master.excel.parser.dto.VehicleMapping4W;
 import com.master.excel.parser.repository.VehicleMapping4WRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class VehicleMapping4WDao {
@@ -18,7 +21,6 @@ public class VehicleMapping4WDao {
                 return;
             }
             vehicleMapping4WRepository.save(data);
-            // System.out.println("Mapping table updated successfully for : " + data.getVehicleModelString() + " -> " + data.getRewardVehicleType());
             return;
         } catch (Exception e) {
             System.out.println("Error saving record for " + data.getVehicleModelString() + " -> " + data.getRewardVehicleType() + "\n error_txt: " + e.getMessage());
@@ -56,6 +58,10 @@ public class VehicleMapping4WDao {
                 .findByVehicleModelString(vehicleModelString)
                 .map(VehicleMapping4W::getVehicleFuel)
                 .orElse(null);
+    }
+
+    public List<MakeModelCode> getMakeModelCode(){
+        return vehicleMapping4WRepository.findAllWithJoin();
     }
 
 }

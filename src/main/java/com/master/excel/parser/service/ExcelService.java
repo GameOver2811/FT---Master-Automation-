@@ -1,8 +1,10 @@
 package com.master.excel.parser.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.master.excel.parser.dao.VehicleMapping2WDao;
 import com.master.excel.parser.dao.VehicleMapping4WDao;
 import com.master.excel.parser.dao.VehicleMappingCVDao;
+import com.master.excel.parser.dto.MakeModelCode;
 import com.master.excel.parser.dto.VehicleMapping2W;
 import com.master.excel.parser.dto.VehicleMapping4W;
 import com.master.excel.parser.dto.VehicleMappingCV;
@@ -26,6 +28,7 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -40,6 +43,11 @@ public class ExcelService {
     @Autowired
     VehicleMapping4WDao vehicleMapping4WDao;
 
+    @Autowired
+    GeminiService geminiService;
+
+    private final ObjectMapper mapper = new ObjectMapper();
+
     public ByteArrayOutputStream automateExcelPopulation(
             MultipartFile masterFile,
             MultipartFile liveFile,
@@ -48,7 +56,46 @@ public class ExcelService {
             Map<String, String> vlookupMap,
             String[] details,
             String[] vehicleType,
-            String[] dbParam) throws Exception {
+            String[] dbParam,
+            String[] fixedValues
+            ) throws Exception {
+
+        // Load Make Model Code for 4W
+        List<MakeModelCode> list = new ArrayList<>();
+        if(details[4].equals("4W"))
+             list = vehicleMapping4WDao.getMakeModelCode();
+        else if (details[4].equals("2W")) {
+            list = vehicleMapping2WDao.getMakeModelCode();
+        } else {
+            list = vehicleMappingCVDao.getMakeModelCode();
+        }
+
+        Map<String, MakeModelCode> makeCodeMap = new HashMap<>();
+        Map<String, MakeModelCode> modelCodeMap = new HashMap<>();
+        makeCodeMap =
+                list.stream().collect(Collectors.toMap(
+                        dto -> dto.getMakeName().toLowerCase().trim(),
+                        dto -> dto,
+                        (oldVal, newVal) -> {
+                            if (isMakeCodeBlank(oldVal)) {
+                                return newVal;
+                            }
+                            return oldVal;
+                        }
+                        ));
+
+        modelCodeMap = list.stream()
+                .collect(Collectors.toMap(
+                        dto -> dto.getMakeName().toLowerCase().trim() + " | " + dto.getModelName().toLowerCase().trim(),
+                        dto -> dto,
+                        (oldVal, newVal) -> {
+                            if(isModelCodeBlank(oldVal)) {
+                                return newVal;
+                            }
+                            return oldVal;
+                        }
+                        ));
+
 
         // ----------------------------
         // Step 1: Load result template (small file)
@@ -208,6 +255,7 @@ public class ExcelService {
         // Step 4: Process rows & fill result sheet
         // ----------------------------
         int rowNum = 1;
+//        ArrayList<Map<String, String>> bundleForAI = new ArrayList<>();
         for (Map<String, String> masterRow : masterRows) {
 
             if(vehicleType.length > 0) {
@@ -251,8 +299,9 @@ public class ExcelService {
 
             // vlookup mappings
             // Yaha bhi development chal raha
-            Map<String, String> rowVlookupValues = new HashMap<>();
+            // Map<String, String> rowVlookupValues = new HashMap<>();
             // yaha tak
+
             for (Map.Entry<String, String> e : vlookupMap.entrySet()) {
                 String rewardHeader = e.getKey().toLowerCase();
                 String modelHeader = e.getValue().toLowerCase();
@@ -265,9 +314,40 @@ public class ExcelService {
                     String modelCode = getCellValueAsString(modelCodeCell).trim();
                     String valueFromMap = currentMapping.getOrDefault(modelCode, "#N/A");
 
-                    String safeValue = ("reward_vehicle_type".equalsIgnoreCase(rewardHeader))
-                            ? handleRewardVehicleType(resultRow, resultIndexes, dbParam, modelCode, valueFromMap, details)
-                            : valueFromMap;
+                    String safeValue = valueFromMap;
+                    if("#N/A".equalsIgnoreCase(valueFromMap)){
+                        if(("reward_vehicle_type".equalsIgnoreCase(rewardHeader))){
+                            safeValue = handleRewardVehicleType(resultRow, resultIndexes, dbParam, modelCode, valueFromMap, details);
+
+                        }
+//                        else if("ft_make_code".equalsIgnoreCase(rewardHeader)) {
+//                            Cell makeCell = resultRow.getCell(resultIndexes.get(dbParam[0].toLowerCase()));
+//
+//                            String makeName = getCellValueAsString(makeCell).toLowerCase().trim();
+//
+//                            MakeModelCode dto = makeCodeMap.get(makeName);
+//                            if (dto != null)
+//                                System.out.println(makeName + " -> " + dto.getMakeName());
+//
+//                            safeValue = (dto != null && dto.getMakeCode() != null)
+//                                    ? dto.getMakeCode().toString()
+//                                    : "NULL";
+//                        } else if ("ft_model_code".equalsIgnoreCase(rewardHeader)) {
+//                            Cell makeCell = resultRow.getCell(resultIndexes.get(dbParam[0].toLowerCase()));
+//                            Cell modelCell = resultRow.getCell(resultIndexes.get(dbParam[1].toLowerCase()));
+//
+//                            String makeName = getCellValueAsString(makeCell).toLowerCase().trim();
+//                            String modelName = getCellValueAsString(modelCell).toLowerCase().trim();
+//
+//                            System.out.println(makeName + " : " + modelName);
+//
+//                            MakeModelCode dto = modelCodeMap.get(makeName + " | " + modelName);
+//
+//                            safeValue = (dto != null && dto.getModelCode() != null)
+//                                    ? dto.getModelCode().toString()
+//                                    : "NULL";
+//                        }
+                    }
 
                     // Yaha chal raha development abhi
 /*
@@ -291,6 +371,19 @@ public class ExcelService {
                     // Yaha tak
 
  */
+                    // Call Gemini if Reward_vehicle_type is not found in previous_live_master and current master
+
+//                    if (safeValue.equals("#N/A") && (details[4].equals("4W") || details[4].equals("2W"))) {
+//                        String prompt = getPrompt(details[4], masterRow);
+//                        System.out.println("Ye value fetch ki hai AI se...");
+//                        bundleForAI.add(masterRow);
+//                        try{
+//                            safeValue = geminiService.askGemini(prompt, "Single");
+//                            handleRewardVehicleType(resultRow, resultIndexes, dbParam, modelCode, safeValue, details);
+//                        } catch (Exception ex) {
+//                            System.out.println("Error from Gemini API: " + ex.getMessage());
+//                        }
+//                    }
 
                     resultRow.createCell(resultIndexes.get(rewardHeader)).setCellValue(safeValue);
                 }
@@ -320,7 +413,60 @@ public class ExcelService {
                     }
                 }
             }
+            // Filling hardcore values
+            for(int i = 0; (i + 1) < fixedValues.length; i += 2) {
+                resultRow.createCell(resultIndexes.get(fixedValues[i])).setCellValue(fixedValues[i+1]);
+            }
+
+            // Filling ft_make and ft_model Code
+            if(resultIndexes.containsKey("ft_make_code")) {
+
+                Cell makeCell = resultRow.getCell(resultIndexes.get(dbParam[0].toLowerCase()));
+
+                String makeName = getCellValueAsString(makeCell).toLowerCase().trim();
+
+                MakeModelCode dto = makeCodeMap.get(makeName);
+                if (dto != null)
+                    System.out.println(makeName + " -> " + dto.getMakeName());
+
+                String makeCode = (dto != null && dto.getMakeCode() != null)
+                        ? dto.getMakeCode().toString()
+                        : "NULL";
+
+                resultRow.createCell(resultIndexes.get("ft_make_code")).setCellValue(makeCode);
+            }
+
+            if(resultIndexes.containsKey("ft_model_code")) {
+                Cell makeCell = resultRow.getCell(resultIndexes.get(dbParam[0].toLowerCase()));
+                Cell modelCell = resultRow.getCell(resultIndexes.get(dbParam[1].toLowerCase()));
+
+                String makeName = getCellValueAsString(makeCell).toLowerCase().trim();
+                String modelName = getCellValueAsString(modelCell).toLowerCase().trim();
+
+                System.out.println(makeName + " : " + modelName);
+
+                MakeModelCode dto = modelCodeMap.get(makeName + " | " + modelName);
+
+                String modelCode = (dto != null && dto.getModelCode() != null)
+                        ? dto.getModelCode().toString()
+                        : "NULL";
+
+                resultRow.createCell(resultIndexes.get("ft_model_code")).setCellValue(modelCode);
+            }
         }
+
+
+        // Parsing Gemini response into Row Mapping
+//        String batchPrompt = getBatchPrompt(details[4], bundleForAI);
+//        String resultJson = geminiService.askGemini(batchPrompt, "Bundle");
+//        resultJson = sanitizeGeminiJson(resultJson);
+//        List<Map<String,Object>> outRows = mapper.readValue(
+//                resultJson,
+//                new TypeReference<List<Map<String,Object>>>(){}
+//        );
+
+        // Creating sheet for AI fetched data
+//        writeAISheet(resultWb, outRows);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         resultWb.write(out);
@@ -511,6 +657,193 @@ public class ExcelService {
 
     // --- Helpers ---
 
+    private Sheet getOrCreateSheet(Workbook wb) {
+        Sheet sheet = wb.getSheet("AI_Classifications");
+        if (sheet != null) {
+            return sheet; // already exists → use it
+        }
+        return wb.createSheet("AI_Classifications");
+    }
+
+
+    private void writeAISheet(Workbook resultWb, List<Map<String,Object>> outRows) {
+
+        Sheet aiSheet = getOrCreateSheet(resultWb);
+
+        System.out.println("AI Sheet ban rahi hai....");
+
+        if (outRows == null || outRows.isEmpty()) {
+            // create only header with basic columns
+            Row header = aiSheet.createRow(0);
+            header.createCell(0).setCellValue("No AI Rows Found");
+            return;
+        }
+
+        // Collect all keys from "input"
+        Set<String> headerSet = new LinkedHashSet<>();
+        for (Map<String,Object> row : outRows) {
+            Map<String,Object> inputMap = (Map<String,Object>) row.get("input");
+            if (inputMap != null) headerSet.addAll(inputMap.keySet());
+        }
+        headerSet.add("reward_vehicle_type"); // Last column
+
+        // Convert to list
+        List<String> headers = new ArrayList<>(headerSet);
+
+        // --- Write Header Row ---
+        Row headerRow = aiSheet.createRow(0);
+        for (int i = 0; i < headers.size(); i++) {
+            headerRow.createCell(i).setCellValue(headers.get(i));
+        }
+
+        // --- Write Data Rows ---
+        int r = 1;
+        for (Map<String,Object> rowData : outRows) {
+            Row excelRow = aiSheet.createRow(r++);
+
+            Map<String,Object> inputMap = (Map<String,Object>) rowData.get("input");
+
+            for (int c = 0; c < headers.size(); c++) {
+                String h = headers.get(c);
+                String value = "";
+
+                if ("reward_vehicle_type".equals(h)) {
+                    value = String.valueOf(rowData.get("reward_vehicle_type"));
+                } else if (inputMap != null && inputMap.containsKey(h)) {
+                    value = String.valueOf(inputMap.get(h));
+                }
+
+                excelRow.createCell(c).setCellValue(value);
+            }
+        }
+
+        // Auto-size
+        for (int i = 0; i < headers.size(); i++) {
+            aiSheet.autoSizeColumn(i);
+        }
+    }
+
+
+    private String getPrompt(String type, Map<String, String> row) {
+        String mmv = buildStructuredRow(row);
+        String carPrompt = "You will be given four inputs: make , model , variant , fuel type , and engine CC of a vehicle. \n" +
+                "Your job is to determine the approximate on-road cost of the vehicle in India using general automotive knowledge. \n" +
+                "After estimating the cost, respond with ONLY ONE OF THE FOLLOWING TEXT VALUES:\n" +
+                "\n" +
+                "\"HEV\"  → if the estimated on-road price is MORE than 50 lakh INR  \n" +
+                "\"NONHEV\" → if the estimated on-road price is LESS than or equal to 50 lakh INR\n" +
+                "\n" + "Find Vehicle details = " + mmv + " \n" +
+                "Return strictly and only one of the two texts with no explanations, no extra words, and no formatting.\n";
+        String bikePrompt = "You will be given three inputs: make, model, and variant of a two-wheeler sold in India.\n" +
+                "Determine whether the vehicle is a \"Bike\" or a \"Scooter\" using general automotive knowledge.\n" +
+                "\n" +
+                "Return ONLY ONE of the following two text values:\n" +
+                "\n" +
+                "\"Bike\"\n" +
+                "\"Scooter\"\n" +
+                "\n" + "Find Vehicle details = " + mmv + " \n" +
+                "Do not add explanations, extra words, punctuation, or formatting. Respond with exactly one word only.\n";
+
+        if ("2W".equals(type)) return bikePrompt;
+        else if ("4W".equals(type)) return carPrompt;
+        else return "";
+
+    }
+
+    private String buildStructuredRowList(List<Map<String, String>> rows) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Vehicle Data List:\n");
+
+        int index = 1;
+        for (Map<String, String> row : rows) {
+            sb.append(index++).append(". {\n");
+            for (Map.Entry<String, String> e : row.entrySet()) {
+                sb.append("  ").append(e.getKey()).append(": ")
+                        .append(e.getValue() == null ? "" : e.getValue().trim())
+                        .append("\n");
+            }
+            sb.append("}\n\n");
+        }
+        return sb.toString();
+    }
+
+    private String sanitizeGeminiJson(String raw) {
+
+        System.out.println("Gemini Raw resposne for bundle  : " + raw);
+
+        if (raw == null) return "";
+
+        // Remove markdown backticks
+        raw = raw.replace("```json", "")
+                .replace("```", "");
+
+        // Remove weird control characters
+        raw = raw.replaceAll("[\\x00-\\x1F&&[^\\n\\t]]", "");
+
+        // Trim spaces
+        raw = raw.trim();
+
+        // Extract the JSON array if model wrapped it in text
+        int start = raw.indexOf('[');
+        int end = raw.lastIndexOf(']');
+        if (start >= 0 && end >= 0 && end > start) {
+            raw = raw.substring(start, end + 1);
+        }
+
+        return raw;
+    }
+
+    private boolean isModelCodeBlank(MakeModelCode dto) {
+        return dto.getModelCode() == null || dto.getModelCode().toString().trim().isEmpty();
+    }
+
+    private boolean isMakeCodeBlank(MakeModelCode dto) {
+        return dto.getMakeCode() == null || dto.getMakeCode().toString().trim().isEmpty();
+    }
+
+    private String getBatchPrompt(String type, List<Map<String, String>> rows) {
+
+        String structuredRows = buildStructuredRowList(rows);
+
+        String rules =
+                """
+                OUTPUT RULES (IMPORTANT):
+                - Output MUST be ONLY a valid JSON array.
+                - Do NOT include any explanation, text, comments, backticks, markdown, or notes.
+                - Do NOT include trailing commas.
+                - Do NOT include extra line breaks in keys or values.
+                - All keys MUST be enclosed in double quotes.
+                - All string values MUST be in double quotes.
+                - JSON must be fully valid and parsable by Jackson.
+    
+                JSON FORMAT:
+                [
+                  {
+                    "input": { ...original row... },
+                    "reward_vehicle_type": "HEV" | "NONHEV" | "Bike" | "Scooter"
+                  }
+                ]
+                """;
+
+        String carRule =
+                """
+                Classification rule for 4W:
+                - If estimated on-road price in India > 50 lakh INR → "HEV"
+                - Else → "NONHEV"
+                """;
+
+        String bikeRule =
+                """
+                Classification rule for 2W:
+                - If it is a motorcycle → "Bike"
+                - If it is a scooter → "Scooter"
+                """;
+
+        return structuredRows + "\n" + rules + "\n" + (type.equals("4W") ? carRule : bikeRule);
+    }
+
+
+
     private Map<String, Integer> getColumnIndexes(Row headerRow) {
         Map<String, Integer> map = new HashMap<>();
         if (headerRow == null) return map;
@@ -543,6 +876,22 @@ public class ExcelService {
         return col - 1;
     }
 
+    private String buildStructuredRow(Map<String, String> row) {
+        StringBuilder sb = new StringBuilder();
+//        System.out.println(row);
+        sb.append("Vehicle Data:\n");
+
+        for (Map.Entry<String, String> entry : row.entrySet()) {
+            sb.append(entry.getKey())
+                    .append(": ")
+                    .append(entry.getValue() == null ? "" : entry.getValue().trim())
+                    .append("\n");
+        }
+
+        return sb.toString();
+    }
+
+
     private Integer findHeaderIndex(Map<Integer, String> headers, String name) {
         return headers.entrySet().stream()
                 .filter(e -> e.getValue().equalsIgnoreCase(name))
@@ -554,8 +903,8 @@ public class ExcelService {
         return switch (fuelType.toUpperCase()) {
             case "1", "PETROL", "PETROL WITH LPG", "PETROL WITH CNG", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)", "PETROL P", "PETROL G", "PETROL+LPG", "P" -> "Petrol";
             case "2", "DIESEL", "DIESEL T", "DIESEL C", "DH", "DIESEL HYBRID(DH)", "DIESEL(D)", "DIESEL P", "DIESEL G", "D" -> "Diesel";
-            case "8", "3", "CNG", "CH", "CNG(C)", "C" -> "CNG";
-            case "9", "4", "LPG" -> "LPG";
+            case "8", "3", "CNG", "CH", "CNG(C)", "C", "LPG/CNG" -> "CNG";
+            case "9", "4", "LPG", "LPG(L)" -> "LPG";
             case "LNG" -> "LNG";
             case "7", "ELECTRIC", "ELECTRICAL", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C", "ELECTRIC HYBRID", "BATTERY(B)", "BATTERY OPERATED", "ELECTRIC P", "B" -> "Electric";
             case "5", "HYBRID", "HYBRID(H)", "MILD HYBRID", "PLUG IN HYBRID", "HYBRID ELECTRIC VEHICLE" -> "Hybrid";
