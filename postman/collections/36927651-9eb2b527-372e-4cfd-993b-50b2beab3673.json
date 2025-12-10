@@ -4422,19 +4422,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/USGI MAKE MODEL MASTER - AS 0N 03.11.25.xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/USGI/10-12-25_USGI_Master.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/result_usgi_vehicle_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/USGI/result_usgi_vehicle_master.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/USGI/live_usgi_vehicle_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/USGI/live_usgi_vehicle_master.csv"
 								},
 								{
 									"key": "mapping",
@@ -4465,6 +4465,12 @@
 									"value": "manufacturer, vehiclemodel, cubiccapacity, reward_vehicle_fuel_type",
 									"type": "text",
 									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								},
+								{
+									"key": "fixedValues",
+									"value": "reward_product_type, 2W",
+									"type": "text",
+									"uuid": "86b66ffd-2d51-4099-a6da-4cc467730462"
 								}
 							]
 						},
