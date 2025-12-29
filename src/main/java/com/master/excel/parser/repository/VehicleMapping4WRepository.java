@@ -13,6 +13,6 @@ import java.util.Optional;
 public interface VehicleMapping4WRepository extends JpaRepository<VehicleMapping4W, Integer> {
     Optional<VehicleMapping4W> findByVehicleModelString(String vehicleModelString);
 
-    @NativeQuery("SELECT m.id, m.make_name, mk.id as make_code, m.name AS model_name, m.id as model_code FROM master_car_model AS m JOIN master_car_make AS mk ON m.make_id = mk.id")
+    @NativeQuery("SELECT m.id, m.make_name, mk.id as make_code, m.name AS model_name, m.id as model_code FROM master_car_model AS m JOIN master_car_make AS mk ON m.make_id = mk.id where m.ic_type is null and mk.ic_type is null")
     List<MakeModelCode> findAllWithJoin();
 }
