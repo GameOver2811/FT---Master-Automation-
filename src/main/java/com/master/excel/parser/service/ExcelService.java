@@ -8,6 +8,7 @@ import com.master.excel.parser.dto.MakeModelCode;
 import com.master.excel.parser.dto.VehicleMapping2W;
 import com.master.excel.parser.dto.VehicleMapping4W;
 import com.master.excel.parser.dto.VehicleMappingCV;
+import com.master.excel.parser.exception.VehicleTypeUndefined;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.openxml4j.opc.PackageAccess;
 import org.apache.poi.ss.usermodel.*;
@@ -260,6 +261,15 @@ public class ExcelService {
 
             if(vehicleType.length > 0) {
                 String vehicleTypeKey = vehicleType[0].trim().toLowerCase();
+
+                // Check for blank value in column.
+                if(masterRow.get(vehicleTypeKey) == null
+                        || masterRow.get(vehicleTypeKey).isEmpty()
+                        || masterRow.get(vehicleTypeKey).isBlank()
+                        || masterRow.get(vehicleTypeKey).equalsIgnoreCase("")) {
+                    throw new VehicleTypeUndefined("Vehicle type columns are blank...");
+                }
+
                 if (!masterRow.containsKey(vehicleTypeKey)) continue;
                 boolean hasMatchingType = false;
                 for (int i = 1; i < vehicleType.length; i++) {
@@ -314,13 +324,13 @@ public class ExcelService {
                     String modelCode = getCellValueAsString(modelCodeCell).trim();
                     String valueFromMap = currentMapping.getOrDefault(modelCode, "#N/A");
 
-                    String safeValue = valueFromMap;
-                    if("#N/A".equalsIgnoreCase(valueFromMap)){
-                        if(("reward_vehicle_type".equalsIgnoreCase(rewardHeader))){
-                            safeValue = handleRewardVehicleType(resultRow, resultIndexes, dbParam, modelCode, valueFromMap, details);
+                    String safeValue = ("reward_vehicle_type".equalsIgnoreCase(rewardHeader))
+                            ? handleRewardVehicleType(resultRow, resultIndexes, dbParam, modelCode, valueFromMap, details)
+                            : valueFromMap;
 
-                        }
-//                        else if("ft_make_code".equalsIgnoreCase(rewardHeader)) {
+//                   if("NULL".equalsIgnoreCase(valueFromMap) || "#N/A".equalsIgnoreCase(valueFromMap)){
+
+//                        if("ft_make_code".equalsIgnoreCase(rewardHeader)) {
 //                            Cell makeCell = resultRow.getCell(resultIndexes.get(dbParam[0].toLowerCase()));
 //
 //                            String makeName = getCellValueAsString(makeCell).toLowerCase().trim();
@@ -347,7 +357,7 @@ public class ExcelService {
 //                                    ? dto.getModelCode().toString()
 //                                    : "NULL";
 //                        }
-                    }
+//                    }
 
                     // Yaha chal raha development abhi
 /*
@@ -420,6 +430,11 @@ public class ExcelService {
 
             // Filling ft_make and ft_model Code
             if(resultIndexes.containsKey("ft_make_code")) {
+
+                System.out.println("dbParam[0] = " + dbParam[0]);
+                System.out.println("Looking for column = " + dbParam[0].toLowerCase());
+                System.out.println("Available resultIndexes = " + resultIndexes);
+
 
                 Cell makeCell = resultRow.getCell(resultIndexes.get(dbParam[0].toLowerCase()));
 
