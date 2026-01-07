@@ -5397,7 +5397,7 @@
 			"name": "IC-IFFCO",
 			"item": [
 				{
-					"name": "4W_HDFC Copy",
+					"name": "4W_HDFC",
 					"event": [
 						{
 							"listen": "test",
