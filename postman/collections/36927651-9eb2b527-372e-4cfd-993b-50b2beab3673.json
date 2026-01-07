@@ -5446,29 +5446,29 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/HDFC/4W/03-01-25_4W_HDFC_Master.xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/IFFCO/4W/07-01-25_4W_IFFCO_Master.csv"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/HDFC/4W/result_hdfc_car_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/IFFCO/4W/result_iffco_vehicle_maste.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/HDFC/4W/live_4W_HDFC.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/IFFCO/4W/result_iffco_vehicle_maste.csv"
 								},
 								{
 									"key": "mapping",
-									"value": "{\n  \"vehicle_code\":\"VEHICLEMODELCODE\",\n  \"vehicle_make\":\"MANUFACTURER\",\n  \"vehicle_model\":\"VEHICLEMODEL\",\n  \"vehicle_variant\":\"TXT_VARIANT\",\n  \"no_of_wheels\":\"NUMBEROFWHEELS\",\n  \"cubic_capacity\":\"CUBICCAPACITY\",\n  \"gross_weight\":\"GROSSVEHICLEWEIGHT\",\n  \"seating_capacity\":\"SEATINGCAPACITY\",\n  \"carrying_capacity\":\"CARRYINGCAPACITY\",\n  \"fuel_type\":\"TXT_FUEL\"\n}",
+									"value": "{\n  \"vehicle_type\":\"contractType\",\n  \"vehicle_code\":\"makeCode\",\n  \"vehicle_make\":\"manufacture\",\n  \"vehicle_model\":\"model\",\n  \"vehicle_variant\":\"variant\",\n  \"vehicle_fuel_type\":\"fuelType\",\n  \"vehicle_cubic_capacity\":\"cc\",\n  \"vehicle_seating_capacity\":\"seatingCapacity\",\n  \"vehicle_from_year\":\"fromYear\",\n  \"vehicle_to_year\":\"toYear\"\n}",
 									"type": "text",
 									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
 								},
 								{
 									"key": "details",
-									"value": "reward_vehicle_fuel_type, TXT_FUEL, reward_vehicle_power, cubic_capacity, 4W, HDFC",
+									"value": "reward_vehicle_fuel_type, fuelType, reward_vehicle_power, vehicle_cubic_capacity, 4W, IFFCO",
 									"type": "text",
 									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
 								},
@@ -5480,19 +5480,19 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"vehicle_code\", \"ft_make_code\":\"vehicle_make\"}",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\", \"ft_make_code\":\"vehicle_make\", \"ft_model_code\":\"vehicle_model\"}",
 									"type": "text",
 									"uuid": "f81ec40d-90d0-45f7-9d84-cfe829417b44"
 								},
 								{
 									"key": "dbParam",
-									"value": "vehicle_make, vehicle_model, vehicle_variant, cubic_capacity, reward_vehicle_fuel_type",
+									"value": "vehicle_make, vehicle_model, vehicle_variant, vehicle_cubic_capacity, reward_vehicle_fuel_type",
 									"type": "text",
 									"uuid": "70e3ff92-a583-4c12-9448-0c01a5592bb7"
 								},
 								{
 									"key": "fixedValues",
-									"value": "",
+									"value": "vehicle_active_status, 1",
 									"type": "text",
 									"uuid": "72bd7899-8753-42fc-9c0a-af2d21eefc41"
 								}
