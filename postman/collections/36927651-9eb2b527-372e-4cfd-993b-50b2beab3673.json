@@ -157,19 +157,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/HDFC/4W/hdfc_car_master.xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/HDFC/4W/03-01-25_4W_HDFC_Master.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/HDFC/4W/result_hdfc_car_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/HDFC/4W/result_hdfc_car_master.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/HDFC/4W/live_hdfc_car_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/HDFC/4W/live_4W_HDFC.csv"
 								},
 								{
 									"key": "mapping",
@@ -191,7 +191,7 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\", \"ft_make_code\":\"vehicle_make\"}",
 									"type": "text",
 									"uuid": "f81ec40d-90d0-45f7-9d84-cfe829417b44"
 								},
@@ -200,6 +200,129 @@
 									"value": "vehicle_make, vehicle_model, vehicle_variant, cubic_capacity, reward_vehicle_fuel_type",
 									"type": "text",
 									"uuid": "70e3ff92-a583-4c12-9448-0c01a5592bb7"
+								},
+								{
+									"key": "fixedValues",
+									"value": "",
+									"type": "text",
+									"uuid": "72bd7899-8753-42fc-9c0a-af2d21eefc41"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4W_HDFC Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-4e148514-6825-4fa8-8e0a-b88216da24e5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/HDFC/4W/03-01-25_4W_HDFC_Master.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/HDFC/4W/result_hdfc_car_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/HDFC/4W/live_4W_HDFC.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"vehicle_code\":\"VEHICLEMODELCODE\",\n  \"vehicle_make\":\"MANUFACTURER\",\n  \"vehicle_model\":\"VEHICLEMODEL\",\n  \"vehicle_variant\":\"TXT_VARIANT\",\n  \"no_of_wheels\":\"NUMBEROFWHEELS\",\n  \"cubic_capacity\":\"CUBICCAPACITY\",\n  \"gross_weight\":\"GROSSVEHICLEWEIGHT\",\n  \"seating_capacity\":\"SEATINGCAPACITY\",\n  \"carrying_capacity\":\"CARRYINGCAPACITY\",\n  \"fuel_type\":\"TXT_FUEL\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, TXT_FUEL, reward_vehicle_power, cubic_capacity, 4W, HDFC",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_code\", \"ft_make_code\":\"vehicle_make\"}",
+									"type": "text",
+									"uuid": "f81ec40d-90d0-45f7-9d84-cfe829417b44"
+								},
+								{
+									"key": "dbParam",
+									"value": "vehicle_make, vehicle_model, vehicle_variant, cubic_capacity, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "70e3ff92-a583-4c12-9448-0c01a5592bb7"
+								},
+								{
+									"key": "fixedValues",
+									"value": "",
+									"type": "text",
+									"uuid": "72bd7899-8753-42fc-9c0a-af2d21eefc41"
 								}
 							]
 						},
