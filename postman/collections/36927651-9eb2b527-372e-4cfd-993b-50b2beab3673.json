@@ -5388,6 +5388,11 @@
 			"id": "36927651-d9820620-9cf8-4812-ae08-5b0935da9d53"
 		},
 		{
+			"name": "New Folder",
+			"item": [],
+			"id": "36927651-4f86cd03-44f1-40f9-9549-fac610fbce2e"
+		},
+		{
 			"name": "XLSX-TO-CSV",
 			"id": "36927651-813fa0c0-60b4-4331-bd01-b095a081c99d",
 			"protocolProfileBehavior": {
@@ -5492,18 +5497,6 @@
 						"csv-to-sql"
 					]
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "New Request",
-			"id": "36927651-13be0ccd-ddf5-43f7-8ec9-487a6a1beb4b",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": []
 			},
 			"response": []
 		}
