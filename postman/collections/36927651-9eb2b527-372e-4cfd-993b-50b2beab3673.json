@@ -4849,19 +4849,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
-									"src": "/C:/Users/HP/Desktop/4W/MMV-FPV.xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/Raheja/4W/4W_Raheja_02-01-25.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Raheja/4W/result_raheja_car_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/Raheja/4W/result_raheja_car_master.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Raheja/4W/live_raheja_car_master (1).csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/Raheja/4W/live_4W_RAHEJA_20251201_124517.csv"
 								},
 								{
 									"key": "mapping",
@@ -4871,7 +4871,7 @@
 								},
 								{
 									"key": "details",
-									"value": "reward_vehicle_fuel_type, Fuel, reward_vehicle_power, cubic_capacity, 4W, RAHEJA",
+									"value": "reward_vehicle_fuel_type, Fuel, reward_vehicle_power, cubic_capacity, 4W, RAHEJA, ex_showroom_price",
 									"type": "text",
 									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
 								},
@@ -4883,7 +4883,7 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"variant_id\"}",
+									"value": "{\"ft_make_id\":\"make_name\", \"ft_model_id\":\"model_id\"}",
 									"type": "text",
 									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
 								},
