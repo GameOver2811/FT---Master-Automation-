@@ -2228,19 +2228,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/Vehicle Master_New (37).xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2025/Nov'25/Digit/Vehicle Master_New (37).xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/result_digit_vehicle_master (3).csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2025/Nov'25/Digit/result_digit_vehicle_master (3).csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Digit/live_digit_vehicle_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2025/Nov'25/Digit/live_digit_vehicle_master.csv"
 								},
 								{
 									"key": "mapping",
@@ -2250,7 +2250,7 @@
 								},
 								{
 									"key": "details",
-									"value": "reward_vehicle_fuel_type, Fuel Type, reward_vehicle_power, cubic_capacity, 4W, DIGIT",
+									"value": "reward_vehicle_fuel_type, Fuel Type, reward_vehicle_power, cubic_capacity, 4W, DIGIT, ex_showroom_price",
 									"type": "text",
 									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
 								},
@@ -2262,7 +2262,7 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"vehicle_code\"}",
+									"value": "{\"\":\"\"}",
 									"type": "text",
 									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
 								},
@@ -2271,6 +2271,12 @@
 									"value": "make, model, variant, cubic_capacity, reward_vehicle_fuel_type",
 									"type": "text",
 									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								},
+								{
+									"key": "fixedValues",
+									"value": "",
+									"type": "text",
+									"uuid": "db353be6-2712-499c-8fd9-d704752a837b"
 								}
 							]
 						},
