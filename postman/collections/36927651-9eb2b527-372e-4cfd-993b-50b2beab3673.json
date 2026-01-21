@@ -3354,19 +3354,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/CV/Master.xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/RSA/CV/GCV/05-01-25_RSA_Master.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/CV/result_rsa_cv_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/RSA/CV/GCV/result_rsa_cv_master.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/RSA/CV/live_rsa_cv_master (2).csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/RSA/CV/GCV/live_GCV_RSA.csv"
 								},
 								{
 									"key": "mapping",
@@ -3388,7 +3388,90 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"model_code\"}",
+									"value": "{\"reward_vehicle_type\":\"model_code\", \"ft_make_id\":\"make\"}",
+									"type": "text",
+									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
+								},
+								{
+									"key": "dbParam",
+									"value": "make, model_name, variant_name, engine_capacity_amount, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "c93bf416-c961-48a3-99c4-aebe5c61e076"
+								},
+								{
+									"key": "fixedValues",
+									"value": "created_at, NULL, updated_at, NULL, reward_product_type, GCV",
+									"type": "text",
+									"uuid": "50116804-5f00-4b1c-ba5f-97c6f3e94726"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GCV_RSA Copy",
+					"id": "36927651-5f814fd1-f71a-4f87-b5e4-c54074e219dc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/RSA/CV/GCV/05-01-25_RSA_Master.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/RSA/CV/GCV/result_rsa_cv_master.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/RSA/CV/GCV/live_GCV_RSA.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n  \"subline\":\"SUBLINE\",\n  \"model_code\":\"MODEL_CODE\",\n  \"make\":\"MAKE\",\n  \"model_name\":\"MODEL_NAME\",\n  \"business_status\":\"BUSINESS_STATUS\",\n  \"engine_capacity_amount\":\"ENGINE_CAPACITY_AMOUNT\",\n  \"seating_capacity\":\"SEATING_CAPACITY\",\n  \"vehicle_weight\":\"VEHICLEWEIGHT\",\n  \"body_style\":\"BODY_STYLE\",\n  \"fuel_type\":\"FUEL_TYPE\",\n  \"min_seating_capacity\":\"MIN_SEATINGCAPACITY\",\n  \"max_seating_capacity\":\"MAX_SEATINGCAPACITY\",\n  \"vehicle_type\":\"VEHICLE_TYPE\",\n  \"variant_name\":\"VARIANT_NAME\"\n}",
+									"type": "text",
+									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, engine_capacity_amount, GCV, RSA",
+									"type": "text",
+									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
+								},
+								{
+									"key": "vehicleType",
+									"value": "SUBLINE, commercialVehicle",
+									"type": "text",
+									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"model_code\", \"ft_make_id\":\"make\"}",
 									"type": "text",
 									"uuid": "357336ea-48cf-4aaa-b606-d331a233ca01"
 								},
