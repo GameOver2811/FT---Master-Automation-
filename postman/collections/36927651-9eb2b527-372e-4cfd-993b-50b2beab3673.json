@@ -4760,19 +4760,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
-									"value": null
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/SBI/CV/GCV/15-01-2026_SBI_GCV_Master.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
-									"value": null
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/SBI/CV/GCV/result_sbi_gcv_master.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
-									"value": null
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/SBI/CV/GCV/live_sbi_gcv_master (3).csv"
 								},
 								{
 									"key": "mapping",
@@ -4806,7 +4806,7 @@
 								},
 								{
 									"key": "fixedValues",
-									"value": "created_at, NULL, updated_at, NULL, reward_product_type, GCV, model_status, 1, status, 1, created_by, 1",
+									"value": "created_at, NULL, updated_at, NULL, reward_product_type, GCV, model_status, 1, status, 1, created_by, 1, vehicle_segment, NULL",
 									"type": "text",
 									"uuid": "50116804-5f00-4b1c-ba5f-97c6f3e94726"
 								}
