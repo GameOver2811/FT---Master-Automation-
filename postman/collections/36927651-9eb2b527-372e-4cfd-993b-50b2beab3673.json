@@ -4745,7 +4745,7 @@
 					"response": []
 				},
 				{
-					"name": "GCV_RSA Copy",
+					"name": "GCV_SBI",
 					"id": "36927651-5f814fd1-f71a-4f87-b5e4-c54074e219dc",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
