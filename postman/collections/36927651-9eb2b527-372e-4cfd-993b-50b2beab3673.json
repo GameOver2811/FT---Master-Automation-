@@ -4843,29 +4843,29 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/SBI/CV/GCV/15-01-2026_SBI_GCV_Master.xlsx"
+									"value": null
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/SBI/CV/GCV/result_sbi_gcv_master.csv"
+									"value": null
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/SBI/CV/GCV/live_sbi_gcv_master (3).csv"
+									"value": null
 								},
 								{
 									"key": "mapping",
-									"value": "{\n  \"make_id\":\"MAKE_ID\",\n  \"make_name\":\"MAKE\",\n  \"make_tac\":\"MAKE_TAC\",\n  \"model_id\":\"MOD_ID\",\n  \"model_name\":\"MODEL\",\n  \"model_tac\":\"MODEL_TAC\",\n  \"vehicle_segment\":\"\",\n  \"body_style\":\"BODYSTYLE\",\n  \"carry_capacity\":\"CARRING_CAPACITY\",\n  \"cubic_capacity\":\"CUBIC_CAPACITY\",\n  \"fuel_type\":\"FUEL_TYPE\",\n  \"no_of_wheels\":\"WHEELS\",\n  \"obsolete_flag\":\"OBSOLETE_FLAG\",\n  \"seat_capacity\":\"SEAT_CAPACITY\",\n  \"variant_id\":\"VA_ID\",\n  \"variant_name\":\"VAR_DESC\",\n  \"gvw\":\"GROSS_VECHICLE_WEIGHT\"\n}",
+									"value": "{\n  \"make_id\":\"MAKE_ID\",\n  \"make_name\":\"MAKE_NAME\",\n  \"make_tac\":\"MK_TAC_CODE\",\n  \"model_id\":\"MOD_ID\",\n  \"model_name\":\"MODEL_NAME\",\n  \"model_tac\":\"MOD_TAC_CODE\",\n  \"vehicle_segment\":\"\",\n  \"body_style\":\"BODYSTYLE\",\n  \"carry_capacity\":\"CARRING_CAPACITY\",\n  \"cubic_capacity\":\"CUBIC_CAPACITY\",\n  \"fuel_type\":\"FUEL_TYPE\",\n  \"no_of_wheels\":\"NO_OF_WHEELS\",\n  \"obsolete_flag\":\"OBSOLETE_FLAG\",\n  \"seat_capacity\":\"SEAT_CAPACITY\",\n  \"variant_id\":\"VAR_ID\",\n  \"variant_name\":\"VARIANT\",\n  \"gvw\":\"GVW\"\n}",
 									"type": "text",
 									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
 								},
 								{
 									"key": "details",
-									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, cubic_capacity, GCV, SBI",
+									"value": "reward_vehicle_fuel_type, FUEL_TYPE, reward_vehicle_power, cubic_capacity, PCV, SBI",
 									"type": "text",
 									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
 								},
