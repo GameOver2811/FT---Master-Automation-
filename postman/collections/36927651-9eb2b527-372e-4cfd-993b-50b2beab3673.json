@@ -4859,7 +4859,7 @@
 								},
 								{
 									"key": "mapping",
-									"value": "{\n  \"make_id\":\"MAKE_ID\",\n  \"make_name\":\"MAKE_NAME\",\n  \"make_tac\":\"MK_TAC_CODE\",\n  \"model_id\":\"MOD_ID\",\n  \"model_name\":\"MODEL_NAME\",\n  \"model_tac\":\"MOD_TAC_CODE\",\n  \"vehicle_segment\":\"\",\n  \"body_style\":\"BODYSTYLE\",\n  \"carry_capacity\":\"CARRING_CAPACITY\",\n  \"cubic_capacity\":\"CUBIC_CAPACITY\",\n  \"fuel_type\":\"FUEL_TYPE\",\n  \"no_of_wheels\":\"NO_OF_WHEELS\",\n  \"obsolete_flag\":\"OBSOLETE_FLAG\",\n  \"seat_capacity\":\"SEAT_CAPACITY\",\n  \"variant_id\":\"VAR_ID\",\n  \"variant_name\":\"VARIANT\",\n  \"gvw\":\"GVW\"\n}",
+									"value": "{\n  \"make_id\":\"MAKE_ID\",\n  \"make_name\":\"MAKE_NAME\",\n  \"make_tac\":\"MK_TAC_CODE\",\n  \"model_id\":\"MOD_ID\",\n  \"model_name\":\"MODEL_NAME\",\n  \"model_tac\":\"MOD_TAC_CODE\",\n  \"vehicle_segment\":\"\",\n  \"body_style\":\"BODYSTYLE\",\n  \"carry_capacity\":\"CARRY_CAPACITY\",\n  \"cubic_capacity\":\"CUBIC_CAPACITY\",\n  \"fuel_type\":\"FUEL_TYPE\",\n  \"no_of_wheels\":\"NO_OF_WHEELS\",\n  \"obsolete_flag\":\"OBSOLETE_FLAG\",\n  \"seat_capacity\":\"SEAT_CAPACITY\",\n  \"variant_id\":\"VAR_ID\",\n  \"variant_name\":\"VARIANT\",\n  \"gvw\":\"GVW\"\n}",
 									"type": "text",
 									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
 								},
