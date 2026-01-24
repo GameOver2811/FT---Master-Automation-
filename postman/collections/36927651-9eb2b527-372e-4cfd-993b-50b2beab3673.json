@@ -5138,19 +5138,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/UNITED/2W/2W_UNITED_01-12-25.xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/United/2W/03-01-25_2W_United_Master.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/UNITED/2W/result.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/United/2W/result.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/DEC'25/UNITED/2W/live.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/United/2W/live_2W_UNITED.csv"
 								},
 								{
 									"key": "mapping",
@@ -5172,7 +5172,124 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"vehicle_model_code\", \"reward_vehicle_fuel_type\":\"vehicle_model_code\", \"vehicle_power_bi\":\"vehicle_model_code\"}",
+									"value": "{\"reward_vehicle_type\":\"vehicle_model_code\", \"reward_vehicle_fuel_type\":\"vehicle_model_code\", \"vehicle_power_bi\":\"vehicle_model_code\", \"ft_make_id\": \"vehicle_make\"}",
+									"type": "text",
+									"uuid": "692ff935-ae47-4245-a592-5cceaeb6693f"
+								},
+								{
+									"key": "dbParam",
+									"value": "vehicle_make, vehicle_model, vehicle_variant, vehicle_cc, reward_vehicle_fuel_type",
+									"type": "text",
+									"uuid": "d87477c7-2866-4972-b676-62badae0dfad"
+								},
+								{
+									"key": "fixedValues",
+									"value": "",
+									"type": "text",
+									"uuid": "3eaea07d-ddf9-4d2d-97a3-8e3f304eadb7"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2W-UNITED IDV",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b35b9dac-aaa8-4ea6-b108-b68298cb76ce",
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>No Data Available</th>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    return {};\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"id": "36927651-43b19d1f-1ec4-4b50-805b-87e7a9cac19f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "master",
+									"type": "file",
+									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/United/2W/03-01-25_2W_United_Master.xlsx"
+								},
+								{
+									"key": "result",
+									"type": "file",
+									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/United/2W/result.csv"
+								},
+								{
+									"key": "live",
+									"type": "file",
+									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/United/2W/live_2W_UNITED.csv"
+								},
+								{
+									"key": "mapping",
+									"value": "{\n \"vehicle_make_code\":\"Make ID\",\n\"vehicle_model_code\":\"Model ID\",\n\"vehicle_ibb_code\":\"Variant ID\",\n\"vehicle_make\":\"Make\",\n\"vehicle_model\":\"Model\",\n\"vehicle_variant\":\"Variant\",\n\"variant_period\":\"Variant Period\",\n\"vehicle_cc\":\"CC_KW\",\n\"vehicle_body_type\":\"Body Type\",\n\"vehicle_mileage\":\"Mileage\",\n\"vehicle_type\":\"TYPE\"\n}",
+									"type": "text",
+									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
+								},
+								{
+									"key": "details",
+									"value": "reward_vehicle_fuel_type, TXT_FUEL, reward_vehicle_power, vehicle_cc, 2W, UNITED",
+									"type": "text",
+									"uuid": "f32e94e1-a250-46a0-9d8d-cb4e04b53b0d"
+								},
+								{
+									"key": "vehicleType",
+									"value": "",
+									"type": "text",
+									"uuid": "923b4deb-a46a-43ff-b162-5de6af20d847"
+								},
+								{
+									"key": "vlookupMapping",
+									"value": "{\"reward_vehicle_type\":\"vehicle_model_code\", \"reward_vehicle_fuel_type\":\"vehicle_model_code\", \"vehicle_power_bi\":\"vehicle_model_code\", \"ft_make_id\": \"vehicle_make\"}",
 									"type": "text",
 									"uuid": "692ff935-ae47-4245-a592-5cceaeb6693f"
 								},
