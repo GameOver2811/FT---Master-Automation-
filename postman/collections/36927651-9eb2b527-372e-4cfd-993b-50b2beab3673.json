@@ -5255,23 +5255,23 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/United/2W/03-01-25_2W_United_Master.xlsx"
+									"src": "/C:/Users/HP/Desktop/tw_complete_data (5).csv"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/United/2W/result.csv"
+									"src": "/C:/Users/HP/Desktop/united_2W_idv.xlsx"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/United/2W/live_2W_UNITED.csv"
+									"src": "/C:/Users/HP/Desktop/united_2W_idv.xlsx"
 								},
 								{
 									"key": "mapping",
-									"value": "{\n \"vehicle_make_code\":\"Make ID\",\n\"vehicle_model_code\":\"Model ID\",\n\"vehicle_ibb_code\":\"Variant ID\",\n\"vehicle_make\":\"Make\",\n\"vehicle_model\":\"Model\",\n\"vehicle_variant\":\"Variant\",\n\"variant_period\":\"Variant Period\",\n\"vehicle_cc\":\"CC_KW\",\n\"vehicle_body_type\":\"Body Type\",\n\"vehicle_mileage\":\"Mileage\",\n\"vehicle_type\":\"TYPE\"\n}",
+									"value": "{\n  \"vehicle_ibb_code\":\"IBB CODE\",\n  \"vehicle_make\":\"MAKE\",\n  \"vehicle_model\":\"MODEL\",\n  \"vehicle_variant\":\"VARIANT\",\n  \"variant_period\":\"VARIANT PERIOD\",\n  \"state\":\"STATE\",\n  \"state_code\":\"STATE CODE\",\n  \"ibb_unique_code\":\"IBB UNIQUE CODE\",\n  \"vehicle_cc\":\"CUBIC CAP / KILOWATT\",\n  \"max_power\":\"MAX POWER\",\n  \"battary_type\":\"BATTERY TYPE\",\n  \"ex_showroom_price\":\"EX-SHOWROOM PRICE\"\n}",
 									"type": "text",
 									"uuid": "83f15c59-ae20-40f6-bb47-82e1a72f6055"
 								},
@@ -5289,7 +5289,7 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"vehicle_model_code\", \"reward_vehicle_fuel_type\":\"vehicle_model_code\", \"vehicle_power_bi\":\"vehicle_model_code\", \"ft_make_id\": \"vehicle_make\"}",
+									"value": "{\"\":\"\"}",
 									"type": "text",
 									"uuid": "692ff935-ae47-4245-a592-5cceaeb6693f"
 								},
