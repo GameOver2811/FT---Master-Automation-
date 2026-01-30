@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "36927651-9eb2b527-372e-4cfd-993b-50b2beab3673",
-		"name": "Excel Parser for FT",
+		"name": "FT - MMV Generator",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
