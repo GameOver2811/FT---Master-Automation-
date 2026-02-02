@@ -945,19 +945,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/ICICI/CV/GCV_rto (2).csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Feb'26/ICICI/CV/GCV/02-02-2026_GCV_ICICI_Master.csv"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/ICICI/CV/result_icici_cv_gcv_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Feb'26/ICICI/CV/GCV/result_icici_cv_gcv_master.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/ICICI/CV/live_icici_cv_gcv_master (1).csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Feb'26/ICICI/CV/GCV/live_GCV_ICICI.csv"
 								},
 								{
 									"key": "mapping",
@@ -979,7 +979,7 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"VehicleModelCode\"}",
+									"value": "{\"reward_vehicle_type\":\"VehicleModelCode\", \"ft_make_id\":\"Manufacture\". \"ft_model_id\":\"VehicleModel\"}",
 									"type": "text",
 									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
 								},
