@@ -3603,23 +3603,23 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram/CV/VEHICLE_MASTER(PCCV_GCCV)NOV25.xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/SRIRAM/CV/VEHICLE_MASTER(ALL_PROD)_JAN26_RETRO.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram/CV/result_shriram_cv_vehicle_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/SRIRAM/CV/result_shriram_cv_vehicle_master.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Sriram/CV/live_shriram_cv_vehicle_master (2).csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/SRIRAM/CV/live_SRIRAM.csv"
 								},
 								{
 									"key": "mapping",
-									"value": "{\n  \"manf_code\":\"MANF_CODE\",\n  \"manufacture\":\"MANUFACTURER\",\n  \"main_variant\":\"MAIN_VARIANT\",\n  \"model_variant_code\":\"MODEL_VARIANT_CODE\",\n  \"model_description\":\"MODEL_DESCRIPTION\",\n  \"body_code\":\"BODY_CODE\",\n  \"body_desc\":\"BODY_DESC\",\n  \"product_code\":\"PRODUCT_CODE\",\n  \"product_class\":\"PROD_CLASS\",\n  \"vehicle_code\":\"VEHICLE_CODE\",\n  \"body_ex_show_price\":\"EX_SHOWROOM_PRICE\",\n  \"vehicle_type\":\"VEHICLE_TYPE\",\n  \"driver\":\"DRIVER\",\n  \"fuel\":\"FUEL_DESC\",\n  \"fuel_code\":\"FUEL_CODE\",\n  \"veh_gvw\":\"VEH_GVW\",\n  \"veh_cc\":\"VEH_CC\",\n  \"product_category\":\"PRODUCT_CATEGORY\"\n}",
+									"value": "{\n  \"manf_code\":\"MANF_CODE\",\n  \"manufacture\":\"MANUFACTURER\",\n  \"main_variant\":\"MAIN_VARIANT\",\n  \"model_variant_code\":\"MODEL_VARIANT_CODE\",\n  \"model_description\":\"MODEL_DESCRIPTION\",\n  \"body_code\":\"BODY_CODE\",\n  \"body_desc\":\"BODY_DESC\",\n  \"product_code\":\"PRODUCT_CODE\",\n  \"product_class\":\"PROD_CLASS\",\n  \"vehicle_code\":\"VEHICLE_CODE\",\n  \"body_ex_show_price\":\"EX_SHOWROOM_PRICE\",\n  \"vehicle_type\":\"VEHICLE_TYPE\",\n  \"driver\":\"DRIVER\", \"carrying_capacity\":\"SC_EXC_DRIVER\",\n  \"fuel\":\"FUEL_DESC\",\n  \"fuel_code\":\"FUEL_CODE\",\n  \"veh_gvw\":\"VEH_GVW\",\n  \"veh_cc\":\"VEH_CC\",\n  \"product_category\":\"PRODUCT_CATEGORY\"\n}",
 									"type": "text",
 									"uuid": "959b653a-39de-4ce7-a9dd-9330ea2fe6d3"
 								},
@@ -3637,7 +3637,7 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"model_variant_code\"}",
+									"value": "{\"reward_vehicle_type\":\"model_variant_code\", \"ft_make_id\":\"manufacture\"}",
 									"type": "text",
 									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
 								},
@@ -3649,7 +3649,7 @@
 								},
 								{
 									"key": "fixedValues",
-									"value": "created_at, NULL, updated_at, NULL, reward_product_type, PCV",
+									"value": "created_at, NULL, updated_at, NULL, reward_product_type, GCV",
 									"type": "text",
 									"uuid": "a2182749-504a-47bf-a5eb-e7b2c4d81171"
 								}
