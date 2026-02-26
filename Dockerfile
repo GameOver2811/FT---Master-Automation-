@@ -1,5 +1,5 @@
 # Start from an official JDK base image
-FROM eclipse-temurin:17-jdk-alpine
+FROM eclipse-temurin:21-jdk-alpine
 
 # Set environment variables
 ENV APP_HOME=/app
