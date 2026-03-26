@@ -1739,7 +1739,7 @@
 					"response": []
 				},
 				{
-					"name": "CV_BAJAJ",
+					"name": "GCV_BAJAJ",
 					"id": "36927651-087c53b6-8a75-43e8-b1e5-c9b653235c0d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
