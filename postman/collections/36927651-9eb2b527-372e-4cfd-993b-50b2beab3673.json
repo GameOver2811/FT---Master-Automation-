@@ -1671,19 +1671,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Bajaj/4W/4W_response.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Mar'26/BAJAJ/4W/16-03-2026_Bajaj_4W_Master.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Bajaj/4W/result.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Mar'26/BAJAJ/4W/result.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Bajaj/4W/live.csv"
+									"src": "/C:/Users/HP/Desktop/4WL_FT_MAKE_MODEL_MAPPING_ALL_IC_SHEETS/latest_auto_generated_4W_BAJAJ_20260220_185008.csv"
 								},
 								{
 									"key": "mapping",
@@ -1699,13 +1699,13 @@
 								},
 								{
 									"key": "vehicleType",
-									"value": "",
+									"value": "Vehicle Type Code, 22",
 									"type": "text",
 									"uuid": "d8d19121-96c3-49e7-9c21-369753c50f25"
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"vehicle_model_code\"}",
+									"value": "{\"reward_vehicle_type\":\"vehicle_model_code\", \"ft_make_id\":\"make\", \"ft_model_id\":\"model\"}",
 									"type": "text",
 									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
 								},
@@ -1714,6 +1714,12 @@
 									"value": "make, model, variant, cubic_capacity, reward_vehicle_fuel_type",
 									"type": "text",
 									"uuid": "7353d582-820e-4f97-b05c-0d6526256445"
+								},
+								{
+									"key": "fixedValues",
+									"value": "",
+									"type": "text",
+									"uuid": "129693fd-6efb-4574-b928-5b6d017cdafa"
 								}
 							]
 						},
