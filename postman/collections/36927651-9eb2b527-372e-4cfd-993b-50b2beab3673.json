@@ -3034,19 +3034,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "78106288-0900-4519-a160-c40e963b52e4",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/Nov'25/Reliance/CV/PCV/CV MASTER 03112025 1.xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Apr'26/Reliance/CV/MISD/02-04-2026_MISD_Reliance_Master.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "78ea66ba-55ec-4fe0-aea0-563e338fdec3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/Nov'25/Reliance/CV/PCV/result_reliance_cv_masters.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Apr'26/Reliance/CV/MISD/result_reliance_cv_masters.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "3bb60847-9ad0-4e12-9375-ae9e17698e48",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/Nov'25/Reliance/CV/PCV/live_reliance_cv_masters (2).csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Apr'26/Reliance/CV/MISD/result_reliance_cv_masters.csv"
 								},
 								{
 									"key": "mapping",
@@ -3056,7 +3056,7 @@
 								},
 								{
 									"key": "details",
-									"value": "reward_vehicle_fuel_type, Operated_By, reward_vehicle_power, cubic_capacity, PCV, RELIANCE",
+									"value": "reward_vehicle_fuel_type, Operated_By, reward_vehicle_power, cubic_capacity, MISD, RELIANCE",
 									"type": "text",
 									"uuid": "7a4c2308-4e1a-49fc-a9b6-608e4cece4a3"
 								},
@@ -3068,7 +3068,7 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"model_id\"}",
+									"value": "{\"reward_vehicle_type\":\"model_id\", \"ft_make_id\":\"make_id\", \"ft_model_id\": \"model_name\"}",
 									"type": "text",
 									"uuid": "87e4a5e3-3ced-4497-adb7-64444e5adb8f"
 								},
@@ -3080,7 +3080,7 @@
 								},
 								{
 									"key": "fixedValues",
-									"value": "reward_product_type, PCV",
+									"value": "reward_product_type, MISD",
 									"type": "text",
 									"uuid": "710f9636-0468-4626-9c24-cbd2059652c9"
 								}
