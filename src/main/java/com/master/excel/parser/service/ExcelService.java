@@ -56,6 +56,33 @@ public class ExcelService {
 
     private final ObjectMapper mapper = new ObjectMapper();
 
+    /**
+     * Populate a result XLSX workbook by merging data from a master workbook and a live workbook,
+     * applying direct mappings, vlookup-based reward mappings, normalization rules, and fixed values,
+     * and return the populated workbook as a byte stream.
+     *
+     * @param masterFile         the uploaded master workbook containing source rows used to populate output
+     * @param liveFile           the uploaded live workbook used to build vlookup mappings (reward → model)
+     * @param resultTemplateFile the result template workbook to be filled (first sheet is used)
+     * @param directMap          mapping of result-column-name → master-column-name for direct value copy
+     * @param vlookupMap         mapping of reward-header → model-header used to build and apply vlookup maps
+     * @param details            metadata array with expected positions:
+     *                            details[0]=result fuel column name,
+     *                            details[1]=master fuel source column name,
+     *                            details[2]=result "power" column name,
+     *                            details[3]=master CC column name,
+     *                            details[4]=vehicle category (e.g., "4W","2W","GCV", etc.),
+     *                            details[5]=master/source identifier (used for price rules),
+     *                            details[6]=price column name (used for HEV/NONHEV rule)
+     * @param vehicleType        optional vehicle-type filter array where vehicleType[0] is the segregator
+     *                           column name and subsequent entries are accepted types to include
+     * @param dbParam            database column headers where dbParam[0]=make header and dbParam[1]=model header
+     * @param fixedValues        alternating pairs of result-column-name and fixed value to write (col, value, col, value,...)
+     * @return                   a ByteArrayOutputStream containing the populated XLSX workbook
+     * @throws IllegalArgumentException   if a required result-template column (e.g., price) is missing for a rule that requires it
+     * @throws UnsupportedOperationException if a required numeric price cannot be parsed for HEV/NONHEV determination
+     * @throws Exception                 for other I/O, parsing, or workbook-processing failures
+     */
     public ByteArrayOutputStream automateExcelPopulation(
             MultipartFile masterFile,
             MultipartFile liveFile,
