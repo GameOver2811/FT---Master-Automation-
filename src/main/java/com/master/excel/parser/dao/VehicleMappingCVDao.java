@@ -60,8 +60,8 @@ public class VehicleMappingCVDao {
                 .orElse(null);
     }
 
-    public List<MakeModelCode> getMakeModelCode(){
-        return vehicleMappingCVRepository.findAllWithJoin();
+    public List<MakeModelCode> getMakeModelCode(String vehicleType){
+        return vehicleMappingCVRepository.findAllWithJoin(vehicleType);
     }
 
 }

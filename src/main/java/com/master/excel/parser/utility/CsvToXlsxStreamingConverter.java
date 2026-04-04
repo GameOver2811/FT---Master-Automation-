@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class CsvToXlsxStreamingConverter {
 
-    /**
+    /*
      * Converts CSV to XLSX efficiently using SXSSFWorkbook (streaming, no OOM).
      * Handles quoted fields and commas inside values using Apache Commons CSV.
      */
@@ -23,11 +23,11 @@ public class CsvToXlsxStreamingConverter {
         try (
                 Reader reader = new InputStreamReader(csvInput, StandardCharsets.UTF_8)
         ) {
-            // ✅ Create temp file to hold XLSX instead of keeping in memory
+            // Create temp file to hold XLSX instead of keeping in memory
             tempFile = File.createTempFile("csv-to-xlsx-", ".xlsx");
 
             try (FileOutputStream fos = new FileOutputStream(tempFile);
-                 SXSSFWorkbook workbook = new SXSSFWorkbook(100)) { // keep 100 rows in memory
+                 SXSSFWorkbook workbook = new SXSSFWorkbook(100)) {
 
                 Sheet sheet = workbook.createSheet("Sheet1");
 
@@ -44,10 +44,10 @@ public class CsvToXlsxStreamingConverter {
                 }
 
                 workbook.write(fos);
-                workbook.dispose(); // cleanup SXSSF temp rows
+                workbook.dispose();
             }
 
-            // ✅ Build MultipartFile from temp file
+            // Build MultipartFile from temp file
             String xlsxFilename = originalFilename.replaceAll("\\.csv$", "") + ".xlsx";
             return new MockMultipartFile(
                     "file",
@@ -60,7 +60,6 @@ public class CsvToXlsxStreamingConverter {
             throw new RuntimeException("Failed to convert CSV to XLSX: " + e.getMessage(), e);
         } finally {
             if (tempFile != null && tempFile.exists()) {
-                // optional: delete temp file on exit
                 tempFile.deleteOnExit();
             }
         }

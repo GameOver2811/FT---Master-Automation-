@@ -10,7 +10,6 @@ import com.master.excel.parser.utility.ExcelConverter;
 import java.io.ByteArrayOutputStream;
 
 import com.master.excel.parser.utility.XlsxToCsvSaxConverter;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +32,6 @@ public class ExcelController {
     private final XlsxToCsvSaxConverter xlsxToCsvSaxConverter;
     private final CsvToXlsxStreamingConverter csvToXlsxStreamingConverter;
 
-    @Autowired
     public ExcelController(ExcelService excelService, ExcelConverter excelConverter, XlsxToCsvSaxConverter xlsxToCsvSaxConverter, CsvToXlsxStreamingConverter csvToXlsxStreamingConverter) {
         this.excelService = excelService;
         this.xlsxToCsvSaxConverter = xlsxToCsvSaxConverter;
@@ -61,7 +59,6 @@ public class ExcelController {
 
             // Check if conversion is required or not for master file!
             if((Objects.requireNonNull(master.getOriginalFilename()).endsWith(".csv"))) {
-                // master = excelConverter.csvToXlsx(master);
                 master = csvToXlsxStreamingConverter.convertToXlsx(master.getOriginalFilename(), master.getInputStream());
             }
 
@@ -72,16 +69,16 @@ public class ExcelController {
 
             MultipartFile xlsxResult, xlsxLive;
 
-            // Conversion of result template and live file if required
+            // Conversion of result template and live file (if required)
             try{
-                if(Objects.requireNonNull(result.getOriginalFilename()).endsWith(".csv"))
+                if (Objects.requireNonNull(result.getOriginalFilename()).endsWith(".csv"))
                     xlsxResult = csvToXlsxStreamingConverter.convertToXlsx(result.getOriginalFilename(), result.getInputStream());
                 else if(result.getOriginalFilename().endsWith(".xlsx"))
                     xlsxResult = result;
                 else
                     throw new FileConversionException("Try using .xlsx or .csv for result file");
 
-                if(Objects.requireNonNull(live.getOriginalFilename()).endsWith(".csv"))
+                if (Objects.requireNonNull(live.getOriginalFilename()).endsWith(".csv"))
                     xlsxLive = csvToXlsxStreamingConverter.convertToXlsx(live.getOriginalFilename(), live.getInputStream());
                 else if(live.getOriginalFilename().endsWith(".xlsx"))
                     xlsxLive = live;
@@ -102,6 +99,7 @@ public class ExcelController {
                 System.out.print(i + ", ");
             }
             System.out.println();
+
             if(vehicleType.length == 2)
                 System.out.println("Vehicle type: "+vehicleType[0]+", "+vehicleType[1]);
             System.out.println(mappingJson);
@@ -121,15 +119,13 @@ public class ExcelController {
 
             // Preparing download response
             MultipartFile xlsxOutputFile = new MockMultipartFile(
-                    "file",                          // name
-                    "result.xlsx",                   // original filename
-                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", // content type
-                    outputStream.toByteArray()                            // file content
+                    "file",
+                    "result.xlsx",
+                    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                    outputStream.toByteArray()
             );
 
             // Converting back from .xlsx to .csv
-            // MultipartFile csvOutputFile = excelConverter.xlsxToCsv(xlsxOutputFile);
-
             MultipartFile csvOutputFile = xlsxToCsvSaxConverter.convertToCsv(xlsxOutputFile.getOriginalFilename(), xlsxOutputFile.getInputStream());
 
             return ResponseEntity.ok()

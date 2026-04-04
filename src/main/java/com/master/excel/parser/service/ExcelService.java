@@ -16,7 +16,6 @@ import org.apache.poi.util.XMLHelper;
 import org.apache.poi.xssf.eventusermodel.*;
 import org.apache.poi.xssf.model.StylesTable;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,14 +34,22 @@ import java.util.stream.Collectors;
 @Transactional
 public class ExcelService {
 
-    @Autowired
-    VehicleMappingCVDao vehicleMappingCVDao;
+    private final VehicleMappingCVDao vehicleMappingCVDao;
+    private final VehicleMapping2WDao vehicleMapping2WDao;
+    private final VehicleMapping4WDao vehicleMapping4WDao;
 
-    @Autowired
-    VehicleMapping2WDao vehicleMapping2WDao;
 
-    @Autowired
-    VehicleMapping4WDao vehicleMapping4WDao;
+    public ExcelService(VehicleMappingCVDao vehicleMappingCVDao, VehicleMapping2WDao vehicleMapping2WDao, VehicleMapping4WDao vehicleMapping4WDao) {
+        this.vehicleMapping2WDao = vehicleMapping2WDao;
+        this.vehicleMapping4WDao = vehicleMapping4WDao;
+        this.vehicleMappingCVDao = vehicleMappingCVDao;
+    }
+
+    private final ObjectMapper mapper = new ObjectMapper();
+
+    private Integer makeIndex = null;
+    private Integer modelIndex = null;
+    private static final double HEV_PRICE_THRESHOLD = 5_000_000;
 
     @Autowired
     GeminiService geminiService;
@@ -67,8 +74,18 @@ public class ExcelService {
              list = vehicleMapping4WDao.getMakeModelCode();
         else if (details[4].equals("2W")) {
             list = vehicleMapping2WDao.getMakeModelCode();
-        } else {
-            list = vehicleMappingCVDao.getMakeModelCode();
+        } else if (details[4].equalsIgnoreCase("GCV")){
+            list = vehicleMappingCVDao.getMakeModelCode("Goods Carrying");
+        } else if (details[4].equalsIgnoreCase("PCV")) {
+            list = vehicleMappingCVDao.getMakeModelCode("Passenger Carrying");
+        } else if (details[4].equalsIgnoreCase("MISD")) {
+            list = vehicleMappingCVDao.getMakeModelCode("Miscellaneous");
+        } else if (details[4].equalsIgnoreCase("TRAILER")) {
+            list = vehicleMappingCVDao.getMakeModelCode("Trailer");
+        }
+
+        for (MakeModelCode mmv : list) {
+            System.err.println("Size of List: " + list.size());
         }
 
         Map<String, MakeModelCode> makeCodeMap = new HashMap<>();
@@ -105,6 +122,15 @@ public class ExcelService {
         Sheet resultSheet = resultWb.getSheetAt(0);
 
         Map<String, Integer> resultIndexes = getColumnIndexes(resultSheet.getRow(0));
+
+        // DEBUG — print column map + dbParam
+//        System.out.println("Result Index Map:");
+//        resultIndexes.forEach((k,v) -> System.out.println("'" + k + "' -> " + v));
+//
+//        System.out.println("dbParam[0] = '" + dbParam[0] + "'");
+//        System.out.println("dbParam[1] = '" + dbParam[1] + "'");
+//        System.out.println("dbParam[0].lower = '" + dbParam[0].toLowerCase() + "'");
+//        System.out.println("dbParam[1].lower = '" + dbParam[1].toLowerCase() + "'");
 
         // ----------------------------
         // Step 2: Parse masterFile with SAX
@@ -204,7 +230,18 @@ public class ExcelService {
                 @Override
                 public void endRow(int rowNum) {
                     if (rowNum == 0) {
+                        System.out.println("LIVE HEADER DUMP:");
+                        currentRow.forEach((k,v) -> System.out.println(k+" -> '"+v+"'"));
                         for (Map.Entry<Integer, String> e : currentRow.entrySet()) {
+                            String header = e.getValue();
+                            header = header.trim();
+                            if (header.equalsIgnoreCase(dbParam[0].trim())) {
+                                makeIndex = e.getKey();
+                            }
+
+                            if (header.equalsIgnoreCase(dbParam[1].trim())) {
+                                modelIndex = e.getKey();
+                            }
                             headerMap.put(e.getKey(), e.getValue().trim().toLowerCase());
                         }
                     } else {
@@ -217,8 +254,15 @@ public class ExcelService {
 
                             if (rewardIdx == null || modelIdx == null) continue;
 
+                            String modelCode = "";
+
+                            if (Objects.equals(modelIdx, modelIndex)) {
+                                modelCode = currentRow.getOrDefault(makeIndex, "").toLowerCase().trim() + " | " + currentRow.getOrDefault(modelIndex, "").toLowerCase().trim();
+                            } else {
+                                modelCode = currentRow.getOrDefault(modelIdx, "").trim();
+                            }
+
                             String rewardType = currentRow.getOrDefault(rewardIdx, "").trim();
-                            String modelCode = currentRow.getOrDefault(modelIdx, "").trim();
 
                             if (!rewardType.isEmpty() && !modelCode.isEmpty()) {
                                 vlookupMappingArrMap
@@ -267,10 +311,13 @@ public class ExcelService {
                         || masterRow.get(vehicleTypeKey).isEmpty()
                         || masterRow.get(vehicleTypeKey).isBlank()
                         || masterRow.get(vehicleTypeKey).equalsIgnoreCase("")) {
-                    throw new VehicleTypeUndefined("Vehicle type columns are blank...");
+                    System.err.println("--------------------------------------------------");
+                    System.err.println("Few Vehicle segregator columns are blank.... ");
+                    System.err.println("--------------------------------------------------");
                 }
 
                 if (!masterRow.containsKey(vehicleTypeKey)) continue;
+
                 boolean hasMatchingType = false;
                 for (int i = 1; i < vehicleType.length; i++) {
                     String candidateType = vehicleType[i].trim();
@@ -279,7 +326,9 @@ public class ExcelService {
                         break;
                     }
                 }
+
                 if (!hasMatchingType) continue;
+
             }
 
             Row resultRow = resultSheet.createRow(rowNum++);
@@ -322,44 +371,48 @@ public class ExcelService {
                 if (resultIndexes.containsKey(rewardHeader) && resultIndexes.containsKey(modelHeader)) {
                     Cell modelCodeCell = resultRow.getCell(resultIndexes.get(modelHeader));
                     String modelCode = getCellValueAsString(modelCodeCell).trim();
-                    String valueFromMap = currentMapping.getOrDefault(modelCode, "#N/A");
+                    if(modelHeader.equalsIgnoreCase(dbParam[1].toLowerCase().trim())) {
+                        Cell makeCell = resultRow.getCell(resultIndexes.get(dbParam[0].toLowerCase()));
+                        Cell modelCell = resultRow.getCell(resultIndexes.get(dbParam[1].toLowerCase()));
 
+                        String makeName = getCellValueAsString(makeCell).toLowerCase().trim();
+                        String modelName = getCellValueAsString(modelCell).toLowerCase().trim();
+                        modelCode = makeName + " | " + modelName;
+
+//                        System.out.println("Model Code of model: " + modelCode);
+                    }
+                    String valueFromMap = currentMapping.getOrDefault(modelCode, "#N/A");
                     String safeValue = ("reward_vehicle_type".equalsIgnoreCase(rewardHeader))
                             ? handleRewardVehicleType(resultRow, resultIndexes, dbParam, modelCode, valueFromMap, details)
                             : valueFromMap;
 
-//                   if("NULL".equalsIgnoreCase(valueFromMap) || "#N/A".equalsIgnoreCase(valueFromMap)){
+                   if("NULL".equalsIgnoreCase(valueFromMap) || "#N/A".equalsIgnoreCase(valueFromMap)){
+                        if("ft_make_id".equalsIgnoreCase(rewardHeader)) {
+                            Cell makeCell = resultRow.getCell(resultIndexes.get(dbParam[0].toLowerCase()));
 
-//                        if("ft_make_code".equalsIgnoreCase(rewardHeader)) {
-//                            Cell makeCell = resultRow.getCell(resultIndexes.get(dbParam[0].toLowerCase()));
-//
-//                            String makeName = getCellValueAsString(makeCell).toLowerCase().trim();
-//
-//                            MakeModelCode dto = makeCodeMap.get(makeName);
+                            String makeName = getCellValueAsString(makeCell).toLowerCase().trim();
+
+                            MakeModelCode dto = makeCodeMap.get(makeName);
 //                            if (dto != null)
 //                                System.out.println(makeName + " -> " + dto.getMakeName());
-//
-//                            safeValue = (dto != null && dto.getMakeCode() != null)
-//                                    ? dto.getMakeCode().toString()
-//                                    : "NULL";
-//                        } else if ("ft_model_code".equalsIgnoreCase(rewardHeader)) {
-//                            Cell makeCell = resultRow.getCell(resultIndexes.get(dbParam[0].toLowerCase()));
-//                            Cell modelCell = resultRow.getCell(resultIndexes.get(dbParam[1].toLowerCase()));
-//
-//                            String makeName = getCellValueAsString(makeCell).toLowerCase().trim();
-//                            String modelName = getCellValueAsString(modelCell).toLowerCase().trim();
-//
-//                            System.out.println(makeName + " : " + modelName);
-//
-//                            MakeModelCode dto = modelCodeMap.get(makeName + " | " + modelName);
-//
-//                            safeValue = (dto != null && dto.getModelCode() != null)
-//                                    ? dto.getModelCode().toString()
-//                                    : "NULL";
-//                        }
-//                    }
 
-                    // Yaha chal raha development abhi
+                            safeValue = (dto != null && dto.getMakeCode() != null)
+                                    ? dto.getMakeCode().toString()
+                                    : "NULL";
+                        } else if ("ft_model_id".equalsIgnoreCase(rewardHeader)) {
+                            Cell makeCell = resultRow.getCell(resultIndexes.get(dbParam[0].toLowerCase()));
+                            Cell modelCell = resultRow.getCell(resultIndexes.get(dbParam[1].toLowerCase()));
+
+                            String makeName = getCellValueAsString(makeCell).toLowerCase().trim();
+                            String modelName = getCellValueAsString(modelCell).toLowerCase().trim();
+                            MakeModelCode dto = modelCodeMap.get(makeName + " | " + modelName);
+
+                            safeValue = (dto != null && dto.getModelCode() != null)
+                                    ? dto.getModelCode().toString()
+                                    : "NULL";
+                        }
+                    }
+
 /*
                     String safeValue = valueFromMap;
 
@@ -377,33 +430,42 @@ public class ExcelService {
                     if(("reward_vehicle_fuel_type".equalsIgnoreCase(rewardHeader))) {
                         safeValue = handleRewardVehicleFuelType(resultRow, resultIndexes, dbParam, valueFromMap, details);
                     }
-
-                    // Yaha tak
-
  */
-                    // Call Gemini if Reward_vehicle_type is not found in previous_live_master and current master
-
-//                    if (safeValue.equals("#N/A") && (details[4].equals("4W") || details[4].equals("2W"))) {
-//                        String prompt = getPrompt(details[4], masterRow);
-//                        System.out.println("Ye value fetch ki hai AI se...");
-//                        bundleForAI.add(masterRow);
-//                        try{
-//                            safeValue = geminiService.askGemini(prompt, "Single");
-//                            handleRewardVehicleType(resultRow, resultIndexes, dbParam, modelCode, safeValue, details);
-//                        } catch (Exception ex) {
-//                            System.out.println("Error from Gemini API: " + ex.getMessage());
-//                        }
-//                    }
-
                     resultRow.createCell(resultIndexes.get(rewardHeader)).setCellValue(safeValue);
                 }
             }
 
-            // yaha bhi development chal raha
 /*
             saveRowInDb(resultRow, resultIndexes, dbParam, rowVlookupValues, details);
 */
-            // Yaha tak
+            // Reward Vehicle type - 4W (for Master which contains ex showroom price) -- Digit, Raheja, ZUNO
+
+            if ("4W".equalsIgnoreCase(details[4])
+                    && ("digit".equalsIgnoreCase(details[5])
+                    || "raheja".equalsIgnoreCase(details[5])
+                    || "zuno".equalsIgnoreCase(details[5]))){
+                int priceColIndex = resultIndexes.getOrDefault(details[6].toLowerCase(), -1);
+                if (priceColIndex == -1) {
+                    throw new IllegalArgumentException("Invalid column mapping for: " + details[6]);
+                }
+
+                Cell priceCell = resultRow.getCell(priceColIndex);
+                String priceStr = getCellValueAsString(priceCell)
+                        .replace(",", "")
+                        .trim();
+                try {
+                    double price = Double.parseDouble(priceStr);
+
+                    String vehicleTypeValue = price >= HEV_PRICE_THRESHOLD ? "HEV" : "NONHEV";
+                    resultRow
+                            .createCell(resultIndexes.get("reward_vehicle_type"))
+                            .setCellValue(vehicleTypeValue);
+                } catch (Exception e) {
+                    System.err.println("---------------------Ex Showroom Prices are not valid-------------------");
+                    System.err.println("Invalid Ex-Showroom price: " + priceStr);
+                    throw new UnsupportedOperationException("Ex Showroom Prices are not valid");
+                }
+            }
 
             // Electric CC → Power
             if (resultIndexes.containsKey(details[2])) {
@@ -428,46 +490,6 @@ public class ExcelService {
                 resultRow.createCell(resultIndexes.get(fixedValues[i])).setCellValue(fixedValues[i+1]);
             }
 
-            // Filling ft_make and ft_model Code
-            if(resultIndexes.containsKey("ft_make_code")) {
-
-                System.out.println("dbParam[0] = " + dbParam[0]);
-                System.out.println("Looking for column = " + dbParam[0].toLowerCase());
-                System.out.println("Available resultIndexes = " + resultIndexes);
-
-
-                Cell makeCell = resultRow.getCell(resultIndexes.get(dbParam[0].toLowerCase()));
-
-                String makeName = getCellValueAsString(makeCell).toLowerCase().trim();
-
-                MakeModelCode dto = makeCodeMap.get(makeName);
-                if (dto != null)
-                    System.out.println(makeName + " -> " + dto.getMakeName());
-
-                String makeCode = (dto != null && dto.getMakeCode() != null)
-                        ? dto.getMakeCode().toString()
-                        : "NULL";
-
-                resultRow.createCell(resultIndexes.get("ft_make_code")).setCellValue(makeCode);
-            }
-
-            if(resultIndexes.containsKey("ft_model_code")) {
-                Cell makeCell = resultRow.getCell(resultIndexes.get(dbParam[0].toLowerCase()));
-                Cell modelCell = resultRow.getCell(resultIndexes.get(dbParam[1].toLowerCase()));
-
-                String makeName = getCellValueAsString(makeCell).toLowerCase().trim();
-                String modelName = getCellValueAsString(modelCell).toLowerCase().trim();
-
-                System.out.println(makeName + " : " + modelName);
-
-                MakeModelCode dto = modelCodeMap.get(makeName + " | " + modelName);
-
-                String modelCode = (dto != null && dto.getModelCode() != null)
-                        ? dto.getModelCode().toString()
-                        : "NULL";
-
-                resultRow.createCell(resultIndexes.get("ft_model_code")).setCellValue(modelCode);
-            }
         }
 
 
@@ -489,7 +511,6 @@ public class ExcelService {
         return out;
     }
 
-    // Yaha bhi chal raha development
 /*
     private String handleRewardVehicleType(Row resultRow, Map<String, Integer> resultIndexes, String[] dbParam,
                                            String valueFromMap, String[] details) {
@@ -668,145 +689,7 @@ public class ExcelService {
     }
 */
 
-    // Yahe tak hai bhai
-
     // --- Helpers ---
-
-    private Sheet getOrCreateSheet(Workbook wb) {
-        Sheet sheet = wb.getSheet("AI_Classifications");
-        if (sheet != null) {
-            return sheet; // already exists → use it
-        }
-        return wb.createSheet("AI_Classifications");
-    }
-
-
-    private void writeAISheet(Workbook resultWb, List<Map<String,Object>> outRows) {
-
-        Sheet aiSheet = getOrCreateSheet(resultWb);
-
-        System.out.println("AI Sheet ban rahi hai....");
-
-        if (outRows == null || outRows.isEmpty()) {
-            // create only header with basic columns
-            Row header = aiSheet.createRow(0);
-            header.createCell(0).setCellValue("No AI Rows Found");
-            return;
-        }
-
-        // Collect all keys from "input"
-        Set<String> headerSet = new LinkedHashSet<>();
-        for (Map<String,Object> row : outRows) {
-            Map<String,Object> inputMap = (Map<String,Object>) row.get("input");
-            if (inputMap != null) headerSet.addAll(inputMap.keySet());
-        }
-        headerSet.add("reward_vehicle_type"); // Last column
-
-        // Convert to list
-        List<String> headers = new ArrayList<>(headerSet);
-
-        // --- Write Header Row ---
-        Row headerRow = aiSheet.createRow(0);
-        for (int i = 0; i < headers.size(); i++) {
-            headerRow.createCell(i).setCellValue(headers.get(i));
-        }
-
-        // --- Write Data Rows ---
-        int r = 1;
-        for (Map<String,Object> rowData : outRows) {
-            Row excelRow = aiSheet.createRow(r++);
-
-            Map<String,Object> inputMap = (Map<String,Object>) rowData.get("input");
-
-            for (int c = 0; c < headers.size(); c++) {
-                String h = headers.get(c);
-                String value = "";
-
-                if ("reward_vehicle_type".equals(h)) {
-                    value = String.valueOf(rowData.get("reward_vehicle_type"));
-                } else if (inputMap != null && inputMap.containsKey(h)) {
-                    value = String.valueOf(inputMap.get(h));
-                }
-
-                excelRow.createCell(c).setCellValue(value);
-            }
-        }
-
-        // Auto-size
-        for (int i = 0; i < headers.size(); i++) {
-            aiSheet.autoSizeColumn(i);
-        }
-    }
-
-
-    private String getPrompt(String type, Map<String, String> row) {
-        String mmv = buildStructuredRow(row);
-        String carPrompt = "You will be given four inputs: make , model , variant , fuel type , and engine CC of a vehicle. \n" +
-                "Your job is to determine the approximate on-road cost of the vehicle in India using general automotive knowledge. \n" +
-                "After estimating the cost, respond with ONLY ONE OF THE FOLLOWING TEXT VALUES:\n" +
-                "\n" +
-                "\"HEV\"  → if the estimated on-road price is MORE than 50 lakh INR  \n" +
-                "\"NONHEV\" → if the estimated on-road price is LESS than or equal to 50 lakh INR\n" +
-                "\n" + "Find Vehicle details = " + mmv + " \n" +
-                "Return strictly and only one of the two texts with no explanations, no extra words, and no formatting.\n";
-        String bikePrompt = "You will be given three inputs: make, model, and variant of a two-wheeler sold in India.\n" +
-                "Determine whether the vehicle is a \"Bike\" or a \"Scooter\" using general automotive knowledge.\n" +
-                "\n" +
-                "Return ONLY ONE of the following two text values:\n" +
-                "\n" +
-                "\"Bike\"\n" +
-                "\"Scooter\"\n" +
-                "\n" + "Find Vehicle details = " + mmv + " \n" +
-                "Do not add explanations, extra words, punctuation, or formatting. Respond with exactly one word only.\n";
-
-        if ("2W".equals(type)) return bikePrompt;
-        else if ("4W".equals(type)) return carPrompt;
-        else return "";
-
-    }
-
-    private String buildStructuredRowList(List<Map<String, String>> rows) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Vehicle Data List:\n");
-
-        int index = 1;
-        for (Map<String, String> row : rows) {
-            sb.append(index++).append(". {\n");
-            for (Map.Entry<String, String> e : row.entrySet()) {
-                sb.append("  ").append(e.getKey()).append(": ")
-                        .append(e.getValue() == null ? "" : e.getValue().trim())
-                        .append("\n");
-            }
-            sb.append("}\n\n");
-        }
-        return sb.toString();
-    }
-
-    private String sanitizeGeminiJson(String raw) {
-
-        System.out.println("Gemini Raw resposne for bundle  : " + raw);
-
-        if (raw == null) return "";
-
-        // Remove markdown backticks
-        raw = raw.replace("```json", "")
-                .replace("```", "");
-
-        // Remove weird control characters
-        raw = raw.replaceAll("[\\x00-\\x1F&&[^\\n\\t]]", "");
-
-        // Trim spaces
-        raw = raw.trim();
-
-        // Extract the JSON array if model wrapped it in text
-        int start = raw.indexOf('[');
-        int end = raw.lastIndexOf(']');
-        if (start >= 0 && end >= 0 && end > start) {
-            raw = raw.substring(start, end + 1);
-        }
-
-        return raw;
-    }
 
     private boolean isModelCodeBlank(MakeModelCode dto) {
         return dto.getModelCode() == null || dto.getModelCode().toString().trim().isEmpty();
@@ -815,49 +698,6 @@ public class ExcelService {
     private boolean isMakeCodeBlank(MakeModelCode dto) {
         return dto.getMakeCode() == null || dto.getMakeCode().toString().trim().isEmpty();
     }
-
-    private String getBatchPrompt(String type, List<Map<String, String>> rows) {
-
-        String structuredRows = buildStructuredRowList(rows);
-
-        String rules =
-                """
-                OUTPUT RULES (IMPORTANT):
-                - Output MUST be ONLY a valid JSON array.
-                - Do NOT include any explanation, text, comments, backticks, markdown, or notes.
-                - Do NOT include trailing commas.
-                - Do NOT include extra line breaks in keys or values.
-                - All keys MUST be enclosed in double quotes.
-                - All string values MUST be in double quotes.
-                - JSON must be fully valid and parsable by Jackson.
-    
-                JSON FORMAT:
-                [
-                  {
-                    "input": { ...original row... },
-                    "reward_vehicle_type": "HEV" | "NONHEV" | "Bike" | "Scooter"
-                  }
-                ]
-                """;
-
-        String carRule =
-                """
-                Classification rule for 4W:
-                - If estimated on-road price in India > 50 lakh INR → "HEV"
-                - Else → "NONHEV"
-                """;
-
-        String bikeRule =
-                """
-                Classification rule for 2W:
-                - If it is a motorcycle → "Bike"
-                - If it is a scooter → "Scooter"
-                """;
-
-        return structuredRows + "\n" + rules + "\n" + (type.equals("4W") ? carRule : bikeRule);
-    }
-
-
 
     private Map<String, Integer> getColumnIndexes(Row headerRow) {
         Map<String, Integer> map = new HashMap<>();
@@ -893,7 +733,6 @@ public class ExcelService {
 
     private String buildStructuredRow(Map<String, String> row) {
         StringBuilder sb = new StringBuilder();
-//        System.out.println(row);
         sb.append("Vehicle Data:\n");
 
         for (Map.Entry<String, String> entry : row.entrySet()) {
@@ -916,13 +755,13 @@ public class ExcelService {
 
     private String mapFuelType(String fuelType) {
         return switch (fuelType.toUpperCase()) {
-            case "1", "PETROL", "PETROL WITH LPG", "PETROL WITH CNG", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)", "PETROL P", "PETROL G", "PETROL+LPG", "P" -> "Petrol";
+            case "1", "PETROL", "PETROL WITH LPG", "PETROL WITH CNG", "PETROL+CNG", "PETROL T", "PETROL C", "PH", "PETROL(P)", "PETROL HYBRID(PH)", "PETROL P", "PETROL G", "PETROL+LPG", "P", "PetrolHybrid", "PETROL/CNG", "CNG/PETROL", "CNG+PETROL" -> "Petrol";
             case "2", "DIESEL", "DIESEL T", "DIESEL C", "DH", "DIESEL HYBRID(DH)", "DIESEL(D)", "DIESEL P", "DIESEL G", "D" -> "Diesel";
-            case "8", "3", "CNG", "CH", "CNG(C)", "C", "LPG/CNG" -> "CNG";
-            case "9", "4", "LPG", "LPG(L)" -> "LPG";
+            case "8", "3", "CNG", "CH", "CNG(C)", "C", "LPG/CNG", "CNG (Inbuilt)" -> "CNG";
+            case "9", "4", "LPG", "LPG(L)", "External LPG", "LPG (Inbuilt)" -> "LPG";
             case "LNG" -> "LNG";
             case "7", "ELECTRIC", "ELECTRICAL", "BATTERY", "ELECTRICITY", "ELECTRIC T", "ELECTRIC C", "ELECTRIC HYBRID", "BATTERY(B)", "BATTERY OPERATED", "ELECTRIC P", "B" -> "Electric";
-            case "5", "HYBRID", "HYBRID(H)", "MILD HYBRID", "PLUG IN HYBRID", "HYBRID ELECTRIC VEHICLE" -> "Hybrid";
+            case "5", "HYBRID", "HYBRID(H)", "MILD HYBRID", "PLUG IN HYBRID", "HYBRID ELECTRIC VEHICLE", "M HYBRID" -> "Hybrid";
             default -> "";
         };
     }
@@ -939,7 +778,7 @@ public class ExcelService {
                 sb.append(value);
             }
         }
-        String concatenatedString = sb.toString().toLowerCase();
+        String concatenatedString = sb.toString().toLowerCase().trim();
 
         switch (details[4].trim().toUpperCase()) {
             case "2W" -> valueFromMap = handle2wData(concatenatedString, valueFromMap, details[4].trim(), details[5].trim());
@@ -951,6 +790,7 @@ public class ExcelService {
 
     private String handleCvData(String concatenatedString, String valueFromMap, String product, String ic) {
         boolean contains = vehicleMappingCVDao.containsVehicleModelString(concatenatedString, ic);
+        System.out.println(concatenatedString + " -> " + contains);
         if("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) {
             if(contains) {
                 return vehicleMappingCVDao.getRewardVehicleType(concatenatedString, ic);
@@ -967,11 +807,17 @@ public class ExcelService {
     private String handle4wData(String concatenatedString, String valueFromMap, String product, String ic) {
         Boolean contains = vehicleMapping4WDao.containsVehicleModelString(concatenatedString);
 
-        if (("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) && contains) {
-            return vehicleMapping4WDao.getRewardVehicleType(concatenatedString);
-        }
+//        if (("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) && contains) {
+//            return vehicleMapping4WDao.getRewardVehicleType(concatenatedString);
+//        }
+//
+//        if (!"NULL".equals(valueFromMap) && !"#N/A".equals(valueFromMap) && !contains) {
+//            VehicleMapping4W data = new VehicleMapping4W(concatenatedString, valueFromMap, product, ic);
+//            vehicleMapping4WDao.save(data);
+//        }
 
-        if (!"NULL".equals(valueFromMap) && !"#N/A".equals(valueFromMap) && !contains) {
+        // Temporary for database correction
+        if (!"NULL".equals(valueFromMap) && !"#N/A".equals(valueFromMap)) {
             VehicleMapping4W data = new VehicleMapping4W(concatenatedString, valueFromMap, product, ic);
             vehicleMapping4WDao.save(data);
         }
@@ -983,7 +829,7 @@ public class ExcelService {
     private String handle2wData(String concatenatedString, String valueFromMap, String product, String ic) {
         Boolean contains = vehicleMapping2WDao.containsVehicleModelString(concatenatedString);
 
-        System.out.println("Concat : " + concatenatedString + ", valueFromMap : " + valueFromMap + ", product : " + product + ", IC : " + ic);
+//        System.out.println("Concat : " + concatenatedString + ", valueFromMap : " + valueFromMap + ", product : " + product + ", IC : " + ic);
 
         if (("NULL".equals(valueFromMap) || "#N/A".equals(valueFromMap)) && contains) {
             return vehicleMapping2WDao.getRewardVehicleType(concatenatedString);

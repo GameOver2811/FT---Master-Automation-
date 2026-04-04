@@ -113,7 +113,7 @@ public class XlsxToCsvSaxConverter {
             for (int k = 0; k < colLetters.length(); k++) {
                 col = col * 26 + (colLetters.charAt(k) - 'A' + 1);
             }
-            return col - 1; // zero-based
+            return col - 1;
         }
 
         private static String escapeCsv(String v) {
