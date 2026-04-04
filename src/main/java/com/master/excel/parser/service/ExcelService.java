@@ -8,6 +8,7 @@ import com.master.excel.parser.dto.MakeModelCode;
 import com.master.excel.parser.dto.VehicleMapping2W;
 import com.master.excel.parser.dto.VehicleMapping4W;
 import com.master.excel.parser.dto.VehicleMappingCV;
+import com.master.excel.parser.exception.VehicleTypeUndefined;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.openxml4j.opc.PackageAccess;
 import org.apache.poi.ss.usermodel.*;
@@ -49,6 +50,11 @@ public class ExcelService {
     private Integer makeIndex = null;
     private Integer modelIndex = null;
     private static final double HEV_PRICE_THRESHOLD = 5_000_000;
+
+    @Autowired
+    GeminiService geminiService;
+
+    private final ObjectMapper mapper = new ObjectMapper();
 
     public ByteArrayOutputStream automateExcelPopulation(
             MultipartFile masterFile,
@@ -485,6 +491,19 @@ public class ExcelService {
             }
 
         }
+
+
+        // Parsing Gemini response into Row Mapping
+//        String batchPrompt = getBatchPrompt(details[4], bundleForAI);
+//        String resultJson = geminiService.askGemini(batchPrompt, "Bundle");
+//        resultJson = sanitizeGeminiJson(resultJson);
+//        List<Map<String,Object>> outRows = mapper.readValue(
+//                resultJson,
+//                new TypeReference<List<Map<String,Object>>>(){}
+//        );
+
+        // Creating sheet for AI fetched data
+//        writeAISheet(resultWb, outRows);
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         resultWb.write(out);
