@@ -1524,19 +1524,19 @@
 									"key": "master",
 									"type": "file",
 									"uuid": "03647da4-07e9-4b80-8144-c5917126d337",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/GCV/GCV MMV_01-11-2025.xlsx"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/TATA/CV/GCV/GCV_TATA_03_01_2026.xlsx"
 								},
 								{
 									"key": "result",
 									"type": "file",
 									"uuid": "4334e0fc-559c-4c46-8f98-d8062c8e99a3",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/GCV/result_tata_GCV_vehicle_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/TATA/CV/GCV/result_tata_GCV_vehicle_master.csv"
 								},
 								{
 									"key": "live",
 									"type": "file",
 									"uuid": "7f10941d-ed89-4d37-ac8a-5a15982867b2",
-									"src": "/C:/Users/HP/Desktop/Masters @ FT/Nov'25/Tata/GCV/live_GCV_result_tata_cv_vehicle_master.csv"
+									"src": "/C:/Users/HP/Desktop/Masters @ FT/MMV/2026/Jan'26/TATA/CV/GCV/live_tata_GCV_vehicle_master.csv"
 								},
 								{
 									"key": "mapping",
@@ -1558,7 +1558,7 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"model_code\", \"reward_product_type\":\"model_code\"}",
+									"value": "{\"reward_vehicle_type\":\"model_code\", \"reward_product_type\":\"model_code\", \"ft_make_id\":\"manufacture_name\", \"ft_model_id\": \"model_name\"}",
 									"type": "text",
 									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
 								},
@@ -1567,6 +1567,12 @@
 									"value": "manufacture_name, model_name, variant_name, cubic_capacity, reward_vehicle_fuel_type",
 									"type": "text",
 									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								},
+								{
+									"key": "fixedValues",
+									"value": "created_at, NULL, updated_at, NULL, reward_product_type, GCV",
+									"type": "text",
+									"uuid": "f00f3af6-39fb-4d0f-b9ce-a0591a5030d9"
 								}
 							]
 						},
