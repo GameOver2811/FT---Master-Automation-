@@ -1388,7 +1388,8 @@
 									"pm.visualizer.set(template, constructVisualizerPayload());"
 								],
 								"type": "text/javascript",
-								"packages": {}
+								"packages": {},
+								"requests": {}
 							}
 						}
 					],
@@ -1440,7 +1441,7 @@
 								},
 								{
 									"key": "vlookupMapping",
-									"value": "{\"reward_vehicle_type\":\"model_code\", \"reward_product_type\":\"model_code\"}",
+									"value": "{\"reward_vehicle_type\":\"model_code\", \"reward_product_type\":\"model_code\", \"ft_make_id\": \"manufacture_name\", \"ft_model_id\": \"model_name\"}",
 									"type": "text",
 									"uuid": "6396452a-5002-4069-92eb-27536fdd3960"
 								},
@@ -1449,6 +1450,12 @@
 									"value": "manufacture_name, model_name, variant_name, cubic_capacity, reward_vehicle_fuel_type",
 									"type": "text",
 									"uuid": "82973c14-0112-49be-9185-4cd90c901eba"
+								},
+								{
+									"key": "fixedValues",
+									"value": "created_at, NULL, updated_at, NULL, reward_product_type, MISD",
+									"type": "text",
+									"uuid": "642ca074-454d-438a-ad8a-f1e10695a3f7"
 								}
 							]
 						},
